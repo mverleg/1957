@@ -34,4 +34,6 @@ tmp/*
 *.out
 *.csv
 
+# IDE
+.idea/
 

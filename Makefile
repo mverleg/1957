@@ -16,7 +16,7 @@ FDEBUG    := -D DEB -Og -g -Wall -Wextra -fbacktrace -fbounds-check -fmax-errors
 FOPTIMIZE := -D OPT -Ofast -march=native -ffrontend-optimize
 # external libraries to link to:
 FLIBS     := -lmpi -fcoarray=lib -lcaf_mpi -lblas -llapack -fexternal-blas
-FLIBS     := -lmpi -lblas -llapack -fexternal-blas
+FLIBS     := -fopenmp -lblas -llapack -fexternal-blas
 # pretty much all compiler warnings:
 FWARNALL  := -Waliasing -Wampersand -Wconversion -Wsurprising -Wc-binding-type -Wintrinsics-std -Wtabs -Wintrinsic-shadow -Wline-truncation -Wtarget-lifetime -Winteger-division -Wreal-q-constant -Wunused -Warray-temporaries -Wcharacter-truncation -Wconversion-extra -Wunderflow -Wunused-dummy-argument -Wunused-parameter -Walign-commons -Wfunction-elimination -Wrealloc-lhs -Wrealloc-lhs-all -Wcompare-reals -Wzerotrip
 
@@ -57,6 +57,7 @@ test: testrun
 
 testrun: RUNTEST=yes
 testrun: main.run
+	@echo "#########################################"
 	@echo "now testing that the program can start succesfully"
 	./main.run --initonly
 

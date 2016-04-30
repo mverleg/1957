@@ -33,15 +33,38 @@ module my_utils
         write (*, '(2a)') 'Compiler: ', compiler_version()
         write (*, '(2a)') 'Flags: ', compiler_options()
 
+#ifdef DEB
+        write(*,*) 'compiled in debug mode'
+#else
+#ifdef OPT
+        write(*,*) 'compiled in optimized mode'
+#endif
+#endif
+
         do k = 1, command_argument_count()
             call get_command_argument(k, arg)
             if (trim(arg) == '--initonly') then
-                write (*, *) 'exiting runtest'
+                call init_test()
                 stop 0
             endif
         end do
     end subroutine
 
+    subroutine init_test()
+        !!
+        !! Run some basic tests and exit.
+        !!
+        use omp_lib, ONLY: omp_get_thread_num, omp_get_num_threads
+        integer :: pid
+!$OMP PARALLEL PRIVATE(pid)
+        pid = omp_get_thread_num() + 1
+        write (*, '(a,I0,a,I0)') 'hello from openmp thread ', pid, ' / ', omp_get_num_threads()
+!$OMP END PARALLEL
+        write (*, *) 'exiting runtest'
+    end subroutine
+
+
+    !! todo: backspace (unit=unit)
     subroutine write_csv_d2(pth, data)
         !!
         !! Write a double precision 2D matrix to a csv file
