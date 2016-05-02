@@ -28,7 +28,9 @@ module my_utils
         ! write (*, '(a, es23.16)') 'full precision', flt
 
         call date_and_time(date, time, zone)
-        write (*, '(*(a))') 'Running on ', date(1:4), '-', date(5:6), '-', date(7:8), ' at ', time(1:2), ':', time(3:4), ':', time(5:6), ':', ' in ', zone
+        write (*, '(*(a))') 'Running on ', date(1:4), '-', date(5:6), '-', &
+            date(7:8), ' at ', time(1:2), ':', time(3:4), ':', time(5:6),  &
+            ':', ' in ', zone
 
         write (*, '(2a)') 'Compiler: ', compiler_version()
         write (*, '(2a)') 'Flags: ', compiler_options()
@@ -58,7 +60,8 @@ module my_utils
         integer :: pid
 !$OMP PARALLEL PRIVATE(pid)
         pid = omp_get_thread_num() + 1
-        write (*, '(a,I0,a,I0)') 'hello from openmp thread ', pid, ' / ', omp_get_num_threads()
+        write (*, '(a,I0,a,I0)') 'hello from openmp thread ', pid, &
+            ' / ', omp_get_num_threads()
 !$OMP END PARALLEL
         write (*, *) 'exiting runtest'
     end subroutine

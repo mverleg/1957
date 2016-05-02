@@ -37,3 +37,7 @@ tmp/*
 # IDE
 .idea/
 
+# Building
+.sconsign.dblite
+build/
+

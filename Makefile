@@ -29,29 +29,28 @@ default: deb
 	@echo "ready"
 
 CMD := $(COMP) $(FALWAYS) $(FSTRICT) $(FDEBUG)
-deb: main.run
-# deb: TARGET := main.deb.run
-# deb: main.deb.run
-# main.deb.run: exe
+deb: TMP := $(TMP)/deb
+deb: main.deb.run
 
 opt: CMD := $(COMP) $(FALWAYS) $(FSTRICT) $(FOPTIMIZE)
-opt: main.run
-# opt: TARGET := main.opt.run
-# opt: main.opt.run
-# main.opt.run: exe
+opt: TMP := $(TMP)/opt
+opt: main.opt.run
 
-main.run: $(TMP)/utils.o $(TMP)/multi_type.o
-	$(CMD) $^ main.F08 -I $(TMP) -o main.run $(FLIBS)
+main.%.run: $(TMP)/utils.o $(TMP)/multi_type.o $(TMP)/myopenmp.o $(TMP)/myopencl.o main.F08
+	$(CMD) $^ -I $(TMP) -o $@ $(FLIBS)
+	ln -f -s $@ main.run
 
-$(TMP)/%.o: %.F08 tmp
+.PRECIOUS: $(TMP)/%.o
+$(TMP)/%.o: %.F08 $(TMP)/.init
 	$(CMD) -c $< -I $(TMP) -J $(TMP) -o $@ $(FLIBS)
 
 clean:
-	rm -f main.run
+	rm -f main.deb.run main.opt.run main.run
 	rm -rf $(TMP)/*
 
-tmp:
+$(TMP)/.init:
 	mkdir -p -m 700 $(TMP)
+	@touch $(TMP)/.init
 
 test: testrun
 
