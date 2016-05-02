@@ -8,7 +8,8 @@ from os.path import join
 # todo: modules not in variantdir -> this is partially caused by -j4, without which it builds in both
 # todo: (compiles some unnecessary objects)
 # todo: opt and deb modes
-
+# todo: blas doesn't work because libflags appear before .o files
+# todo: most flags aren't added at all
 
 FLAGS = dict(
 	always=['-ffree-form', '-ffree-line-length-none', '-fautomatic', '-funderscoring', '-cpp',
@@ -27,6 +28,7 @@ FLAGS = dict(
 	# note: -fopenmp should for in LINKFLAGS but it doesn't automatically so it is repeated manually
 )
 
+
 envs, targets = {}, {}
 for mode in ('debug', 'optimize',):
 # for mode in ('debug',):
@@ -34,7 +36,7 @@ for mode in ('debug', 'optimize',):
 	envs[mode] = DefaultEnvironment(
 		FORTRANMODDIRPREFIX = '-J',
 		FORTRANMODDIR = '${TARGET.dir}',
-		LINKFLAGS='-fopenmp',
+		LINKFLAGS=FLAGS['libs'],
 	)
 	envs[mode].ParseFlags(
 		FLAGS['always'] +

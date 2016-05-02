@@ -7,7 +7,8 @@ module my_utils
     integer, parameter:: dp=kind(0.d0)
 
     interface write_csv
-        module procedure write_csv_d2, write_csv_i2, write_csv_dd1, write_csv_ii1, write_csv_id1
+        module procedure write_csv_d2, write_csv_i2, write_csv_dd1, write_csv_ii1, write_csv_id1, &
+            laplacian, print_vector, print_matrix
     end interface
 
     contains
@@ -57,15 +58,83 @@ module my_utils
         !! Run some basic tests and exit.
         !!
         use omp_lib, ONLY: omp_get_thread_num, omp_get_num_threads
-        integer :: pid
+        integer, parameter :: N = 6
+        real(dp), dimension(N, N) :: D
+        real(dp), dimension(N) :: ER, EI
+        real(dp), dimension(6*N) :: work
+        integer :: pid, notrefd, status
+
 !$OMP PARALLEL PRIVATE(pid)
         pid = omp_get_thread_num() + 1
         write (*, '(a,I0,a,I0)') 'hello from openmp thread ', pid, &
             ' / ', omp_get_num_threads()
 !$OMP END PARALLEL
+
+        write (*, *) 'diagonalizing laplacian'
+        call laplacian(D, N, 2)
+        ! call print_matrix(D)
+        call DGEEV('N', 'N', N, D, N, ER, EI, notrefd, 1, notrefd, 1, work, 6*N, status)
+        write (*, *) 'DGEEV eigenvalues:'
+        call print_vector(ER)
+        call print_vector(EI)
         write (*, *) 'exiting runtest'
     end subroutine
 
+    subroutine laplacian(D, N, deg)
+        !!
+        !! Laplacian (numerical differentiation) matrix.
+        !!
+        real(dp), dimension(N, N), intent(out) :: D
+        integer, intent(in) :: N
+        integer, value, optional :: deg  !! not useful at this time
+        integer :: k
+        if ( .not. present(deg) ) then
+            deg = 2
+        end if
+        if (N < 2) then
+            write (*, *) 'cannot create laplacian smaller than 2x2; got', N
+            stop 1
+        end if
+        D = 0  !! speed up?
+        do k = 2, N-1
+            D(k+1, k) = -1
+            D(k-1, k) = -1
+            D(k,   k) = deg
+            ! do m = max(1, k), min(M, k)
+            ! end do
+        end do
+        D(1, 1) = deg
+        D(2, 1) = -1
+        D(N, N) = deg
+        D(N-1, N) = -1
+    end subroutine
+
+    subroutine print_vector(data)
+        !!
+        !! Print a 1D matrix to the screen.
+        !!
+        real(dp), intent(in), dimension(:) :: data
+        integer :: k
+        do k = 1, (size(data, 1) - 1)
+            write(*, '(f12.6,a)', advance='no') data(k), ', '
+        end do
+        write(*, '(f12.6)', advance='yes') data(k)
+    end subroutine
+
+    subroutine print_matrix(data)
+        !!
+        !! Print a 2D matrix to the screen.
+        !!
+        real(dp), intent(in), dimension(:, :) :: data
+        integer :: k, m
+
+        do m = 1, size(data, 2)
+            do k = 1, (size(data, 1) - 1)
+                write(*, '(f12.6,a)', advance='no') data(k, m), ', '
+            end do
+            write(*, '(f12.6)', advance='yes') data(k, m)
+        end do
+    end subroutine
 
     !! todo: backspace (unit=unit)
     subroutine write_csv_d2(pth, data)
