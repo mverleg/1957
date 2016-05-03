@@ -1,5 +1,7 @@
 
 module my_utils
+    use lapack, only: DGEEV, DSTEV
+
     implicit none
     private
     public dp, do_setup, write_csv
@@ -58,11 +60,12 @@ module my_utils
         !! Run some basic tests and exit.
         !!
         use omp_lib, ONLY: omp_get_thread_num, omp_get_num_threads
-        integer, parameter :: N = 6
+        integer, parameter :: N = 8
         real(dp), dimension(N, N) :: D
         real(dp), dimension(N) :: ER, EI
         real(dp), dimension(6*N) :: work
-        integer :: pid, notrefd, status
+        real(dp), dimension(1, 1) :: notrefd
+        integer :: pid, status
 
 !$OMP PARALLEL PRIVATE(pid)
         pid = omp_get_thread_num() + 1
@@ -70,10 +73,25 @@ module my_utils
             ' / ', omp_get_num_threads()
 !$OMP END PARALLEL
 
-        write (*, *) 'diagonalizing laplacian'
+        write (*, *) 'diagonalizing laplacian with DSTEV'
         call laplacian(D, N, 2)
-        ! call print_matrix(D)
+        call print_matrix(D)
+        ER = 2
+        EI = -1
+        call DSTEV('N', N, ER, EI, notrefd, N, work, status)
+        if (status /= 0) then
+            write (*, *) 'DSTEV failed, code', status
+            stop 1
+        end if
+        write (*, *) 'DSTEV eigenvalues:'
+        call print_vector(ER)
+        write (*, *) 'diagonalizing laplacian with DGEEV'
+        call laplacian(D, N, 2)
         call DGEEV('N', 'N', N, D, N, ER, EI, notrefd, 1, notrefd, 1, work, 6*N, status)
+        if (status /= 0) then
+            write (*, *) 'DGEEV failed, code', status
+            stop 1
+        end if
         write (*, *) 'DGEEV eigenvalues:'
         call print_vector(ER)
         call print_vector(EI)
@@ -84,8 +102,8 @@ module my_utils
         !!
         !! Laplacian (numerical differentiation) matrix.
         !!
-        real(dp), dimension(N, N), intent(out) :: D
         integer, intent(in) :: N
+        real(dp), dimension(N, N), intent(out) :: D
         integer, value, optional :: deg  !! not useful at this time
         integer :: k
         if ( .not. present(deg) ) then
