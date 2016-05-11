@@ -74,11 +74,11 @@ module my_utils
 !$OMP END PARALLEL
 
         write (*, *) 'diagonalizing laplacian with DSTEV'
-        call laplacian(D, N, 2)
-        call print_matrix(D)
         ER = 2
         EI = -1
-        call DSTEV('N', N, ER, EI, notrefd, N, work, status)
+        write(*, *) 'tmp OFF'
+        status = 0
+        ! call DSTEV('N', N, ER, EI, notrefd, N, work, status)
         if (status /= 0) then
             write (*, *) 'DSTEV failed, code', status
             stop 1
@@ -87,6 +87,12 @@ module my_utils
         call print_vector(ER)
         write (*, *) 'diagonalizing laplacian with DGEEV'
         call laplacian(D, N, 2)
+        do pid = 1, N
+            do status = 1, N
+                D(pid, status) = pid / (status + 1.0d0)
+            end do
+        end do
+        call print_matrix(D)
         call DGEEV('N', 'N', N, D, N, ER, EI, notrefd, 1, notrefd, 1, work, 6*N, status)
         if (status /= 0) then
             write (*, *) 'DGEEV failed, code', status
