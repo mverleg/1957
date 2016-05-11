@@ -28,7 +28,7 @@ module my_utils
         character(len=10) :: time
         character(len=5)  :: zone
 
-        ! write (*, '(a, es23.16)') 'full precision', flt
+        ! write (*, '(a, es24.16e3)') 'full precision', flt
 
         call date_and_time(date, time, zone)
         write (*, '(*(a))') 'Running on ', date(1:4), '-', date(5:6), '-', &
@@ -172,9 +172,9 @@ module my_utils
         open(newunit=unit, file=pth, status="replace")
         do m = 1, size(data, 2)
             do k = 1, (size(data, 1) - 1)
-                write(unit, '(es23.16,a)', advance='no') data(k, m), ','
+                write(unit, '(es24.16e3,a)', advance='no') data(k, m), ','
             end do
-            write(unit, '(es23.16)', advance='yes') data(k, m)
+            write(unit, '(es24.16e3)', advance='yes') data(k, m)
         end do
         close(unit)
     end subroutine
@@ -207,11 +207,11 @@ module my_utils
         open(newunit=unit, file=pth, status="replace")
         if( present(data2) ) then
             do m = 1, size(data, 1)
-                write(unit, '(es23.16,a,es23.16)', advance='yes') data(m), ',', data2(m)
+                write(unit, '(es24.16e3,a,es24.16e3)', advance='yes') data(m), ',', data2(m)
             end do
         else
             do m = 1, size(data, 1)
-                write(unit, '(es23.16)', advance='yes') data(m)
+                write(unit, '(es24.16e3)', advance='yes') data(m)
             end do
         end if
         close(unit)
@@ -244,7 +244,7 @@ module my_utils
 
         open(newunit=unit, file=pth, status="replace")
         do m = 1, size(data, 1)
-            write(unit, '(I0,a,es23.16)', advance='yes') data(m), ',', data2(m)
+            write(unit, '(I0,a,es24.16e3)', advance='yes') data(m), ',', data2(m)
         end do
         close(unit)
     end subroutine

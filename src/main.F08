@@ -7,8 +7,15 @@ program demo
     integer, dimension(500) :: y
     integer, dimension(32) :: z
     integer :: k
+    real(dp) :: q
     y = 16
     x = 2  ! don't initialize in declaration, or 'save' is implied
+
+    q = tiny(q)
+    write(*, *) 'hello', q
+    write(*, '(es24.16E3)') q
+    write(*, '(es23.16)') q
+    stop 1
 
     call do_setup()
 

@@ -50,5 +50,5 @@ end module
 ! ...
 ! end subroutine
 
-! write (*, '(a, es23.16)') 'full precision', flt
+! write (*, '(a, es24.16e3)') 'full precision', flt
 
