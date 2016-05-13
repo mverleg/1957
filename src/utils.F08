@@ -40,10 +40,9 @@ module my_utils
 
 #ifdef DEB
         write(*,*) 'compiled in debug mode'
-#else
+#endif
 #ifdef OPT
         write(*,*) 'compiled in optimized mode'
-#endif
 #endif
 
         do k = 1, command_argument_count()

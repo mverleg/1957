@@ -7,7 +7,6 @@ program demo
     integer, dimension(500) :: y
     integer, dimension(32) :: z
     integer :: k
-    real(dp) :: q
     y = 16
     x = 2  ! don't initialize in declaration, or 'save' is implied
 
