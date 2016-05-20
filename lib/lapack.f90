@@ -3,6 +3,8 @@
 
       module lapack
 
+      public
+
       interface
 
       !! cbbcsd.f

@@ -40,7 +40,7 @@ Read the source files.
 iface_words = {'function', 'end function', 'subroutine', 'end subroutine', 'recursive', 'pure', 'elemental',
 	'integer', 'real', 'double', 'complex', 'character', 'logical', 'parameter',}
 output = ['      !! automatically generated interface', '      !! pipe a .f90 file & compile with -ffixed-form',
-	'', '      module {0:s}'.format(modname), '', '      interface', '']
+	'', '      module {0:s}'.format(modname), '', '      public', '', '      interface', '']
 for target in targets:
 	stderr.write('.')
 	with open(target, 'r') as fh:

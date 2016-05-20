@@ -3,6 +3,8 @@
 
       module blas
 
+      public
+
       interface
 
       !! caxpy.f
