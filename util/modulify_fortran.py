@@ -1,11 +1,10 @@
 
-#todo: everything
-
 """
 This is a very crude script to find the information needed to
 turn a Fortran codebase into modules which match the files.
 """
 
+import string
 from collections import defaultdict
 from os import getcwd
 from re import findall
@@ -64,7 +63,10 @@ for target in targets:
 Construct use statements.
 """
 def modname(pth):
-	return basename(pth.split('.')[0]) + '_mod'
+	nm = basename(pth.split('.')[0]) + '_mod'
+	if not nm[0].lower() in string.ascii_lowercase:
+		nm = 'm' + nm
+	return nm
 
 use = defaultdict(lambda: defaultdict(set))
 for file, fcalls in file_calls.items():
