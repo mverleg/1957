@@ -4,9 +4,12 @@ This is a very crude script to extract interfaces from Fortran source files,
 that nonetheless seems to work well enough for netlib blas and lapack.
 """
 
-from re import sub as re_sub, findall
+from re import sub as re_sub, findall, IGNORECASE, MULTILINE
 from sys import argv, stderr
 from os.path import exists, basename
+
+stderr.write('First argument is module name, all others are input files.\n')
+stderr.write('This could increase the length of some lines by up to 6 characters, which might cause lines to become too long.\n')
 
 """
 Get and check arguments.
@@ -78,8 +81,13 @@ for target in targets:
 		# 	continue
 	output.extend(sub)
 	output.append('')
-output.extend(['      end interface', '', '      end module'])
-print('\n'.join(output))
+output.extend(['      end interface', '', '      end module {0:s}'.format(modname)])
+content = '\n'.join(output)
+content = re_sub(r'^(\s+)\$', r'\g<1>&', content, flags=MULTILINE)
+content = re_sub(r'(complex|integer|real)\*(\d+)\s{1,7}', r'\1(kind=\2) ', content, flags=IGNORECASE)
+content = re_sub(r'character\*(\d+)\s{1,6}', r'character(len=\1) ', content, flags=IGNORECASE)
+print(content)
+# print(findall(r'^(\s+)\$', content, MULTILINE))
 stderr.write('done\n')
 
 
