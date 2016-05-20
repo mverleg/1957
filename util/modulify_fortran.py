@@ -18,6 +18,7 @@ Get and check arguments.
 """
 targets = list(sorted(argv[1:]))
 quit = False
+# stderr.write(' '.join(targets) + '\n')
 
 if not targets:
 	stderr.write('no targets provided\n')
@@ -41,7 +42,7 @@ ignore = {'mpi_finalize', 'mpi_comm_size', 'mpi_comm_rank', 'mpi_recv', 'mpi_sen
 """
 Read the source files.
 """
-file_defines = defaultdict(list)
+file_defines = {fname: [] for fname in targets}
 defined_in = {}
 called_in = defaultdict(set)
 file_calls = defaultdict(set)
@@ -110,8 +111,9 @@ for file, routines in file_defines.items():
 			continue
 		with open(file, 'r') as fh:
 			content = fh.read()
-		if 'module' in content.lower():
-			stderr.write('{0:s} already has a module, not applying\n'.format(file))
+		icontent = content.lower()
+		if 'module' in icontent or 'program' in icontent:
+			stderr.write('{0:s} already has a module or is a program, not applying\n'.format(file))
 			continue
 		with open(file, 'w') as fh:
 			stderr.write('turning {0:s} into module'.format(file))
