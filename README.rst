@@ -8,6 +8,11 @@ Blas/Lapack interface
 
 If you want explicit interfaces for blas/lapack, you can use `blas.f90`_ and `lapack.f90`_. These files have been extracted from the blas and lapack Fortran reference source using the included interfacify_fortran.py script (which works well except for multiple subroutines per file, which is very rare for blas/lapack). The purpose is to be able to do ``use lapack, only: DGEEV, DSTEV`` and compile with ``-Wimplicit-procedure`` to check that routines exist and have correct arguments.
 
+Lancsoz algorithm
+-------------------------------
+
+Includes a simple implementation of Lancsoz algorithm (compile with ``scons lancsoz``) to estimate the extreme eigenvalue of a Hermitian matrix. There are much more advanced implementations online, but this one is elegant and easy. A test, which functions as a demo, is included.
+
 Requires
 -------------------------------
 

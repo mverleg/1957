@@ -27,7 +27,8 @@ for mode in ('minimal', 'debug', 'optimize',):
 		FORTRANMODDIRPREFIX='-J',
 		FORTRANMODDIR='${TARGET.dir}',
 		FORTRANFLAGS=FLAGS[mode] + ['-fopenmp',],
-		F08PATH='${TARGET.dir}/../lib',
+		F08PATH=['${TARGET.dir}/../lib', '${TARGET.dir}/../lancsoz'],
+		LIBPATH=['${TARGET.dir}/../lib', '${TARGET.dir}/../lancsoz'],
 		F08FLAGS=['-std=f2008', '-ffree-form', '-ffree-line-length-none', '$FORTRANFLAGS'],
 		F90FLAGS=['-std=legacy', '-ffixed-form',] + FLAGS['minimal'],
 		CPPFLAGS='-cpp',
@@ -43,11 +44,16 @@ for mode in ('minimal', 'debug', 'optimize',):
 	targets[mode] = envs[mode].Program(join(dir, 'main.run'), source=sources)
 	envs[mode].Alias('{0:.3s}'.format(mode), targets[mode])
 
+	sources = list(join(dir, file) for file in ['lancsoz/test_lancsoz.F08', 'lancsoz/lancsoz.F08', 'lib/blas.f90', 'lib/lapack.f90',])
+	lancsoz = envs[mode].Program(join(dir, 'test_lancsoz.run'), source=sources)
+	envs[mode].Alias('lancsoz', lancsoz)
+
 default_mode = 'debug'
 test = Command(target='build/test.log', source=targets[default_mode], action="$SOURCE --initonly 2>&1 | tee $TARGET" )
 envs[default_mode].Depends(test, targets[default_mode])
 AlwaysBuild(test)
 envs[default_mode].Alias('test', test)
+Clean(test, 'build')
 
 envs[default_mode].Default(targets[default_mode])
 
