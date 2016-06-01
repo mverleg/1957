@@ -1,13 +1,13 @@
       !!
-      !! Test Lancsoz range estimation on a small matrix and check the result.
+      !! Test Lanczos range estimation on a small matrix and check the result.
       !!
-      module lancsoz_test_mod
+      module lanczos_test_mod
           private
           public test_all
           contains
 
           subroutine test_all()
-              use lancsoz, only: lancsoz_max, mat_apply_iface
+              use lanczos, only: lanczos_max, mat_apply_iface
               use blas, only: ddot, dsymv
               use lapack, only: dsyev
               use, intrinsic :: iso_fortran_env, only: stderr=>error_unit
@@ -44,9 +44,9 @@
               write (*, '(1x,a,1x,es24.16e3)') 'lapack  min', minval(eigenvals)
               write (*, '(1x,a,1x,es24.16e3)') 'lapack  max', maxval(eigenvals)
 
-              !! Get the answer from Lancsoz
-              ma = lancsoz_max(M, mat_vec_mult, stat)
-              write (*, '(1x,a,1x,es24.16e3)') 'lancsoz max', ma
+              !! Get the answer from Lanczos
+              ma = lanczos_max(M, mat_vec_mult, stat)
+              write (*, '(1x,a,1x,es24.16e3)') 'lanczos max', ma
 
               contains
               subroutine mat_vec_mult(matdim, invec, outvec)
@@ -57,16 +57,16 @@
                   call dsymv('U', matdim, 1.0d0, matrix, matdim, invec, 1, 0.0d0, outvec, 1)
               end subroutine mat_vec_mult
           end subroutine test_all
-      end module lancsoz_test_mod
+      end module lanczos_test_mod
 
       !! gfortran wants this in a separate file
-      program lancsoz_test
-          use lancsoz_test_mod, only: test_all
+      program lanczos_test
+          use lanczos_test_mod, only: test_all
 
           implicit none
 
           call test_all()
-      end program lancsoz_test
+      end program lanczos_test
 
 
 

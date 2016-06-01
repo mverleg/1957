@@ -1,16 +1,16 @@
         !!
-        !! Construct the Lancsoz symmetric tridiagonal approximation matrix for a given
+        !! Construct the Lanczos symmetric tridiagonal approximation matrix for a given
         !! Hermitian operation which should satisfy `mat_apply_iface`.
         !! Can also get the highest eigenvalue, assuming it's bigger than the lowest one.
         !!
-        module lancsoz
+        module lanczos
             use blas, only: ddot, dnrm2
             use lapack, only: dsterf, dsyev
             use, intrinsic :: iso_fortran_env, only: stderr=>error_unit
 
             implicit none
             private
-            public lancsoz_mat, lancsoz_max, mat_apply_iface
+            public lanczos_mat, lanczos_max, mat_apply_iface
 
             !! Interface of the function that multiplies the matrix and the vector
             interface
@@ -23,9 +23,9 @@
 
             contains
 
-            subroutine lancsoz_mat(nriter, matdim, mat_apply, res_diag, res_offdiag)
+            subroutine lanczos_mat(nriter, matdim, mat_apply, res_diag, res_offdiag)
                 !!
-                !! Get the Lancsoz tridiagonal approximate matrix.
+                !! Get the Lanczos tridiagonal approximate matrix.
                 !! https://en.wikipedia.org/w/index.php?title=Lanczos_algorithm&oldid=718084622#The_algorithm
                 !!
                 !! Number of iterations & size of Krylov subspace:
@@ -59,11 +59,11 @@
                     v_prev = v_current
                     v_current = work_vec / res_offdiag(k)
                 enddo
-            end subroutine lancsoz_mat
+            end subroutine lanczos_mat
 
-            REAL(kind=8) function lancsoz_max(matdim, mat_apply, info, nriter) result(topev)
+            REAL(kind=8) function lanczos_max(matdim, mat_apply, info, nriter) result(topev)
                 !!
-                !! Construct the tridigaonal approximation (lancsoz_mat) and get the highest eigenvalue.
+                !! Construct the tridigaonal approximation (lanczos_mat) and get the highest eigenvalue.
                 !!
                 !! Function to apply the matrix (should follow the interface):
                 procedure (mat_apply_iface) :: mat_apply
@@ -82,7 +82,7 @@
                 allocate (res_diag(nriterval), res_offdiag(nriterval - 1))
 
                 !! Get the approximate tridiagonal form (which will be symmetric if mat_apply is Hermitian)
-                call lancsoz_mat(nriterval, matdim, mat_apply, res_diag, res_offdiag)
+                call lanczos_mat(nriterval, matdim, mat_apply, res_diag, res_offdiag)
 
                 !! Get the eigenvalues (note that the biggest absolute one is the most reliable)
                 call dsterf(nriterval, res_diag, res_offdiag, stat)
@@ -97,7 +97,7 @@
                 topev = maxval(res_diag)
                 deallocate (res_diag, res_offdiag)
 
-            end function lancsoz_max
-        end module lancsoz
+            end function lanczos_max
+        end module lanczos
 
 

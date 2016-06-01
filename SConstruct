@@ -21,14 +21,14 @@ FLAGS = dict(
 	# libs=['-fopenmp', '-lblas', '-llapack', '-fexternal-blas'],
 )
 
-envs, targets = {}, {}
+envs, dir, targets = {}, {}, {}
 for mode in ('minimal', 'debug', 'optimize',):
 	envs[mode] = Environment(
 		FORTRANMODDIRPREFIX='-J',
 		FORTRANMODDIR='${TARGET.dir}',
 		FORTRANFLAGS=FLAGS[mode] + ['-fopenmp',],
-		F08PATH=['${TARGET.dir}/../lib', '${TARGET.dir}/../lancsoz'],
-		LIBPATH=['${TARGET.dir}/../lib', '${TARGET.dir}/../lancsoz'],
+		F08PATH=['${TARGET.dir}/../lib', '${TARGET.dir}/../lanczos'],
+		LIBPATH=['${TARGET.dir}/../lib', '${TARGET.dir}/../lanczos'],
 		F08FLAGS=['-std=f2008', '-ffree-form', '-ffree-line-length-none', '$FORTRANFLAGS'],
 		F90FLAGS=['-std=legacy', '-ffixed-form',] + FLAGS['minimal'],
 		CPPFLAGS='-cpp',
@@ -36,24 +36,24 @@ for mode in ('minimal', 'debug', 'optimize',):
 		LIBS=['blas', 'lapack',],
 		LINKFLAGS=['-fopenmp'],
 	)
-	dir = 'build/{0:s}'.format(mode)
-	envs[mode].VariantDir(variant_dir=dir, src_dir='.', duplicate=True)
-	sources = list(join(dir, file) for file in glob('src/*.F08'))
-	sources += list(join(dir, file) for file in ['lib/blas.f90', 'lib/lapack.f90',])
+	dir[mode] = 'build/{0:s}'.format(mode)
+	envs[mode].VariantDir(variant_dir=dir[mode], src_dir='.', duplicate=True)
+	sources = list(join(dir[mode], file) for file in glob('src/*.F08'))
+	sources += list(join(dir[mode], file) for file in ['lib/blas.f90', 'lib/lapack.f90',])
 	envs[mode].Depends(target=sources, dependency=['SConstruct'])
-	targets[mode] = envs[mode].Program(join(dir, 'main.run'), source=sources)
+	targets[mode] = envs[mode].Program(join(dir[mode], 'main.run'), source=sources)
 	envs[mode].Alias('{0:.3s}'.format(mode), targets[mode])
+	Clean(targets[mode], 'build')
 
-	sources = list(join(dir, file) for file in ['lancsoz/test_lancsoz.F08', 'lancsoz/lancsoz.F08', 'lib/blas.f90', 'lib/lapack.f90',])
-	lancsoz = envs[mode].Program(join(dir, 'test_lancsoz.run'), source=sources)
-	envs[mode].Alias('lancsoz', lancsoz)
+sources = list(join(dir['debug'], file) for file in ['lanczos/test_lanczos.F08', 'lanczos/lanczos.F08', 'lib/blas.f90', 'lib/lapack.f90',])
+lanczos = envs['debug'].Program(join(dir['debug'], 'test_lanczos.run'), source=sources)
+envs['debug'].Alias('lanczos', lanczos)
 
 default_mode = 'debug'
 test = Command(target='build/test.log', source=targets[default_mode], action="$SOURCE --initonly 2>&1 | tee $TARGET" )
 envs[default_mode].Depends(test, targets[default_mode])
 AlwaysBuild(test)
 envs[default_mode].Alias('test', test)
-Clean(test, 'build')
 
 envs[default_mode].Default(targets[default_mode])
 
