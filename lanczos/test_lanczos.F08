@@ -7,7 +7,7 @@
           contains
 
           subroutine test_all()
-              use lanczos, only: lanczos_max, mat_apply_iface
+              use lanczos_mod, only: lanczos_max, mat_apply_iface
               use blas, only: ddot, dsymv
               use lapack, only: dsyev
               use, intrinsic :: iso_fortran_env, only: stderr=>error_unit
@@ -62,7 +62,6 @@
       !! gfortran wants this in a separate file
       program lanczos_test
           use lanczos_test_mod, only: test_all
-
           implicit none
 
           call test_all()
