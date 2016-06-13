@@ -471,7 +471,7 @@
 
       !! dcabs1.f
       double precision function dcabs1(z)
-      complex(kind=16) z
+      complex(kind=8)  z
       end function dcabs1
 
       !! dcopy.f
@@ -846,7 +846,7 @@
       !! dzasum.f
       double precision function dzasum(n,zx,incx)
       integer incx,n
-      complex(kind=16) zx(*)
+      complex(kind=8)  zx(*)
       double precision stemp
       integer i,nincx
       double precision dcabs1
@@ -855,7 +855,7 @@
       !! dznrm2.f
       double precision function dznrm2(n,x,incx)
       integer incx,n
-      complex(kind=16) x(*)
+      complex(kind=8)  x(*)
       double precision one,zero
       parameter (one=1.0d+0,zero=0.0d+0)
       double precision norm,scale,ssq,temp
@@ -890,7 +890,7 @@
       !! izamax.f
       integer function izamax(n,zx,incx)
       integer incx,n
-      complex(kind=16) zx(*)
+      complex(kind=8)  zx(*)
       double precision dmax
       integer i,ix
       double precision dcabs1
@@ -1328,9 +1328,9 @@
 
       !! zaxpy.f
       subroutine zaxpy(n,za,zx,incx,zy,incy)
-      complex(kind=16) za
+      complex(kind=8)  za
       integer incx,incy,n
-      complex(kind=16) zx(*),zy(*)
+      complex(kind=8)  zx(*),zy(*)
       integer i,ix,iy
       double precision dcabs1
       end subroutine zaxpy
@@ -1338,23 +1338,23 @@
       !! zcopy.f
       subroutine zcopy(n,zx,incx,zy,incy)
       integer incx,incy,n
-      complex(kind=16) zx(*),zy(*)
+      complex(kind=8)  zx(*),zy(*)
       integer i,ix,iy
       end subroutine zcopy
 
       !! zdotc.f
-      complex(kind=16) function zdotc(n,zx,incx,zy,incy)
+      complex(kind=8)  function zdotc(n,zx,incx,zy,incy)
       integer incx,incy,n
-      complex(kind=16) zx(*),zy(*)
-      complex(kind=16) ztemp
+      complex(kind=8)  zx(*),zy(*)
+      complex(kind=8)  ztemp
       integer i,ix,iy
       end function zdotc
 
       !! zdotu.f
-      complex(kind=16) function zdotu(n,zx,incx,zy,incy)
+      complex(kind=8)  function zdotu(n,zx,incx,zy,incy)
       integer incx,incy,n
-      complex(kind=16) zx(*),zy(*)
-      complex(kind=16) ztemp
+      complex(kind=8)  zx(*),zy(*)
+      complex(kind=8)  ztemp
       integer i,ix,iy
       end function zdotu
 
@@ -1362,30 +1362,30 @@
       subroutine zdrot( n, cx, incx, cy, incy, c, s )
       integer            incx, incy, n
       double precision   c, s
-      complex(kind=16)   cx( * ), cy( * )
+      complex(kind=8)    cx( * ), cy( * )
       integer            i, ix, iy
-      complex(kind=16)   ctemp
+      complex(kind=8)    ctemp
       end subroutine zdrot
 
       !! zdscal.f
       subroutine zdscal(n,da,zx,incx)
       double precision da
       integer incx,n
-      complex(kind=16) zx(*)
+      complex(kind=8)  zx(*)
       integer i,nincx
       end subroutine zdscal
 
       !! zgbmv.f
       subroutine zgbmv(trans,m,n,kl,ku,alpha,a,lda,x,incx,beta,y,incy)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer incx,incy,kl,ku,lda,m,n
       character trans
-      complex(kind=16) a(lda,*),x(*),y(*)
-      complex(kind=16) one
+      complex(kind=8)  a(lda,*),x(*),y(*)
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,iy,j,jx,jy,k,kup1,kx,ky,lenx,leny
       logical noconj
       logical lsame
@@ -1393,31 +1393,31 @@
 
       !! zgemm.f
       subroutine zgemm(transa,transb,m,n,k,alpha,a,lda,b,ldb,beta,c,ldc)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer k,lda,ldb,ldc,m,n
       character transa,transb
-      complex(kind=16) a(lda,*),b(ldb,*),c(ldc,*)
+      complex(kind=8)  a(lda,*),b(ldb,*),c(ldc,*)
       logical lsame
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,j,l,ncola,nrowa,nrowb
       logical conja,conjb,nota,notb
-      complex(kind=16) one
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
       end subroutine zgemm
 
       !! zgemv.f
       subroutine zgemv(trans,m,n,alpha,a,lda,x,incx,beta,y,incy)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer incx,incy,lda,m,n
       character trans
-      complex(kind=16) a(lda,*),x(*),y(*)
-      complex(kind=16) one
+      complex(kind=8)  a(lda,*),x(*),y(*)
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,iy,j,jx,jy,kx,ky,lenx,leny
       logical noconj
       logical lsame
@@ -1425,99 +1425,99 @@
 
       !! zgerc.f
       subroutine zgerc(m,n,alpha,x,incx,y,incy,a,lda)
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       integer incx,incy,lda,m,n
-      complex(kind=16) a(lda,*),x(*),y(*)
-      complex(kind=16) zero
+      complex(kind=8)  a(lda,*),x(*),y(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jy,kx
       end subroutine zgerc
 
       !! zgeru.f
       subroutine zgeru(m,n,alpha,x,incx,y,incy,a,lda)
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       integer incx,incy,lda,m,n
-      complex(kind=16) a(lda,*),x(*),y(*)
-      complex(kind=16) zero
+      complex(kind=8)  a(lda,*),x(*),y(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jy,kx
       end subroutine zgeru
 
       !! zhbmv.f
       subroutine zhbmv(uplo,n,k,alpha,a,lda,x,incx,beta,y,incy)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer incx,incy,k,lda,n
       character uplo
-      complex(kind=16) a(lda,*),x(*),y(*)
-      complex(kind=16) one
+      complex(kind=8)  a(lda,*),x(*),y(*)
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,ix,iy,j,jx,jy,kplus1,kx,ky,l
       logical lsame
       end subroutine zhbmv
 
       !! zhemm.f
       subroutine zhemm(side,uplo,m,n,alpha,a,lda,b,ldb,beta,c,ldc)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer lda,ldb,ldc,m,n
       character side,uplo
-      complex(kind=16) a(lda,*),b(ldb,*),c(ldc,*)
+      complex(kind=8)  a(lda,*),b(ldb,*),c(ldc,*)
       logical lsame
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,j,k,nrowa
       logical upper
-      complex(kind=16) one
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
       end subroutine zhemm
 
       !! zhemv.f
       subroutine zhemv(uplo,n,alpha,a,lda,x,incx,beta,y,incy)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer incx,incy,lda,n
       character uplo
-      complex(kind=16) a(lda,*),x(*),y(*)
-      complex(kind=16) one
+      complex(kind=8)  a(lda,*),x(*),y(*)
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,ix,iy,j,jx,jy,kx,ky
       logical lsame
       end subroutine zhemv
 
       !! zher2.f
       subroutine zher2(uplo,n,alpha,x,incx,y,incy,a,lda)
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       integer incx,incy,lda,n
       character uplo
-      complex(kind=16) a(lda,*),x(*),y(*)
-      complex(kind=16) zero
+      complex(kind=8)  a(lda,*),x(*),y(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,ix,iy,j,jx,jy,kx,ky
       logical lsame
       end subroutine zher2
 
       !! zher2k.f
       subroutine zher2k(uplo,trans,n,k,alpha,a,lda,b,ldb,beta,c,ldc)
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       double precision beta
       integer k,lda,ldb,ldc,n
       character trans,uplo
-      complex(kind=16) a(lda,*),b(ldb,*),c(ldc,*)
+      complex(kind=8)  a(lda,*),b(ldb,*),c(ldc,*)
       logical lsame
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,j,l,nrowa
       logical upper
       double precision one
       parameter (one=1.0d+0)
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
       end subroutine zher2k
 
@@ -1526,10 +1526,10 @@
       double precision alpha
       integer incx,lda,n
       character uplo
-      complex(kind=16) a(lda,*),x(*)
-      complex(kind=16) zero
+      complex(kind=8)  a(lda,*),x(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jx,kx
       logical lsame
       end subroutine zher
@@ -1539,9 +1539,9 @@
       double precision alpha,beta
       integer k,lda,ldc,n
       character trans,uplo
-      complex(kind=16) a(lda,*),c(ldc,*)
+      complex(kind=8)  a(lda,*),c(ldc,*)
       logical lsame
-      complex(kind=16) temp
+      complex(kind=8)  temp
       double precision rtemp
       integer i,info,j,l,nrowa
       logical upper
@@ -1551,28 +1551,28 @@
 
       !! zhpmv.f
       subroutine zhpmv(uplo,n,alpha,ap,x,incx,beta,y,incy)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer incx,incy,n
       character uplo
-      complex(kind=16) ap(*),x(*),y(*)
-      complex(kind=16) one
+      complex(kind=8)  ap(*),x(*),y(*)
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,ix,iy,j,jx,jy,k,kk,kx,ky
       logical lsame
       end subroutine zhpmv
 
       !! zhpr2.f
       subroutine zhpr2(uplo,n,alpha,x,incx,y,incy,ap)
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       integer incx,incy,n
       character uplo
-      complex(kind=16) ap(*),x(*),y(*)
-      complex(kind=16) zero
+      complex(kind=8)  ap(*),x(*),y(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,ix,iy,j,jx,jy,k,kk,kx,ky
       logical lsame
       end subroutine zhpr2
@@ -1582,83 +1582,83 @@
       double precision alpha
       integer incx,n
       character uplo
-      complex(kind=16) ap(*),x(*)
-      complex(kind=16) zero
+      complex(kind=8)  ap(*),x(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jx,k,kk,kx
       logical lsame
       end subroutine zhpr
 
       !! zrotg.f
       subroutine zrotg(ca,cb,c,s)
-      complex(kind=16) ca,cb,s
+      complex(kind=8)  ca,cb,s
       double precision c
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       double precision norm,scale
       end subroutine zrotg
 
       !! zscal.f
       subroutine zscal(n,za,zx,incx)
-      complex(kind=16) za
+      complex(kind=8)  za
       integer incx,n
-      complex(kind=16) zx(*)
+      complex(kind=8)  zx(*)
       integer i,nincx
       end subroutine zscal
 
       !! zswap.f
       subroutine zswap(n,zx,incx,zy,incy)
       integer incx,incy,n
-      complex(kind=16) zx(*),zy(*)
-      complex(kind=16) ztemp
+      complex(kind=8)  zx(*),zy(*)
+      complex(kind=8)  ztemp
       integer i,ix,iy
       end subroutine zswap
 
       !! zsymm.f
       subroutine zsymm(side,uplo,m,n,alpha,a,lda,b,ldb,beta,c,ldc)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer lda,ldb,ldc,m,n
       character side,uplo
-      complex(kind=16) a(lda,*),b(ldb,*),c(ldc,*)
+      complex(kind=8)  a(lda,*),b(ldb,*),c(ldc,*)
       logical lsame
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,j,k,nrowa
       logical upper
-      complex(kind=16) one
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
       end subroutine zsymm
 
       !! zsyr2k.f
       subroutine zsyr2k(uplo,trans,n,k,alpha,a,lda,b,ldb,beta,c,ldc)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer k,lda,ldb,ldc,n
       character trans,uplo
-      complex(kind=16) a(lda,*),b(ldb,*),c(ldc,*)
+      complex(kind=8)  a(lda,*),b(ldb,*),c(ldc,*)
       logical lsame
-      complex(kind=16) temp1,temp2
+      complex(kind=8)  temp1,temp2
       integer i,info,j,l,nrowa
       logical upper
-      complex(kind=16) one
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
       end subroutine zsyr2k
 
       !! zsyrk.f
       subroutine zsyrk(uplo,trans,n,k,alpha,a,lda,beta,c,ldc)
-      complex(kind=16) alpha,beta
+      complex(kind=8)  alpha,beta
       integer k,lda,ldc,n
       character trans,uplo
-      complex(kind=16) a(lda,*),c(ldc,*)
+      complex(kind=8)  a(lda,*),c(ldc,*)
       logical lsame
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,j,l,nrowa
       logical upper
-      complex(kind=16) one
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
       end subroutine zsyrk
 
@@ -1666,10 +1666,10 @@
       subroutine ztbmv(uplo,trans,diag,n,k,a,lda,x,incx)
       integer incx,k,lda,n
       character diag,trans,uplo
-      complex(kind=16) a(lda,*),x(*)
-      complex(kind=16) zero
+      complex(kind=8)  a(lda,*),x(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jx,kplus1,kx,l
       logical noconj,nounit
       logical lsame
@@ -1679,10 +1679,10 @@
       subroutine ztbsv(uplo,trans,diag,n,k,a,lda,x,incx)
       integer incx,k,lda,n
       character diag,trans,uplo
-      complex(kind=16) a(lda,*),x(*)
-      complex(kind=16) zero
+      complex(kind=8)  a(lda,*),x(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jx,kplus1,kx,l
       logical noconj,nounit
       logical lsame
@@ -1692,10 +1692,10 @@
       subroutine ztpmv(uplo,trans,diag,n,ap,x,incx)
       integer incx,n
       character diag,trans,uplo
-      complex(kind=16) ap(*),x(*)
-      complex(kind=16) zero
+      complex(kind=8)  ap(*),x(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jx,k,kk,kx
       logical noconj,nounit
       logical lsame
@@ -1705,10 +1705,10 @@
       subroutine ztpsv(uplo,trans,diag,n,ap,x,incx)
       integer incx,n
       character diag,trans,uplo
-      complex(kind=16) ap(*),x(*)
-      complex(kind=16) zero
+      complex(kind=8)  ap(*),x(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jx,k,kk,kx
       logical noconj,nounit
       logical lsame
@@ -1716,17 +1716,17 @@
 
       !! ztrmm.f
       subroutine ztrmm(side,uplo,transa,diag,m,n,alpha,a,lda,b,ldb)
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       integer lda,ldb,m,n
       character diag,side,transa,uplo
-      complex(kind=16) a(lda,*),b(ldb,*)
+      complex(kind=8)  a(lda,*),b(ldb,*)
       logical lsame
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,j,k,nrowa
       logical lside,noconj,nounit,upper
-      complex(kind=16) one
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
       end subroutine ztrmm
 
@@ -1734,10 +1734,10 @@
       subroutine ztrmv(uplo,trans,diag,n,a,lda,x,incx)
       integer incx,lda,n
       character diag,trans,uplo
-      complex(kind=16) a(lda,*),x(*)
-      complex(kind=16) zero
+      complex(kind=8)  a(lda,*),x(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jx,kx
       logical noconj,nounit
       logical lsame
@@ -1745,17 +1745,17 @@
 
       !! ztrsm.f
       subroutine ztrsm(side,uplo,transa,diag,m,n,alpha,a,lda,b,ldb)
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       integer lda,ldb,m,n
       character diag,side,transa,uplo
-      complex(kind=16) a(lda,*),b(ldb,*)
+      complex(kind=8)  a(lda,*),b(ldb,*)
       logical lsame
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,j,k,nrowa
       logical lside,noconj,nounit,upper
-      complex(kind=16) one
+      complex(kind=8)  one
       parameter (one= (1.0d+0,0.0d+0))
-      complex(kind=16) zero
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
       end subroutine ztrsm
 
@@ -1763,10 +1763,10 @@
       subroutine ztrsv(uplo,trans,diag,n,a,lda,x,incx)
       integer incx,lda,n
       character diag,trans,uplo
-      complex(kind=16) a(lda,*),x(*)
-      complex(kind=16) zero
+      complex(kind=8)  a(lda,*),x(*)
+      complex(kind=8)  zero
       parameter (zero= (0.0d+0,0.0d+0))
-      complex(kind=16) temp
+      complex(kind=8)  temp
       integer i,info,ix,j,jx,kx
       logical noconj,nounit
       logical lsame

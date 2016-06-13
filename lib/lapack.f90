@@ -3093,7 +3093,7 @@
       subroutine clag2z( m, n, sa, ldsa, a, lda, info )
       integer            info, lda, ldsa, m, n
       complex            sa( ldsa, * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       integer            i, j
       end subroutine clag2z
 
@@ -14900,7 +14900,7 @@
       !! dzsum1.f
       double precision function dzsum1( n, cx, incx )
       integer            incx, n
-      complex(kind=16)   cx( * )
+      complex(kind=8)    cx( * )
       integer            i, nincx
       double precision   stemp
       end function dzsum1
@@ -15028,8 +15028,8 @@
       !! ilazlc.f
       integer function ilazlc( m, n, a, lda )
       integer            m, n, lda
-      complex(kind=16)   a( lda, * )
-      complex(kind=16) zero
+      complex(kind=8)    a( lda, * )
+      complex(kind=8)  zero
       parameter ( zero = (0.0d+0, 0.0d+0) )
       integer i
       end function ilazlc
@@ -15037,8 +15037,8 @@
       !! ilazlr.f
       integer function ilazlr( m, n, a, lda )
       integer            m, n, lda
-      complex(kind=16)   a( lda, * )
-      complex(kind=16) zero
+      complex(kind=8)    a( lda, * )
+      complex(kind=8)  zero
       parameter ( zero = (0.0d+0, 0.0d+0) )
       integer i, j
       end function ilazlr
@@ -15063,7 +15063,7 @@
       !! izmax1.f
       integer function izmax1( n, zx, incx )
       integer            incx, n
-      complex(kind=16)   zx(*)
+      complex(kind=8)    zx(*)
       double precision   dmax
       integer            i, ix
       end function izmax1
@@ -22341,7 +22341,7 @@
       double precision   b11d( * ), b11e( * ), b12d( * ), b12e( * ),
      &                   b21d( * ), b21e( * ), b22d( * ), b22e( * ),
      &                   phi( * ), theta( * ), rwork( * )
-      complex(kind=16)   u1( ldu1, * ), u2( ldu2, * ), v1t( ldv1t, * ),
+      complex(kind=8)    u1( ldu1, * ), u2( ldu2, * ), v1t( ldv1t, * ),
      &                   v2t( ldv2t, * )
       integer            maxitr
       parameter          ( maxitr = 6 )
@@ -22349,7 +22349,7 @@
       parameter          ( hundred = 100.0d0, meighth = -0.125d0,
      &                     one = 1.0d0, piover2 = 1.57079632679489662d0,
      &                     ten = 10.0d0, zero = 0.0d0 )
-      complex(kind=16)   negonecomplex
+      complex(kind=8)    negonecomplex
       parameter          ( negonecomplex = (-1.0d0,0.0d0) )
       logical            colmajor, lquery, restart11, restart12,
      &                   restart21, restart22, wantu1, wantu2, wantv1t,
@@ -22371,7 +22371,7 @@
       character          uplo
       integer            info, ldc, ldu, ldvt, n, ncc, ncvt, nru
       double precision   d( * ), e( * ), rwork( * )
-      complex(kind=16)   c( ldc, * ), u( ldu, * ), vt( ldvt, * )
+      complex(kind=8)    c( ldc, * ), u( ldu, * ), vt( ldvt, * )
       double precision   zero
       parameter          ( zero = 0.0d0 )
       double precision   one
@@ -22406,7 +22406,7 @@
       integer            ipiv( * )
       double precision   rwork( * )
       complex            swork( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( n, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( n, * ),
      &                   x( ldx, * )
       logical            doitref
       parameter          ( doitref = .true. )
@@ -22414,12 +22414,12 @@
       parameter          ( itermax = 30 )
       double precision   bwdmax
       parameter          ( bwdmax = 1.0e+00 )
-      complex(kind=16)   negone, one
+      complex(kind=8)    negone, one
       parameter          ( negone = ( -1.0d+00, 0.0d+00 ),
      &                   one = ( 1.0d+00, 0.0d+00 ) )
       integer            i, iiter, ptsa, ptsx
       double precision   anrm, cte, eps, rnrm, xnrm
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            izamax
       double precision   dlamch, zlange
       double precision   cabs1
@@ -22432,7 +22432,7 @@
       integer            info, iter, lda, ldb, ldx, n, nrhs
       double precision   rwork( * )
       complex            swork( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( n, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( n, * ),
      &                   x( ldx, * )
       logical            doitref
       parameter          ( doitref = .true. )
@@ -22440,12 +22440,12 @@
       parameter          ( itermax = 30 )
       double precision   bwdmax
       parameter          ( bwdmax = 1.0e+00 )
-      complex(kind=16)   negone, one
+      complex(kind=8)    negone, one
       parameter          ( negone = ( -1.0d+00, 0.0d+00 ),
      &                   one = ( 1.0d+00, 0.0d+00 ) )
       integer            i, iiter, ptsa, ptsx
       double precision   anrm, cte, eps, rnrm, xnrm
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            izamax
       double precision   dlamch, zlanhe
       logical            lsame
@@ -22456,7 +22456,7 @@
       subroutine zdrscl( n, sa, sx, incx )
       integer            incx, n
       double precision   sa
-      complex(kind=16)   sx( * )
+      complex(kind=8)    sx( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       logical            done
@@ -22470,18 +22470,18 @@
       character          vect
       integer            info, kl, ku, ldab, ldc, ldpt, ldq, m, n, ncc
       double precision   d( * ), e( * ), rwork( * )
-      complex(kind=16)   ab( ldab, * ), c( ldc, * ), pt( ldpt, * ),
+      complex(kind=8)    ab( ldab, * ), c( ldc, * ), pt( ldpt, * ),
      &                   q( ldq, * ), work( * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            wantb, wantc, wantpt, wantq
       integer            i, inca, j, j1, j2, kb, kb1, kk, klm, klu1,
      &                   kun, l, minmn, ml, ml0, mu, mu0, nr, nrt
       double precision   abst, rc
-      complex(kind=16)   ra, rb, rs, t
+      complex(kind=8)    ra, rb, rs, t
       logical            lsame
       end subroutine zgbbrd
 
@@ -22493,19 +22493,19 @@
       double precision   anorm, rcond
       integer            ipiv( * )
       double precision   rwork( * )
-      complex(kind=16)   ab( ldab, * ), work( * )
+      complex(kind=8)    ab( ldab, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            lnoti, onenrm
       character          normin
       integer            ix, j, jp, kase, kase1, kd, lm
       double precision   ainvnm, scale, smlnum
-      complex(kind=16)   t, zdum
+      complex(kind=8)    t, zdum
       integer            isave( 3 )
       logical            lsame
       integer            izamax
       double precision   dlamch
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       double precision   cabs1
       end subroutine zgbcon
 
@@ -22515,13 +22515,13 @@
       integer            info, kl, ku, ldab, m, n
       double precision   amax, colcnd, rowcnd
       double precision   c( * ), r( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j, kd
       double precision   bignum, rcmax, rcmin, smlnum, radix,
      &                   logrdx
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   dlamch
       double precision   cabs1
       end subroutine zgbequb
@@ -22532,12 +22532,12 @@
       integer            info, kl, ku, ldab, m, n
       double precision   amax, colcnd, rowcnd
       double precision   c( * ), r( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j, kd
       double precision   bignum, rcmax, rcmin, smlnum
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   dlamch
       double precision   cabs1
       end subroutine zgbequ
@@ -22550,13 +22550,13 @@
       integer            info, kl, ku, ldab, ldafb, ldb, ldx, n, nrhs
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -22566,7 +22566,7 @@
       character          transn, transt
       integer            count, i, j, k, kase, kk, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -22584,7 +22584,7 @@
      &                   nparams, n_err_bnds
       double precision   rcond
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
      &                   x( ldx , * ),work( * )
       double precision   r( * ), c( * ), params( * ), berr( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -22624,7 +22624,7 @@
       subroutine zgbsv( n, kl, ku, nrhs, ab, ldab, ipiv, b, ldb, info )
       integer            info, kl, ku, ldab, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * ), b( ldb, * )
+      complex(kind=8)    ab( ldab, * ), b( ldb, * )
       end subroutine zgbsv
 
       !! zgbsvx.f
@@ -22637,7 +22637,7 @@
       integer            ipiv( * )
       double precision   berr( * ), c( * ), ferr( * ), r( * ),
      &                   rwork( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
@@ -22661,7 +22661,7 @@
      &                   n_err_bnds
       double precision   rcond, rpvgrw
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
      &                   x( ldx , * ),work( * )
       double precision   r( * ), c( * ), params( * ), berr( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -22688,8 +22688,8 @@
       subroutine zgbtf2( m, n, kl, ku, ab, ldab, ipiv, info )
       integer            info, kl, ku, ldab, m, n
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    ab( ldab, * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, j, jp, ju, km, kv
@@ -22700,16 +22700,16 @@
       subroutine zgbtrf( m, n, kl, ku, ab, ldab, ipiv, info )
       integer            info, kl, ku, ldab, m, n
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    ab( ldab, * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       integer            nbmax, ldwork
       parameter          ( nbmax = 64, ldwork = nbmax+1 )
       integer            i, i2, i3, ii, ip, j, j2, j3, jb, jj, jm, jp,
      &                   ju, k2, km, kv, nb, nw
-      complex(kind=16)   temp
-      complex(kind=16)   work13( ldwork, nbmax ),
+      complex(kind=8)    temp
+      complex(kind=8)    work13( ldwork, nbmax ),
      &                   work31( ldwork, nbmax )
       integer            ilaenv, izamax
       end subroutine zgbtrf
@@ -22720,8 +22720,8 @@
       character          trans
       integer            info, kl, ku, ldab, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * ), b( ldb, * )
-      complex(kind=16)   one
+      complex(kind=8)    ab( ldab, * ), b( ldb, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            lnoti, notran
       integer            i, j, kd, l, lm
@@ -22734,7 +22734,7 @@
       character          job, side
       integer            ihi, ilo, info, ldv, m, n
       double precision   scale( * )
-      complex(kind=16)   v( ldv, * )
+      complex(kind=8)    v( ldv, * )
       double precision   one
       parameter          ( one = 1.0d+0 )
       logical            leftv, rightv
@@ -22748,7 +22748,7 @@
       character          job
       integer            ihi, ilo, info, lda, n
       double precision   scale( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   sclfac
@@ -22759,7 +22759,7 @@
       integer            i, ica, iexc, ira, j, k, l, m
       double precision   c, ca, f, g, r, ra, s, sfmax1, sfmax2, sfmin1,
      &                   sfmin2
-      complex(kind=16)   cdum
+      complex(kind=8)    cdum
       logical            disnan, lsame
       integer            izamax
       double precision   dlamch, dznrm2
@@ -22769,12 +22769,12 @@
       subroutine zgebd2( m, n, a, lda, d, e, tauq, taup, work, info )
       integer            info, lda, m, n
       double precision   d( * ), e( * )
-      complex(kind=16)   a( lda, * ), taup( * ), tauq( * ), work( * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    a( lda, * ), taup( * ), tauq( * ), work( * )
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ) )
       integer            i
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zgebd2
 
       !! zgebrd.f
@@ -22782,8 +22782,8 @@
      &                   info )
       integer            info, lda, lwork, m, n
       double precision   d( * ), e( * )
-      complex(kind=16)   a( lda, * ), taup( * ), tauq( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), taup( * ), tauq( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            i, iinfo, j, ldwrkx, ldwrky, lwkopt, minmn, nb,
@@ -22799,14 +22799,14 @@
       integer            info, lda, n
       double precision   anorm, rcond
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            onenrm
       character          normin
       integer            ix, kase, kase1
       double precision   ainvnm, scale, sl, smlnum, su
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       integer            izamax
@@ -22820,12 +22820,12 @@
       integer            info, lda, m, n
       double precision   amax, colcnd, rowcnd
       double precision   c( * ), r( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j
       double precision   bignum, rcmax, rcmin, smlnum, radix, logrdx
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   dlamch
       double precision   cabs1
       end subroutine zgeequb
@@ -22836,12 +22836,12 @@
       integer            info, lda, m, n
       double precision   amax, colcnd, rowcnd
       double precision   c( * ), r( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j
       double precision   bignum, rcmax, rcmin, smlnum
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   dlamch
       double precision   cabs1
       end subroutine zgeequ
@@ -22853,7 +22853,7 @@
       integer            info, lda, ldvs, lwork, n, sdim
       logical            bwork( * )
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), vs( ldvs, * ), w( * ), work( * )
+      complex(kind=8)    a( lda, * ), vs( ldvs, * ), w( * ), work( * )
       logical            select
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
@@ -22876,7 +22876,7 @@
       double precision   rconde, rcondv
       logical            bwork( * )
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), vs( ldvs, * ), w( * ), work( * )
+      complex(kind=8)    a( lda, * ), vs( ldvs, * ), w( * ), work( * )
       logical            select
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
@@ -22897,7 +22897,7 @@
       character          jobvl, jobvr
       integer            info, lda, ldvl, ldvr, lwork, n
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), vl( ldvl, * ), vr( ldvr, * ),
+      complex(kind=8)    a( lda, * ), vl( ldvl, * ), vr( ldvr, * ),
      &                   w( * ), work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
@@ -22906,7 +22906,7 @@
       integer            hswork, i, ibal, ierr, ihi, ilo, irwork, itau,
      &                   iwrk, k, maxwrk, minwrk, nout
       double precision   anrm, bignum, cscale, eps, scl, smlnum
-      complex(kind=16)   tmp
+      complex(kind=8)    tmp
       logical            select( 1 )
       double precision   dum( 1 )
       logical            lsame
@@ -22923,7 +22923,7 @@
       double precision   abnrm
       double precision   rconde( * ), rcondv( * ), rwork( * ),
      &                   scale( * )
-      complex(kind=16)   a( lda, * ), vl( ldvl, * ), vr( ldvr, * ),
+      complex(kind=8)    a( lda, * ), vl( ldvl, * ), vr( ldvr, * ),
      &                   w( * ), work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
@@ -22933,7 +22933,7 @@
       integer            hswork, i, icond, ierr, itau, iwrk, k, maxwrk,
      &                   minwrk, nout
       double precision   anrm, bignum, cscale, eps, scl, smlnum
-      complex(kind=16)   tmp
+      complex(kind=8)    tmp
       logical            select( 1 )
       double precision   dum( 1 )
       logical            lsame
@@ -22944,27 +22944,27 @@
       !! zgehd2.f
       subroutine zgehd2( n, ilo, ihi, a, lda, tau, work, info )
       integer            ihi, ilo, info, lda, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       integer            i
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zgehd2
 
       !! zgehrd.f
       subroutine zgehrd( n, ilo, ihi, a, lda, tau, work, lwork, info )
       integer            ihi, ilo, info, lda, lwork, n
-      complex(kind=16)  a( lda, * ), tau( * ), work( * )
+      complex(kind=8)   a( lda, * ), tau( * ), work( * )
       integer            nbmax, ldt, tsize
       parameter          ( nbmax = 64, ldt = nbmax+1,
      &                     tsize = ldt*nbmax )
-      complex(kind=16)  zero, one
+      complex(kind=8)   zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                     one = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            i, ib, iinfo, iwt, j, ldwork, lwkopt, nb,
      &                   nbmin, nh, nx
-      complex(kind=16)  ei
+      complex(kind=8)   ei
       integer            ilaenv
       end subroutine zgehrd
 
@@ -22999,17 +22999,17 @@
       !! zgelq2.f
       subroutine zgelq2( m, n, a, lda, tau, work, info )
       integer            info, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       integer            i, k
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zgelq2
 
       !! zgelqf.f
       subroutine zgelqf( m, n, a, lda, tau, work, lwork, info )
       integer            info, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
       logical            lquery
       integer            i, ib, iinfo, iws, k, ldwork, lwkopt, nb,
      &                   nbmin, nx
@@ -23023,10 +23023,10 @@
       double precision   rcond
       integer            iwork( * )
       double precision   rwork( * ), s( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
       double precision   zero, one, two
       parameter          ( zero = 0.0d+0, one = 1.0d+0, two = 2.0d+0 )
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            iascl, ibscl, ie, il, itau, itaup, itauq,
@@ -23042,10 +23042,10 @@
      &                  info )
       character          trans
       integer            info, lda, ldb, lwork, m, n, nrhs
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ) )
       logical            lquery, tpsd
       integer            brow, i, iascl, ibscl, j, mn, nb, scllen, wsize
@@ -23062,10 +23062,10 @@
       integer            info, lda, ldb, lwork, m, n, nrhs, rank
       double precision   rcond
       double precision   rwork( * ), s( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery
@@ -23076,7 +23076,7 @@
      &                   lwork_zunmbr, lwork_zungbr, lwork_zunmlq,
      &                   lwork_zgelqf
       double precision   anrm, bignum, bnrm, eps, sfmin, smlnum, thr
-      complex(kind=16)   dum( 1 )
+      complex(kind=8)    dum( 1 )
       integer            ilaenv
       double precision   dlamch, zlange
       end subroutine zgelss
@@ -23088,12 +23088,12 @@
       double precision   rcond
       integer            jpvt( * )
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
       integer            imax, imin
       parameter          ( imax = 1, imin = 2 )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery
@@ -23101,7 +23101,7 @@
      &                   nb, nb1, nb2, nb3, nb4
       double precision   anrm, bignum, bnrm, smax, smaxpr, smin, sminpr,
      &                   smlnum, wsize
-      complex(kind=16)   c1, c2, s1, s2
+      complex(kind=8)    c1, c2, s1, s2
       integer            ilaenv
       double precision   dlamch, zlange
       end subroutine zgelsy
@@ -23111,7 +23111,7 @@
      &                   c, ldc, work, info )
       character side, trans
       integer   info, k, ldv, ldc, m, n, nb, ldt
-      complex(kind=16) v( ldv, * ), c( ldc, * ), t( ldt, * ), work( * )
+      complex(kind=8)  v( ldv, * ), c( ldc, * ), t( ldt, * ), work( * )
       logical            left, right, tran, notran
       integer            i, ib, ldwork, kf, q
       logical            lsame
@@ -23120,17 +23120,17 @@
       !! zgeql2.f
       subroutine zgeql2( m, n, a, lda, tau, work, info )
       integer            info, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       integer            i, k
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zgeql2
 
       !! zgeqlf.f
       subroutine zgeqlf( m, n, a, lda, tau, work, lwork, info )
       integer            info, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
       logical            lquery
       integer            i, ib, iinfo, iws, k, ki, kk, ldwork, lwkopt,
      &                   mu, nb, nbmin, nu, nx
@@ -23143,7 +23143,7 @@
       integer            info, lda, lwork, m, n
       integer            jpvt( * )
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
       integer            inb, inbmin, ixover
       parameter          ( inb = 1, inbmin = 2, ixover = 3 )
       logical            lquery
@@ -23156,27 +23156,27 @@
       !! zgeqr2.f
       subroutine zgeqr2( m, n, a, lda, tau, work, info )
       integer            info, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       integer            i, k
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zgeqr2
 
       !! zgeqr2p.f
       subroutine zgeqr2p( m, n, a, lda, tau, work, info )
       integer            info, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       integer            i, k
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zgeqr2p
 
       !! zgeqrf.f
       subroutine zgeqrf( m, n, a, lda, tau, work, lwork, info )
       integer            info, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
       logical            lquery
       integer            i, ib, iinfo, iws, k, ldwork, lwkopt, nb,
      &                   nbmin, nx
@@ -23186,7 +23186,7 @@
       !! zgeqrfp.f
       subroutine zgeqrfp( m, n, a, lda, tau, work, lwork, info )
       integer            info, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
       logical            lquery
       integer            i, ib, iinfo, iws, k, ldwork, lwkopt, nb,
      &                   nbmin, nx
@@ -23196,18 +23196,18 @@
       !! zgeqrt2.f
       subroutine zgeqrt2( m, n, a, lda, t, ldt, info )
       integer   info, lda, ldt, m, n
-      complex(kind=16) a( lda, * ), t( ldt, * )
-      complex(kind=16) one, zero
+      complex(kind=8)  a( lda, * ), t( ldt, * )
+      complex(kind=8)  one, zero
       parameter( one = (1.0d+00,0.0d+00), zero = (0.0d+00,0.0d+00) )
       integer   i, k
-      complex(kind=16) aii, alpha
+      complex(kind=8)  aii, alpha
       end subroutine zgeqrt2
 
       !! zgeqrt3.f
       recursive subroutine zgeqrt3( m, n, a, lda, t, ldt, info )
       integer   info, lda, m, n, ldt
-      complex(kind=16) a( lda, * ), t( ldt, * )
-      complex(kind=16) one
+      complex(kind=8)  a( lda, * ), t( ldt, * )
+      complex(kind=8)  one
       parameter ( one = (1.0d+00,0.0d+00) )
       integer   i, i1, j, j1, n1, n2, iinfo
       end subroutine zgeqrt3
@@ -23215,7 +23215,7 @@
       !! zgeqrt.f
       subroutine zgeqrt( m, n, nb, a, lda, t, ldt, work, info )
       integer info, lda, ldt, m, n, nb
-      complex(kind=16) a( lda, * ), t( ldt, * ), work( * )
+      complex(kind=8)  a( lda, * ), t( ldt, * ), work( * )
       integer    i, ib, iinfo, k
       logical    use_recursive_qr
       parameter( use_recursive_qr=.true. )
@@ -23228,13 +23228,13 @@
       integer            info, lda, ldaf, ldb, ldx, n, nrhs
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -23244,7 +23244,7 @@
       character          transn, transt
       integer            count, i, j, k, kase, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -23261,7 +23261,7 @@
      &                   n_err_bnds
       double precision   rcond
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   x( ldx , * ), work( * )
       double precision   r( * ), c( * ), params( * ), berr( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -23303,17 +23303,17 @@
       !! zgerq2.f
       subroutine zgerq2( m, n, a, lda, tau, work, info )
       integer            info, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       integer            i, k
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zgerq2
 
       !! zgerqf.f
       subroutine zgerqf( m, n, a, lda, tau, work, lwork, info )
       integer            info, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
       logical            lquery
       integer            i, ib, iinfo, iws, k, ki, kk, ldwork, lwkopt,
      &                   mu, nb, nbmin, nu, nx
@@ -23325,12 +23325,12 @@
       integer            lda, n
       double precision   scale
       integer            ipiv( * ), jpiv( * )
-      complex(kind=16)   a( lda, * ), rhs( * )
+      complex(kind=8)    a( lda, * ), rhs( * )
       double precision   zero, one, two
       parameter          ( zero = 0.0d+0, one = 1.0d+0, two = 2.0d+0 )
       integer            i, j
       double precision   bignum, eps, smlnum
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       integer            izamax
       double precision   dlamch
       end subroutine zgesc2
@@ -23342,11 +23342,11 @@
       integer            info, lda, ldu, ldvt, lwork, m, n
       integer            iwork( * )
       double precision   rwork( * ), s( * )
-      complex(kind=16)   a( lda, * ), u( ldu, * ), vt( ldvt, * ),
+      complex(kind=8)    a( lda, * ), u( ldu, * ), vt( ldvt, * ),
      &                   work( * )
       integer            lquerv
       parameter          ( lquerv = -1 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   zero, one
@@ -23370,9 +23370,9 @@
       character          jobu, jobvt
       integer            info, lda, ldu, ldvt, lwork, m, n
       double precision   rwork( * ), s( * )
-      complex(kind=16)   a( lda, * ), u( ldu, * ), vt( ldvt, * ),
+      complex(kind=8)    a( lda, * ), u( ldu, * ), vt( ldvt, * ),
      &                   work( * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       double precision   zero, one
@@ -23388,7 +23388,7 @@
      &                   lwork_zgelqf, lwork_zunglq_n, lwork_zunglq_m
       double precision   anrm, bignum, eps, smlnum
       double precision   dum( 1 )
-      complex(kind=16)   cdum( 1 )
+      complex(kind=8)    cdum( 1 )
       logical            lsame
       integer            ilaenv
       double precision   dlamch, zlange
@@ -23403,9 +23403,9 @@
       double precision   vl, vu
       integer            iwork( * )
       double precision   s( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), u( ldu, * ), vt( ldvt, * ),
+      complex(kind=8)    a( lda, * ), u( ldu, * ), vt( ldvt, * ),
      &                   work( * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       double precision   zero, one
@@ -23426,7 +23426,7 @@
       subroutine zgesv( n, nrhs, a, lda, ipiv, b, ldb, info )
       integer            info, lda, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * )
+      complex(kind=8)    a( lda, * ), b( ldb, * )
       end subroutine zgesv
 
       !! zgesvj.f
@@ -23434,15 +23434,15 @@
      &                   ldv, cwork, lwork, rwork, lrwork, info )
       integer            info, lda, ldv, lwork, lrwork, m, mv, n
       character(len=1)   joba, jobu, jobv
-      complex(kind=16)   a( lda, * ),  v( ldv, * ), cwork( lwork )
+      complex(kind=8)    a( lda, * ),  v( ldv, * ), cwork( lwork )
       double precision   rwork( lrwork ), sva( n )
       double precision   zero,         half,         one
       parameter  ( zero = 0.0d0, half = 0.5d0, one = 1.0d0)
-      complex(kind=16) czero,                  cone
+      complex(kind=8)  czero,                  cone
       parameter  ( czero = (0.0d0, 0.0d0), cone = (1.0d0, 0.0d0) )
       integer      nsweep
       parameter  ( nsweep = 30 )
-      complex(kind=16) aapq, ompq
+      complex(kind=8)  aapq, ompq
       double precision    aapp, aapp0, aapq1, aaqq, apoaq, aqoap, big,
      &        bigtheta, cs, ctol, epsln, large, mxaapq,
      &        mxsinj, rootbig, rooteps, rootsfmin, roottol,
@@ -23453,7 +23453,7 @@
       logical applv, goscale, lower, lsvec, noscale, rotok,
      &        rsvec, uctol, upper
       double precision   dznrm2
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       integer            idamax
       double precision   dlamch
       logical            lsame
@@ -23469,7 +23469,7 @@
       integer            ipiv( * )
       double precision   berr( * ), c( * ), ferr( * ), r( * ),
      &                   rwork( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
@@ -23493,7 +23493,7 @@
      &                   n_err_bnds
       double precision   rcond, rpvgrw
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   x( ldx , * ),work( * )
       double precision   r( * ), c( * ), params( * ), berr( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -23520,7 +23520,7 @@
       subroutine zgetc2( n, a, lda, ipiv, jpiv, info )
       integer            info, lda, n
       integer            ipiv( * ), jpiv( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       integer            i, ip, ipv, j, jp, jpv
@@ -23532,8 +23532,8 @@
       subroutine zgetf2( m, n, a, lda, ipiv, info )
       integer            info, lda, m, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       double precision   sfmin
@@ -23546,12 +23546,12 @@
       recursive subroutine zgetrf2( m, n, a, lda, ipiv, info )
       integer            info, lda, m, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                     zero = ( 0.0d+0, 0.0d+0 ) )
       double precision   sfmin
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       integer            i, iinfo, n1, n2
       double precision   dlamch
       integer            izamax
@@ -23561,8 +23561,8 @@
       subroutine zgetrf( m, n, a, lda, ipiv, info )
       integer            info, lda, m, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       integer            i, iinfo, j, jb, nb
       integer            ilaenv
@@ -23572,8 +23572,8 @@
       subroutine zgetri( n, a, lda, ipiv, work, lwork, info )
       integer            info, lda, lwork, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    a( lda, * ), work( * )
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery
@@ -23587,8 +23587,8 @@
       character          trans
       integer            info, lda, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), b( ldb, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            notran
       logical            lsame
@@ -23600,7 +23600,7 @@
       character          job, side
       integer            ihi, ilo, info, ldv, m, n
       double precision   lscale( * ), rscale( * )
-      complex(kind=16)   v( ldv, * )
+      complex(kind=8)    v( ldv, * )
       logical            leftv, rightv
       integer            i, k
       logical            lsame
@@ -23612,12 +23612,12 @@
       character          job
       integer            ihi, ilo, info, lda, ldb, n
       double precision   lscale( * ), rscale( * ), work( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * )
+      complex(kind=8)    a( lda, * ), b( ldb, * )
       double precision   zero, half, one
       parameter          ( zero = 0.0d+0, half = 0.5d+0, one = 1.0d+0 )
       double precision   three, sclfac
       parameter          ( three = 3.0d+0, sclfac = 1.0d+1 )
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, icab, iflow, ip1, ir, irab, it, j, jc, jp1,
      &                   k, kount, l, lcab, lm1, lrab, lsfmax, lsfmin,
@@ -23625,7 +23625,7 @@
       double precision   alpha, basl, beta, cab, cmax, coef, coef2,
      &                   coef5, cor, ew, ewc, gamma, pgamma, rab, sfmax,
      &                   sfmin, sum, t, ta, tb, tc
-      complex(kind=16)   cdum
+      complex(kind=8)    cdum
       logical            lsame
       integer            izamax
       double precision   ddot, dlamch
@@ -23640,13 +23640,13 @@
       integer            info, lda, ldb, ldvsl, ldvsr, lwork, n, sdim
       logical            bwork( * )
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), alpha( * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), alpha( * ), b( ldb, * ),
      &                   beta( * ), vsl( ldvsl, * ), vsr( ldvsr, * ),
      &                   work( * )
       logical            selctg
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       logical            cursl, ilascl, ilbscl, ilvsl, ilvsr, lastsl,
@@ -23669,13 +23669,13 @@
       integer            info, lda, ldb, ldvsl, ldvsr, lwork, n, sdim
       logical            bwork( * )
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), alpha( * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), alpha( * ), b( ldb, * ),
      &                   beta( * ), vsl( ldvsl, * ), vsr( ldvsr, * ),
      &                   work( * )
       logical            selctg
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       logical            cursl, ilascl, ilbscl, ilvsl, ilvsr, lastsl,
@@ -23703,13 +23703,13 @@
       logical            bwork( * )
       integer            iwork( * )
       double precision   rconde( 2 ), rcondv( 2 ), rwork( * )
-      complex(kind=16)   a( lda, * ), alpha( * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), alpha( * ), b( ldb, * ),
      &                   beta( * ), vsl( ldvsl, * ), vsr( ldvsr, * ),
      &                   work( * )
       logical            selctg
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            cursl, ilascl, ilbscl, ilvsl, ilvsr, lastsl,
@@ -23731,12 +23731,12 @@
       character          jobvl, jobvr
       integer            info, lda, ldb, ldvl, ldvr, lwork, n
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), alpha( * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), alpha( * ), b( ldb, * ),
      &                   beta( * ), vl( ldvl, * ), vr( ldvr, * ),
      &                   work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       logical            ilascl, ilbscl, ilv, ilvl, ilvr, lquery
@@ -23746,7 +23746,7 @@
      &                   lwkopt
       double precision   anrm, anrmto, bignum, bnrm, bnrmto, eps,
      &                   smlnum, temp
-      complex(kind=16)   x
+      complex(kind=8)    x
       logical            ldumma( 1 )
       logical            lsame
       double precision   dlamch, zlange
@@ -23759,12 +23759,12 @@
       character          jobvl, jobvr
       integer            info, lda, ldb, ldvl, ldvr, lwork, n
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), alpha( * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), alpha( * ), b( ldb, * ),
      &                   beta( * ), vl( ldvl, * ), vr( ldvr, * ),
      &                   work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       logical            ilascl, ilbscl, ilv, ilvl, ilvr, lquery
@@ -23774,7 +23774,7 @@
      &                   lwkmin, lwkopt
       double precision   anrm, anrmto, bignum, bnrm, bnrmto, eps,
      &                   smlnum, temp
-      complex(kind=16)   x
+      complex(kind=8)    x
       logical            ldumma( 1 )
       logical            lsame
       integer            ilaenv
@@ -23794,12 +23794,12 @@
       integer            iwork( * )
       double precision   lscale( * ), rconde( * ), rcondv( * ),
      &                   rscale( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), alpha( * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), alpha( * ), b( ldb, * ),
      &                   beta( * ), vl( ldvl, * ), vr( ldvr, * ),
      &                   work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            ilascl, ilbscl, ilv, ilvl, ilvr, lquery, noscl,
@@ -23809,7 +23809,7 @@
      &                   itau, iwrk, iwrk1, j, jc, jr, m, maxwrk, minwrk
       double precision   anrm, anrmto, bignum, bnrm, bnrmto, eps,
      &                   smlnum, temp
-      complex(kind=16)   x
+      complex(kind=8)    x
       logical            ldumma( 1 )
       logical            lsame
       integer            ilaenv
@@ -23821,9 +23821,9 @@
       subroutine zggglm( n, m, p, a, lda, b, ldb, d, x, y, work, lwork,
      &                   info )
       integer            info, lda, ldb, lwork, m, n, p
-      complex(kind=16)   a( lda, * ), b( ldb, * ), d( * ), work( * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), d( * ), work( * ),
      &                   x( * ), y( * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery
@@ -23837,9 +23837,9 @@
      &                   ldq, z, ldz, work, lwork, info )
       character          compq, compz
       integer            ihi, ilo, info, lda, ldb, ldq, ldz, n, lwork
-      complex(kind=16)   a( lda, * ), b( ldb, * ), q( ldq, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), q( ldq, * ),
      &                   z( ldz, * ), work( * )
-      complex(kind=16)   cone, czero
+      complex(kind=8)    cone, czero
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ),
      &                     czero = ( 0.0d+0, 0.0d+0 ) )
       logical            blk22, initq, initz, lquery, wantq, wantz
@@ -23848,7 +23848,7 @@
      &                   kacc22, len, lwkopt, n2nb, nb, nblst, nbmin,
      &                   nh, nnb, nx, ppw, ppwo, pw, top, topq
       double precision   c
-      complex(kind=16)   c1, c2, ctemp, s, s1, s2, temp, temp1, temp2,
+      complex(kind=8)    c1, c2, ctemp, s, s1, s2, temp, temp1, temp2,
      &                   temp3
       logical            lsame
       integer            ilaenv
@@ -23859,15 +23859,15 @@
      &                   ldq, z, ldz, info )
       character          compq, compz
       integer            ihi, ilo, info, lda, ldb, ldq, ldz, n
-      complex(kind=16)   a( lda, * ), b( ldb, * ), q( ldq, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), q( ldq, * ),
      &                   z( ldz, * )
-      complex(kind=16)   cone, czero
+      complex(kind=8)    cone, czero
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ),
      &                   czero = ( 0.0d+0, 0.0d+0 ) )
       logical            ilq, ilz
       integer            icompq, icompz, jcol, jrow
       double precision   c
-      complex(kind=16)   ctemp, s
+      complex(kind=8)    ctemp, s
       logical            lsame
       end subroutine zgghrd
 
@@ -23875,9 +23875,9 @@
       subroutine zgglse( m, n, p, a, lda, b, ldb, c, d, x, work, lwork,
      &                   info )
       integer            info, lda, ldb, lwork, m, n, p
-      complex(kind=16)   a( lda, * ), b( ldb, * ), c( * ), d( * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), c( * ), d( * ),
      &                   work( * ), x( * )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            lopt, lwkmin, lwkopt, mn, nb, nb1, nb2, nb3,
@@ -23889,7 +23889,7 @@
       subroutine zggqrf( n, m, p, a, lda, taua, b, ldb, taub, work,
      &                   lwork, info )
       integer            info, lda, ldb, lwork, m, n, p
-      complex(kind=16)   a( lda, * ), b( ldb, * ), taua( * ), taub( * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), taua( * ), taub( * ),
      &                   work( * )
       logical            lquery
       integer            lopt, lwkopt, nb, nb1, nb2, nb3
@@ -23900,7 +23900,7 @@
       subroutine zggrqf( m, p, n, a, lda, taua, b, ldb, taub, work,
      &                   lwork, info )
       integer            info, lda, ldb, lwork, m, n, p
-      complex(kind=16)   a( lda, * ), b( ldb, * ), taua( * ), taub( * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), taua( * ), taub( * ),
      &                   work( * )
       logical            lquery
       integer            lopt, lwkopt, nb, nb1, nb2, nb3
@@ -23916,7 +23916,7 @@
      &                   lwork
       integer            iwork( * )
       double precision   alpha( * ), beta( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), q( ldq, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), q( ldq, * ),
      &                   u( ldu, * ), v( ldv, * ), work( * )
       logical            wantq, wantu, wantv, lquery
       integer            i, ibnd, isub, j, ncycle, lwkopt
@@ -23935,14 +23935,14 @@
       double precision   tola, tolb
       integer            iwork( * )
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), q( ldq, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), q( ldq, * ),
      &                   tau( * ), u( ldu, * ), v( ldv, * ), work( * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            forwrd, wantq, wantu, wantv, lquery
       integer            i, j, lwkopt
-      complex(kind=16)   t
+      complex(kind=8)    t
       logical            lsame
       end subroutine zggsvp3
 
@@ -23952,13 +23952,13 @@
       integer            info, lda, ldv, lwork, m, mv, n, nsweep
       double precision   eps, sfmin, tol
       character(len=1)   jobv
-      complex(kind=16)   a( lda, * ), d( n ), v( ldv, * ), work( lwork )
+      complex(kind=8)    a( lda, * ), d( n ), v( ldv, * ), work( lwork )
       double precision   sva( n )
       double precision   zero, half, one
       parameter          ( zero = 0.0d0, half = 0.5d0, one = 1.0d0)
-      complex(kind=16) czero,                  cone
+      complex(kind=8)  czero,                  cone
       parameter  ( czero = (0.0d0, 0.0d0), cone = (1.0d0, 0.0d0) )
-      complex(kind=16)   aapq, ompq
+      complex(kind=8)    aapq, ompq
       double precision   aapp, aapp0, aapq1, aaqq, apoaq, aqoap, big,
      &                   bigtheta, cs, mxaapq, mxsinj, rootbig, rooteps,
      &                   rootsfmin, roottol, small, sn, t, temp1, theta,
@@ -23968,7 +23968,7 @@
      &                   notrot, p, pskipped, q, rowskip, swband
       logical            applv, rotok, rsvec
       double precision   dznrm2
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       integer            idamax
       logical            lsame
       end subroutine zgsvj0
@@ -23979,11 +23979,11 @@
       double precision   eps, sfmin, tol
       integer            info, lda, ldv, lwork, m, mv, n, n1, nsweep
       character(len=1)   jobv
-      complex(kind=16)   a( lda, * ), d( n ), v( ldv, * ), work( lwork )
+      complex(kind=8)    a( lda, * ), d( n ), v( ldv, * ), work( lwork )
       double precision   sva( n )
       double precision   zero, half, one
       parameter          ( zero = 0.0d0, half = 0.5d0, one = 1.0d0)
-      complex(kind=16)   aapq, ompq
+      complex(kind=8)    aapq, ompq
       double precision   aapp, aapp0, aapq1, aaqq, apoaq, aqoap, big,
      &                   bigtheta, cs, large, mxaapq, mxsinj, rootbig,
      &                   rooteps, rootsfmin, roottol, small, sn, t,
@@ -23993,7 +23993,7 @@
      &                   p, pskipped, q, rowskip, swband
       logical            applv, rotok, rsvec
       double precision   dznrm2
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       integer            idamax
       logical            lsame
       end subroutine zgsvj1
@@ -24005,7 +24005,7 @@
       integer            info, n
       double precision   anorm, rcond
       integer            ipiv( * )
-      complex(kind=16)   d( * ), dl( * ), du( * ), du2( * ), work( * )
+      complex(kind=8)    d( * ), dl( * ), du( * ), du2( * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            onenrm
@@ -24023,7 +24023,7 @@
       integer            info, ldb, ldx, n, nrhs
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   b( ldb, * ), d( * ), df( * ), dl( * ),
+      complex(kind=8)    b( ldb, * ), d( * ), df( * ), dl( * ),
      &                   dlf( * ), du( * ), du2( * ), duf( * ),
      &                   work( * ), x( ldx, * )
       integer            itmax
@@ -24038,7 +24038,7 @@
       character          transn, transt
       integer            count, i, j, kase, nz
       double precision   eps, lstres, s, safe1, safe2, safmin
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -24048,11 +24048,11 @@
       !! zgtsv.f
       subroutine zgtsv( n, nrhs, dl, d, du, b, ldb, info )
       integer            info, ldb, n, nrhs
-      complex(kind=16)   b( ldb, * ), d( * ), dl( * ), du( * )
-      complex(kind=16)   zero
+      complex(kind=8)    b( ldb, * ), d( * ), dl( * ), du( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       integer            j, k
-      complex(kind=16)   mult, temp, zdum
+      complex(kind=8)    mult, temp, zdum
       double precision   cabs1
       end subroutine zgtsv
 
@@ -24065,7 +24065,7 @@
       double precision   rcond
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   b( ldb, * ), d( * ), df( * ), dl( * ),
+      complex(kind=8)    b( ldb, * ), d( * ), df( * ), dl( * ),
      &                   dlf( * ), du( * ), du2( * ), duf( * ),
      &                   work( * ), x( ldx, * )
       double precision   zero
@@ -24081,11 +24081,11 @@
       subroutine zgttrf( n, dl, d, du, du2, ipiv, info )
       integer            info, n
       integer            ipiv( * )
-      complex(kind=16)   d( * ), dl( * ), du( * ), du2( * )
+      complex(kind=8)    d( * ), dl( * ), du( * ), du2( * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
       integer            i
-      complex(kind=16)   fact, temp, zdum
+      complex(kind=8)    fact, temp, zdum
       double precision   cabs1
       end subroutine zgttrf
 
@@ -24095,7 +24095,7 @@
       character          trans
       integer            info, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   b( ldb, * ), d( * ), dl( * ), du( * ), du2( * )
+      complex(kind=8)    b( ldb, * ), d( * ), dl( * ), du( * ), du2( * )
       logical            notran
       integer            itrans, j, jb, nb
       integer            ilaenv
@@ -24105,9 +24105,9 @@
       subroutine zgtts2( itrans, n, nrhs, dl, d, du, du2, ipiv, b, ldb )
       integer            itrans, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   b( ldb, * ), d( * ), dl( * ), du( * ), du2( * )
+      complex(kind=8)    b( ldb, * ), d( * ), dl( * ), du( * ), du2( * )
       integer            i, j
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       end subroutine zgtts2
 
       !! zhbevd.f
@@ -24117,10 +24117,10 @@
       integer            info, kd, ldab, ldz, liwork, lrwork, lwork, n
       integer            iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ab( ldab, * ), work( * ), z( ldz, * )
+      complex(kind=8)    ab( ldab, * ), work( * ), z( ldz, * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       logical            lower, lquery, wantz
@@ -24138,7 +24138,7 @@
       character          jobz, uplo
       integer            info, kd, ldab, ldz, n
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ab( ldab, * ), work( * ), z( ldz, * )
+      complex(kind=8)    ab( ldab, * ), work( * ), z( ldz, * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
       logical            lower, wantz
@@ -24158,11 +24158,11 @@
       double precision   abstol, vl, vu
       integer            ifail( * ), iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ab( ldab, * ), q( ldq, * ), work( * ),
+      complex(kind=8)    ab( ldab, * ), q( ldq, * ), work( * ),
      &                   z( ldz, * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       logical            alleig, indeig, lower, test, valeig, wantz
@@ -24172,7 +24172,7 @@
      &                   j, jj, nsplit
       double precision   abstll, anrm, bignum, eps, rmax, rmin, safmin,
      &                   sigma, smlnum, tmp1, vll, vuu
-      complex(kind=16)   ctmp1
+      complex(kind=8)    ctmp1
       logical            lsame
       double precision   dlamch, zlanhb
       end subroutine zhbevx
@@ -24183,9 +24183,9 @@
       character          uplo, vect
       integer            info, ka, kb, ldab, ldbb, ldx, n
       double precision   rwork( * )
-      complex(kind=16)   ab( ldab, * ), bb( ldbb, * ), work( * ),
+      complex(kind=8)    ab( ldab, * ), bb( ldbb, * ), work( * ),
      &                   x( ldx, * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       double precision   one
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ), one = 1.0d+0 )
@@ -24193,7 +24193,7 @@
       integer            i, i0, i1, i2, inca, j, j1, j1t, j2, j2t, k,
      &                   ka1, kb1, kbt, l, m, nr, nrt, nx
       double precision   bii
-      complex(kind=16)   ra, ra1, t
+      complex(kind=8)    ra, ra1, t
       logical            lsame
       end subroutine zhbgst
 
@@ -24206,9 +24206,9 @@
      &                   lwork, n
       integer            iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ab( ldab, * ), bb( ldbb, * ), work( * ),
+      complex(kind=8)    ab( ldab, * ), bb( ldbb, * ), work( * ),
      &                   z( ldz, * )
-      complex(kind=16)   cone, czero
+      complex(kind=8)    cone, czero
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ),
      &                   czero = ( 0.0d+0, 0.0d+0 ) )
       logical            lquery, upper, wantz
@@ -24224,7 +24224,7 @@
       character          jobz, uplo
       integer            info, ka, kb, ldab, ldbb, ldz, n
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ab( ldab, * ), bb( ldbb, * ), work( * ),
+      complex(kind=8)    ab( ldab, * ), bb( ldbb, * ), work( * ),
      &                   z( ldz, * )
       logical            upper, wantz
       character          vect
@@ -24242,11 +24242,11 @@
       double precision   abstol, vl, vu
       integer            ifail( * ), iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ab( ldab, * ), bb( ldbb, * ), q( ldq, * ),
+      complex(kind=8)    ab( ldab, * ), bb( ldbb, * ), q( ldq, * ),
      &                   work( * ), z( ldz, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            alleig, indeig, test, upper, valeig, wantz
@@ -24263,10 +24263,10 @@
       character          uplo, vect
       integer            info, kd, ldab, ldq, n
       double precision   d( * ), e( * )
-      complex(kind=16)   ab( ldab, * ), q( ldq, * ), work( * )
+      complex(kind=8)    ab( ldab, * ), q( ldq, * ), work( * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            initq, upper, wantq
@@ -24274,7 +24274,7 @@
      &                   j1, j1end, j1inc, j2, jend, jin, jinc, k, kd1,
      &                   kdm1, kdn, l, last, lend, nq, nr, nrt
       double precision   abst
-      complex(kind=16)   t, temp
+      complex(kind=8)    t, temp
       logical            lsame
       end subroutine zhbtrd
 
@@ -24285,7 +24285,7 @@
       integer            info, lda, n
       double precision   anorm, rcond
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
@@ -24302,7 +24302,7 @@
       integer            info, lda, n
       double precision   anorm, rcond
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       real               one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
@@ -24317,7 +24317,7 @@
       integer            info, lda, n
       double precision   amax, scond
       character          uplo
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   s( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
@@ -24327,7 +24327,7 @@
       double precision   avg, std, tol, c0, c1, c2, t, u, si, d,
      &                   base, smin, smax, smlnum, bignum, scale, sumsq
       logical            up
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   dlamch
       logical            lsame
       double precision   cabs1
@@ -24340,10 +24340,10 @@
       integer            info, lda, liwork, lrwork, lwork, n
       integer            iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d0, 0.0d0 ) )
       logical            lower, lquery, wantz
       integer            iinfo, imax, inde, indrwk, indtau, indwk2,
@@ -24362,10 +24362,10 @@
       character          jobz, uplo
       integer            info, lda, lwork, n
       double precision   rwork( * ), w( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d0, 0.0d0 ) )
       logical            lower, lquery, wantz
       integer            iinfo, imax, inde, indtau, indwrk, iscale,
@@ -24387,7 +24387,7 @@
       double precision   abstol, vl, vu
       integer            isuppz( * ), iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   a( lda, * ), work( * ), z( ldz, * )
+      complex(kind=8)    a( lda, * ), work( * ), z( ldz, * )
       double precision   zero, one, two
       parameter          ( zero = 0.0d+0, one = 1.0d+0, two = 2.0d+0 )
       logical            alleig, indeig, lower, lquery, test, valeig,
@@ -24414,10 +24414,10 @@
       double precision   abstol, vl, vu
       integer            ifail( * ), iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   a( lda, * ), work( * ), z( ldz, * )
+      complex(kind=8)    a( lda, * ), work( * ), z( ldz, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            alleig, indeig, lower, lquery, test, valeig,
      &                   wantz
@@ -24437,15 +24437,15 @@
       subroutine zhegs2( itype, uplo, n, a, lda, b, ldb, info )
       character          uplo
       integer            info, itype, lda, ldb, n
-      complex(kind=16)   a( lda, * ), b( ldb, * )
+      complex(kind=8)    a( lda, * ), b( ldb, * )
       double precision   one, half
       parameter          ( one = 1.0d+0, half = 0.5d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            k
       double precision   akk, bkk
-      complex(kind=16)   ct
+      complex(kind=8)    ct
       logical            lsame
       end subroutine zhegs2
 
@@ -24453,10 +24453,10 @@
       subroutine zhegst( itype, uplo, n, a, lda, b, ldb, info )
       character          uplo
       integer            info, itype, lda, ldb, n
-      complex(kind=16)   a( lda, * ), b( ldb, * )
+      complex(kind=8)    a( lda, * ), b( ldb, * )
       double precision   one
       parameter          ( one = 1.0d+0 )
-      complex(kind=16)   cone, half
+      complex(kind=8)    cone, half
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ),
      &                   half = ( 0.5d+0, 0.0d+0 ) )
       logical            upper
@@ -24472,8 +24472,8 @@
       integer            info, itype, lda, ldb, liwork, lrwork, lwork, n
       integer            iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
-      complex(kind=16)   cone
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery, upper, wantz
       character          trans
@@ -24487,8 +24487,8 @@
       character          jobz, uplo
       integer            info, itype, lda, ldb, lwork, n
       double precision   rwork( * ), w( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery, upper, wantz
       character          trans
@@ -24506,9 +24506,9 @@
       double precision   abstol, vl, vu
       integer            ifail( * ), iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * ),
      &                   z( ldz, * )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            alleig, indeig, lquery, upper, valeig, wantz
       character          trans
@@ -24524,13 +24524,13 @@
       integer            info, lda, ldaf, ldb, ldx, n, nrhs
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -24539,7 +24539,7 @@
       logical            upper
       integer            count, i, j, k, kase, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -24556,7 +24556,7 @@
      &                   n_err_bnds
       double precision   rcond
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   x( ldx, * ), work( * )
       double precision   s( * ), params( * ), berr( * ), rwork( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -24601,7 +24601,7 @@
       character          uplo
       integer            info, lda, ldb, lwork, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
       logical            lquery
       integer            lwkopt, nb
       logical            lsame
@@ -24614,7 +24614,7 @@
       character          uplo
       integer            info, lda, ldb, lwork, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
       logical            lquery
       integer            lwkopt, nb
       logical            lsame
@@ -24630,7 +24630,7 @@
       double precision   rcond
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
@@ -24652,7 +24652,7 @@
      &                   n_err_bnds
       double precision   rcond, rpvgrw
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       double precision   s( * ), params( * ), berr( * ), rwork( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -24678,10 +24678,10 @@
       subroutine zheswapr( uplo, n, a, lda, i1, i2)
       character        uplo
       integer          i1, i2, lda, n
-      complex(kind=16)    a( lda, n )
+      complex(kind=8)     a( lda, n )
       logical            upper
       integer            i
-      complex(kind=16)      tmp
+      complex(kind=8)       tmp
       logical            lsame
       end subroutine zheswapr
 
@@ -24690,16 +24690,16 @@
       character          uplo
       integer            info, lda, n
       double precision   d( * ), e( * )
-      complex(kind=16)   a( lda, * ), tau( * )
-      complex(kind=16)   one, zero, half
+      complex(kind=8)    a( lda, * ), tau( * )
+      complex(kind=8)    one, zero, half
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ),
      &                   half = ( 0.5d+0, 0.0d+0 ) )
       logical            upper
       integer            i
-      complex(kind=16)   alpha, taui
+      complex(kind=8)    alpha, taui
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zhetd2
 
       !! zhetf2.f
@@ -24707,7 +24707,7 @@
       character          uplo
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   eight, sevten
@@ -24716,7 +24716,7 @@
       integer            i, imax, j, jmax, k, kk, kp, kstep
       double precision   absakk, alpha, colmax, d, d11, d22, r1, rowmax,
      &                   tt
-      complex(kind=16)   d12, d21, t, wk, wkm1, wkp1, zdum
+      complex(kind=8)    d12, d21, t, wk, wkm1, wkp1, zdum
       logical            lsame, disnan
       integer            izamax
       double precision   dlapy2
@@ -24728,7 +24728,7 @@
       character          uplo
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   eight, sevten
@@ -24738,7 +24738,7 @@
      &                   p
       double precision   absakk, alpha, colmax, d, d11, d22, r1, dtemp,
      &                   rowmax, tt, sfmin
-      complex(kind=16)   d12, d21, t, wk, wkm1, wkp1, z
+      complex(kind=8)    d12, d21, t, wk, wkm1, wkp1, z
       logical            lsame
       integer            izamax
       double precision   dlamch, dlapy2
@@ -24750,10 +24750,10 @@
       character          uplo
       integer            info, lda, lwork, n
       double precision   d( * ), e( * )
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
       double precision   one
       parameter          ( one = 1.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery, upper
       integer            i, iinfo, iws, j, kk, ldwork, lwkopt, nb,
@@ -24767,7 +24767,7 @@
       character          uplo
       integer            info, lda, lwork, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       logical            lquery, upper
       integer            iinfo, iws, j, k, kb, ldwork, lwkopt, nb, nbmin
       logical            lsame
@@ -24779,7 +24779,7 @@
       character          uplo
       integer            info, lda, lwork, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       logical            lquery, upper
       integer            iinfo, iws, j, k, kb, ldwork, lwkopt, nb, nbmin
       logical            lsame
@@ -24791,7 +24791,7 @@
       character          uplo
       integer            info, lda, lwork, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       logical            upper, lquery
       integer            minsize, nbmax
       logical            lsame
@@ -24803,9 +24803,9 @@
       character          uplo
       integer            info, lda, n, nb
       integer            ipiv( * )
-      complex(kind=16)      a( lda, * ), work( n+nb+1,* )
+      complex(kind=8)       a( lda, * ), work( n+nb+1,* )
       real               one
-      complex(kind=16)      cone, zero
+      complex(kind=8)       cone, zero
       parameter          ( one = 1.0d+0,
      &                   cone = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
@@ -24813,9 +24813,9 @@
       integer            i, iinfo, ip, k, cut, nnb
       integer            count
       integer            j, u11, invd
-      complex(kind=16) ak, akkp1, akp1, d, t
-      complex(kind=16) u01_i_j, u01_ip1_j
-      complex(kind=16) u11_i_j, u11_ip1_j
+      complex(kind=8)  ak, akkp1, akp1, d, t
+      complex(kind=8)  u01_i_j, u01_ip1_j
+      complex(kind=8)  u11_i_j, u11_ip1_j
       logical            lsame
       end subroutine zhetri2x
 
@@ -24824,17 +24824,17 @@
       character          uplo
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   one
-      complex(kind=16)   cone, zero
+      complex(kind=8)    cone, zero
       parameter          ( one = 1.0d+0, cone = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kp, kstep
       double precision   ak, akp1, d, t
-      complex(kind=16)   akkp1, temp
+      complex(kind=8)    akkp1, temp
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zhetri
 
       !! zhetri_rook.f
@@ -24842,17 +24842,17 @@
       character          uplo
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   one
-      complex(kind=16)   cone, czero
+      complex(kind=8)    cone, czero
       parameter          ( one = 1.0d+0, cone = ( 1.0d+0, 0.0d+0 ),
      &                   czero = ( 0.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kp, kstep
       double precision   ak, akp1, d, t
-      complex(kind=16)   akkp1, temp
+      complex(kind=8)    akkp1, temp
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zhetri_rook
 
       !! zhetrs2.f
@@ -24861,13 +24861,13 @@
       character          uplo
       integer            info, lda, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16) a( lda, * ), b( ldb, * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)  a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = (1.0d+0,0.0d+0) )
       logical            upper
       integer            i, iinfo, j, k, kp
       double precision   s
-      complex(kind=16)   ak, akm1, akm1k, bk, bkm1, denom
+      complex(kind=8)    ak, akm1, akm1k, bk, bkm1, denom
       logical            lsame
       end subroutine zhetrs2
 
@@ -24876,13 +24876,13 @@
       character          uplo
       integer            info, lda, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), b( ldb, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kp
       double precision   s
-      complex(kind=16)   ak, akm1, akm1k, bk, bkm1, denom
+      complex(kind=8)    ak, akm1, akm1k, bk, bkm1, denom
       logical            lsame
       end subroutine zhetrs
 
@@ -24892,13 +24892,13 @@
       character          uplo
       integer            info, lda, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), b( ldb, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kp
       double precision   s
-      complex(kind=16)   ak, akm1, akm1k, bk, bkm1, denom
+      complex(kind=8)    ak, akm1, akm1k, bk, bkm1, denom
       logical            lsame
       end subroutine zhetrs_rook
 
@@ -24908,14 +24908,14 @@
       double precision   alpha, beta
       integer            k, lda, n
       character          trans, transr, uplo
-      complex(kind=16)   a( lda, * ), c( * )
+      complex(kind=8)    a( lda, * ), c( * )
       double precision   one, zero
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ) )
       logical            lower, normaltransr, nisodd, notrans
       integer            info, nrowa, j, nk, n1, n2
-      complex(kind=16)   calpha, cbeta
+      complex(kind=8)    calpha, cbeta
       logical            lsame
       end subroutine zhfrk
 
@@ -24926,10 +24926,10 @@
       character          compq, compz, job
       integer            ihi, ilo, info, ldh, ldq, ldt, ldz, lwork, n
       double precision   rwork( * )
-      complex(kind=16)   alpha( * ), beta( * ), h( ldh, * ),
+      complex(kind=8)    alpha( * ), beta( * ), h( ldh, * ),
      &                   q( ldq, * ), t( ldt, * ), work( * ),
      &                   z( ldz, * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   zero, one
@@ -24942,7 +24942,7 @@
      &                   jr, maxit
       double precision   absb, anorm, ascale, atol, bnorm, bscale, btol,
      &                   c, safmin, temp, temp2, tempr, ulp
-      complex(kind=16)   abi22, ad11, ad12, ad21, ad22, ctemp, ctemp2,
+      complex(kind=8)    abi22, ad11, ad12, ad21, ad22, ctemp, ctemp2,
      &                   ctemp3, eshift, rtdisc, s, shift, signbc, t1,
      &                   u12, x
       logical            lsame
@@ -24956,7 +24956,7 @@
       integer            info, n
       double precision   anorm, rcond
       integer            ipiv( * )
-      complex(kind=16)   ap( * ), work( * )
+      complex(kind=8)    ap( * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
@@ -24973,10 +24973,10 @@
       integer            info, ldz, liwork, lrwork, lwork, n
       integer            iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ap( * ), work( * ), z( ldz, * )
+      complex(kind=8)    ap( * ), work( * ), z( ldz, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery, wantz
       integer            iinfo, imax, inde, indrwk, indtau, indwrk,
@@ -24993,7 +24993,7 @@
       character          jobz, uplo
       integer            info, ldz, n
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ap( * ), work( * ), z( ldz, * )
+      complex(kind=8)    ap( * ), work( * ), z( ldz, * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
       logical            wantz
@@ -25014,10 +25014,10 @@
       double precision   abstol, vl, vu
       integer            ifail( * ), iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ap( * ), work( * ), z( ldz, * )
+      complex(kind=8)    ap( * ), work( * ), z( ldz, * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d0, 0.0d0 ) )
       logical            alleig, indeig, test, valeig, wantz
       character          order
@@ -25034,17 +25034,17 @@
       subroutine zhpgst( itype, uplo, n, ap, bp, info )
       character          uplo
       integer            info, itype, n
-      complex(kind=16)   ap( * ), bp( * )
+      complex(kind=8)    ap( * ), bp( * )
       double precision   one, half
       parameter          ( one = 1.0d+0, half = 0.5d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, j1, j1j1, jj, k, k1, k1k1, kk
       double precision   ajj, akk, bjj, bkk
-      complex(kind=16)   ct
+      complex(kind=8)    ct
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zhpgst
 
       !! zhpgvd.f
@@ -25054,7 +25054,7 @@
       integer            info, itype, ldz, liwork, lrwork, lwork, n
       integer            iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ap( * ), bp( * ), work( * ), z( ldz, * )
+      complex(kind=8)    ap( * ), bp( * ), work( * ), z( ldz, * )
       logical            lquery, upper, wantz
       character          trans
       integer            j, liwmin, lrwmin, lwmin, neig
@@ -25067,7 +25067,7 @@
       character          jobz, uplo
       integer            info, itype, ldz, n
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ap( * ), bp( * ), work( * ), z( ldz, * )
+      complex(kind=8)    ap( * ), bp( * ), work( * ), z( ldz, * )
       logical            upper, wantz
       character          trans
       integer            j, neig
@@ -25083,7 +25083,7 @@
       double precision   abstol, vl, vu
       integer            ifail( * ), iwork( * )
       double precision   rwork( * ), w( * )
-      complex(kind=16)   ap( * ), bp( * ), work( * ), z( ldz, * )
+      complex(kind=8)    ap( * ), bp( * ), work( * ), z( ldz, * )
       logical            alleig, indeig, upper, valeig, wantz
       character          trans
       integer            j
@@ -25097,13 +25097,13 @@
       integer            info, ldb, ldx, n, nrhs
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   afp( * ), ap( * ), b( ldb, * ), work( * ),
+      complex(kind=8)    afp( * ), ap( * ), b( ldb, * ), work( * ),
      &                   x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -25112,7 +25112,7 @@
       logical            upper
       integer            count, i, ik, j, k, kase, kk, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -25124,7 +25124,7 @@
       character          uplo
       integer            info, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   ap( * ), b( ldb, * )
+      complex(kind=8)    ap( * ), b( ldb, * )
       logical            lsame
       end subroutine zhpsv
 
@@ -25136,7 +25136,7 @@
       double precision   rcond
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   afp( * ), ap( * ), b( ldb, * ), work( * ),
+      complex(kind=8)    afp( * ), ap( * ), b( ldb, * ), work( * ),
      &                   x( ldx, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
@@ -25151,16 +25151,16 @@
       character          uplo
       integer            info, n
       double precision   d( * ), e( * )
-      complex(kind=16)   ap( * ), tau( * )
-      complex(kind=16)   one, zero, half
+      complex(kind=8)    ap( * ), tau( * )
+      complex(kind=8)    one, zero, half
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ),
      &                   half = ( 0.5d+0, 0.0d+0 ) )
       logical            upper
       integer            i, i1, i1i1, ii
-      complex(kind=16)   alpha, taui
+      complex(kind=8)    alpha, taui
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zhptrd
 
       !! zhptrf.f
@@ -25168,7 +25168,7 @@
       character          uplo
       integer            info, n
       integer            ipiv( * )
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   eight, sevten
@@ -25178,7 +25178,7 @@
      &                   kstep, kx, npp
       double precision   absakk, alpha, colmax, d, d11, d22, r1, rowmax,
      &                   tt
-      complex(kind=16)   d12, d21, t, wk, wkm1, wkp1, zdum
+      complex(kind=8)    d12, d21, t, wk, wkm1, wkp1, zdum
       logical            lsame
       integer            izamax
       double precision   dlapy2
@@ -25190,17 +25190,17 @@
       character          uplo
       integer            info, n
       integer            ipiv( * )
-      complex(kind=16)   ap( * ), work( * )
+      complex(kind=8)    ap( * ), work( * )
       double precision   one
-      complex(kind=16)   cone, zero
+      complex(kind=8)    cone, zero
       parameter          ( one = 1.0d+0, cone = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kc, kcnext, kp, kpc, kstep, kx, npp
       double precision   ak, akp1, d, t
-      complex(kind=16)   akkp1, temp
+      complex(kind=8)    akkp1, temp
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zhptri
 
       !! zhptrs.f
@@ -25208,13 +25208,13 @@
       character          uplo
       integer            info, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   ap( * ), b( ldb, * )
-      complex(kind=16)   one
+      complex(kind=8)    ap( * ), b( ldb, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kc, kp
       double precision   s
-      complex(kind=16)   ak, akm1, akm1k, bk, bkm1, denom
+      complex(kind=8)    ak, akm1, akm1k, bk, bkm1, denom
       logical            lsame
       end subroutine zhptrs
 
@@ -25227,16 +25227,16 @@
       logical            select( * )
       integer            ifaill( * ), ifailr( * )
       double precision   rwork( * )
-      complex(kind=16)   h( ldh, * ), vl( ldvl, * ), vr( ldvr, * ),
+      complex(kind=8)    h( ldh, * ), vl( ldvl, * ), vr( ldvr, * ),
      &                   w( * ), work( * )
-      complex(kind=16)   zero
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       double precision   rzero
       parameter          ( rzero = 0.0d+0 )
       logical            bothv, fromqr, leftv, noinit, rightv
       integer            i, iinfo, k, kl, kln, kr, ks, ldwork
       double precision   eps3, hnorm, smlnum, ulp, unfl
-      complex(kind=16)   cdum, wk
+      complex(kind=8)    cdum, wk
       logical            lsame, disnan
       double precision   dlamch, zlanhs
       double precision   cabs1
@@ -25247,17 +25247,17 @@
      &                   work, lwork, info )
       integer            ihi, ilo, info, ldh, ldz, lwork, n
       character          compz, job
-      complex(kind=16)   h( ldh, * ), w( * ), work( * ), z( ldz, * )
+      complex(kind=8)    h( ldh, * ), w( * ), work( * ), z( ldz, * )
       integer            ntiny
       parameter          ( ntiny = 11 )
       integer            nl
       parameter          ( nl = 49 )
-      complex(kind=16)   zero, one
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d0, 0.0d0 ),
      &                   one = ( 1.0d0, 0.0d0 ) )
       double precision   rzero
       parameter          ( rzero = 0.0d0 )
-      complex(kind=16)   hl( nl, nl ), workl( nl )
+      complex(kind=8)    hl( nl, nl ), workl( nl )
       integer            kbot, nmin
       logical            initz, lquery, wantt, wantz
       integer            ilaenv
@@ -25269,19 +25269,19 @@
      &                   ldy )
       integer            lda, ldx, ldy, m, n, nb
       double precision   d( * ), e( * )
-      complex(kind=16)   a( lda, * ), taup( * ), tauq( * ), x( ldx, * ),
+      complex(kind=8)    a( lda, * ), taup( * ), tauq( * ), x( ldx, * ),
      &                   y( ldy, * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ) )
       integer            i
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zlabrd
 
       !! zlacgv.f
       subroutine zlacgv( n, x, incx )
       integer            incx, n
-      complex(kind=16)   x( * )
+      complex(kind=8)    x( * )
       integer            i, ioff
       end subroutine zlacgv
 
@@ -25290,12 +25290,12 @@
       integer            kase, n
       double precision   est
       integer            isave( 3 )
-      complex(kind=16)   v( * ), x( * )
+      complex(kind=8)    v( * ), x( * )
       integer              itmax
       parameter          ( itmax = 5 )
       double precision     one,         two
       parameter          ( one = 1.0d0, two = 2.0d0 )
-      complex(kind=16)     czero, cone
+      complex(kind=8)      czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                            cone = ( 1.0d0, 0.0d0 ) )
       integer            i, jlast
@@ -25308,12 +25308,12 @@
       subroutine zlacon( n, v, x, est, kase )
       integer            kase, n
       double precision   est
-      complex(kind=16)   v( n ), x( n )
+      complex(kind=8)    v( n ), x( n )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   one, two
       parameter          ( one = 1.0d0, two = 2.0d0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       integer            i, iter, j, jlast, jump
@@ -25327,7 +25327,7 @@
       character          uplo
       integer            lda, ldb, m, n
       double precision   a( lda, * )
-      complex(kind=16)   b( ldb, * )
+      complex(kind=8)    b( ldb, * )
       integer            i, j
       logical            lsame
       end subroutine zlacp2
@@ -25336,7 +25336,7 @@
       subroutine zlacpy( uplo, m, n, a, lda, b, ldb )
       character          uplo
       integer            lda, ldb, m, n
-      complex(kind=16)   a( lda, * ), b( ldb, * )
+      complex(kind=8)    a( lda, * ), b( ldb, * )
       integer            i, j
       logical            lsame
       end subroutine zlacpy
@@ -25345,7 +25345,7 @@
       subroutine zlacrm( m, n, a, lda, b, ldb, c, ldc, rwork )
       integer            lda, ldb, ldc, m, n
       double precision   b( ldb, * ), rwork( * )
-      complex(kind=16)   a( lda, * ), c( ldc, * )
+      complex(kind=8)    a( lda, * ), c( ldc, * )
       double precision   one, zero
       parameter          ( one = 1.0d0, zero = 0.0d0 )
       integer            i, j, l
@@ -25354,15 +25354,15 @@
       !! zlacrt.f
       subroutine zlacrt( n, cx, incx, cy, incy, c, s )
       integer            incx, incy, n
-      complex(kind=16)   c, s
-      complex(kind=16)   cx( * ), cy( * )
+      complex(kind=8)    c, s
+      complex(kind=8)    cx( * ), cy( * )
       integer            i, ix, iy
-      complex(kind=16)   ctemp
+      complex(kind=8)    ctemp
       end subroutine zlacrt
 
       !! zladiv.f
-      complex(kind=16) function zladiv( x, y )
-      complex(kind=16)   x, y
+      complex(kind=8)  function zladiv( x, y )
+      complex(kind=8)    x, y
       double precision   zi, zr
       end function zladiv
 
@@ -25372,7 +25372,7 @@
       integer            info, ldq, ldqs, n, qsiz
       integer            iwork( * )
       double precision   d( * ), e( * ), rwork( * )
-      complex(kind=16)   q( ldq, * ), qstore( ldqs, * )
+      complex(kind=8)    q( ldq, * ), qstore( ldqs, * )
       double precision   two
       parameter          ( two = 2.d+0 )
       integer            curlvl, curprb, curr, i, igivcl, igivnm,
@@ -25394,7 +25394,7 @@
       integer            givcol( 2, * ), givptr( * ), indxq( * ),
      &                   iwork( * ), perm( * ), prmptr( * ), qptr( * )
       double precision   d( * ), givnum( 2, * ), qstore( * ), rwork( * )
-      complex(kind=16)   q( ldq, * ), work( * )
+      complex(kind=8)    q( ldq, * ), work( * )
       integer            coltyp, curr, i, idlmda, indx,
      &                   indxc, indxp, iq, iw, iz, k, n1, n2, ptr
       end subroutine zlaed7
@@ -25409,7 +25409,7 @@
      &                   indxq( * ), perm( * )
       double precision   d( * ), dlamda( * ), givnum( 2, * ), w( * ),
      &                   z( * )
-      complex(kind=16)   q( ldq, * ), q2( ldq2, * )
+      complex(kind=8)    q( ldq, * ), q2( ldq2, * )
       double precision   mone, zero, one, two, eight
       parameter          ( mone = -1.0d0, zero = 0.0d0, one = 1.0d0,
      &                   two = 2.0d0, eight = 8.0d0 )
@@ -25425,57 +25425,57 @@
       logical            noinit, rightv
       integer            info, ldb, ldh, n
       double precision   eps3, smlnum
-      complex(kind=16)   w
+      complex(kind=8)    w
       double precision   rwork( * )
-      complex(kind=16)   b( ldb, * ), h( ldh, * ), v( * )
+      complex(kind=8)    b( ldb, * ), h( ldh, * ), v( * )
       double precision   one, tenth
       parameter          ( one = 1.0d+0, tenth = 1.0d-1 )
-      complex(kind=16)   zero
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       character          normin, trans
       integer            i, ierr, its, j
       double precision   growto, nrmsml, rootn, rtemp, scale, vnorm
-      complex(kind=16)   cdum, ei, ej, temp, x
+      complex(kind=8)    cdum, ei, ej, temp, x
       integer            izamax
       double precision   dzasum, dznrm2
-      complex(kind=16)   zladiv
+      complex(kind=8)    zladiv
       double precision   cabs1
       end subroutine zlaein
 
       !! zlaesy.f
       subroutine zlaesy( a, b, c, rt1, rt2, evscal, cs1, sn1 )
-      complex(kind=16)   a, b, c, cs1, evscal, rt1, rt2, sn1
+      complex(kind=8)    a, b, c, cs1, evscal, rt1, rt2, sn1
       double precision   zero
       parameter          ( zero = 0.0d0 )
       double precision   one
       parameter          ( one = 1.0d0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d0, 0.0d0 ) )
       double precision   half
       parameter          ( half = 0.5d0 )
       double precision   thresh
       parameter          ( thresh = 0.1d0 )
       double precision   babs, evnorm, tabs, z
-      complex(kind=16)   s, t, tmp
+      complex(kind=8)    s, t, tmp
       end subroutine zlaesy
 
       !! zlaev2.f
       subroutine zlaev2( a, b, c, rt1, rt2, cs1, sn1 )
       double precision   cs1, rt1, rt2
-      complex(kind=16)   a, b, c, sn1
+      complex(kind=8)    a, b, c, sn1
       double precision   zero
       parameter          ( zero = 0.0d0 )
       double precision   one
       parameter          ( one = 1.0d0 )
       double precision   t
-      complex(kind=16)   w
+      complex(kind=8)    w
       end subroutine zlaev2
 
       !! zlag2c.f
       subroutine zlag2c( m, n, a, lda, sa, ldsa, info )
       integer            info, lda, ldsa, m, n
       complex            sa( ldsa, * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       integer            i, j
       double precision   rmax
       real               slamch
@@ -25486,14 +25486,14 @@
      &                      incx, beta, y, incy )
       double precision   alpha, beta
       integer            incx, incy, ldab, m, n, kl, ku, trans
-      complex(kind=16)   ab( ldab, * ), x( * )
+      complex(kind=8)    ab( ldab, * ), x( * )
       double precision   y( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            symb_zero
       double precision   temp, safe1
       integer            i, info, iy, j, jx, kx, ky, lenx, leny, kd, ke
-      complex(kind=16)   cdum
+      complex(kind=8)    cdum
       double precision   dlamch
       integer            ilatrans
       double precision   cabs1
@@ -25508,12 +25508,12 @@
       logical            capply
       integer            n, kl, ku, kd, ke, ldab, ldafb, info
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), work( * )
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), work( * )
       double precision   c( * ), rwork( * )
       logical            notrans
       integer            kase, i, j
       double precision   ainvnm, anorm, tmp
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   cabs1
@@ -25526,13 +25526,13 @@
       character          trans
       integer            n, kl, ku, kd, ke, ldab, ldafb, info
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), work( * ),
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), work( * ),
      &                   x( * )
       double precision   rwork( * )
       logical            notrans
       integer            kase, i, j
       double precision   ainvnm, anorm, tmp
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   cabs1
@@ -25551,7 +25551,7 @@
       logical            colequ, ignore_cwise
       double precision   rthresh, dz_ub
       integer            ipiv( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
      &                   y( ldy, * ), res( * ), dy( * ), y_tail( * )
       double precision   c( * ), ayb(*), rcond, berr_out( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -25563,7 +25563,7 @@
      &                   dzratmax, dx_x, dz_z, final_dx_x, final_dz_z,
      &                   eps, hugeval, incr_thresh
       logical            incr_prec
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            unstable_state, working_state, conv_state,
      &                   noprog_state, base_residual, extra_residual,
      &                   extra_y
@@ -25597,10 +25597,10 @@
       double precision function zla_gbrpvgrw( n, kl, ku, ncols, ab,
      &                                        ldab, afb, ldafb )
       integer            n, kl, ku, ncols, ldab, ldafb
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * )
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * )
       integer            i, j, kd
       double precision   amax, umax, rpvgrw
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   cabs1
       end function zla_gbrpvgrw
 
@@ -25610,14 +25610,14 @@
       double precision   alpha, beta
       integer            incx, incy, lda, m, n
       integer            trans
-      complex(kind=16)   a( lda, * ), x( * )
+      complex(kind=8)    a( lda, * ), x( * )
       double precision   y( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            symb_zero
       double precision   temp, safe1
       integer            i, info, iy, j, jx, kx, ky, lenx, leny
-      complex(kind=16)   cdum
+      complex(kind=8)    cdum
       double precision   dlamch
       integer            ilatrans
       double precision   cabs1
@@ -25631,12 +25631,12 @@
       logical            capply
       integer            n, lda, ldaf, info
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), work( * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), work( * )
       double precision   c( * ), rwork( * )
       logical            notrans
       integer            kase, i, j
       double precision   ainvnm, anorm, tmp
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   cabs1
@@ -25649,13 +25649,13 @@
       character          trans
       integer            n, lda, ldaf, info
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), work( * ), x( * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), work( * ), x( * )
       double precision   rwork( * )
       logical            notrans
       integer            kase
       double precision   ainvnm, anorm, tmp
       integer            i, j
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   cabs1
@@ -25674,7 +25674,7 @@
       integer            ithresh
       double precision   rthresh, dz_ub
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   y( ldy, * ), res( * ), dy( * ), y_tail( * )
       double precision   c( * ), ayb( * ), rcond, berr_out( * ),
      &                   errs_n( nrhs, * ), errs_c( nrhs, * )
@@ -25685,7 +25685,7 @@
      &                   dzratmax, dx_x, dz_z, final_dx_x, final_dz_z,
      &                   eps, hugeval, incr_thresh
       logical            incr_prec
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            unstable_state, working_state, conv_state,
      &                   noprog_state, base_residual, extra_residual,
      &                   extra_y
@@ -25720,10 +25720,10 @@
       double precision function zla_gerpvgrw( n, ncols, a, lda, af,
      &         ldaf )
       integer            n, ncols, lda, ldaf
-      complex(kind=16)   a( lda, * ), af( ldaf, * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * )
       integer            i, j
       double precision   amax, umax, rpvgrw
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   cabs1
       end function zla_gerpvgrw
 
@@ -25732,13 +25732,13 @@
      &                   snv, csq, snq )
       logical            upper
       double precision   a1, a3, b1, b3, csq, csu, csv
-      complex(kind=16)   a2, b2, snq, snu, snv
+      complex(kind=8)    a2, b2, snq, snu, snv
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   a, aua11, aua12, aua21, aua22, avb12, avb11,
      &                   avb21, avb22, csl, csr, d, fb, fc, s1, s2,
      &                   snl, snr, ua11r, ua22r, vb11r, vb22r
-      complex(kind=16)   b, c, d1, r, t, ua11, ua12, ua21, ua22, vb11,
+      complex(kind=8)    b, c, d1, r, t, ua11, ua12, ua21, ua22, vb11,
      &                   vb12, vb21, vb22
       double precision   abs1
       end subroutine zlags2
@@ -25749,7 +25749,7 @@
       character          trans
       integer            ldb, ldx, n, nrhs
       double precision   alpha, beta
-      complex(kind=16)   b( ldb, * ), d( * ), dl( * ), du( * ),
+      complex(kind=8)    b( ldb, * ), d( * ), dl( * ), du( * ),
      &                   x( ldx, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
@@ -25762,14 +25762,14 @@
      &                      incy )
       double precision   alpha, beta
       integer            incx, incy, lda, n, uplo
-      complex(kind=16)   a( lda, * ), x( * )
+      complex(kind=8)    a( lda, * ), x( * )
       double precision   y( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            symb_zero
       double precision   temp, safe1
       integer            i, info, iy, j, jx, kx, ky
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   dlamch
       integer            ilauplo
       double precision   cabs1
@@ -25780,17 +25780,17 @@
       character          uplo
       integer            info, kb, lda, ldw, n, nb
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), w( ldw, * )
+      complex(kind=8)    a( lda, * ), w( ldw, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   eight, sevten
       parameter          ( eight = 8.0d+0, sevten = 17.0d+0 )
       integer            imax, j, jb, jj, jmax, jp, k, kk, kkw, kp,
      &                   kstep, kw
       double precision   absakk, alpha, colmax, r1, rowmax, t
-      complex(kind=16)   d11, d21, d22, z
+      complex(kind=8)    d11, d21, d22, z
       logical            lsame
       integer            izamax
       double precision   cabs1
@@ -25802,10 +25802,10 @@
       character          uplo
       integer            info, kb, lda, ldw, n, nb
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), w( ldw, * )
+      complex(kind=8)    a( lda, * ), w( ldw, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   eight, sevten
       parameter          ( eight = 8.0d+0, sevten = 17.0d+0 )
@@ -25814,7 +25814,7 @@
      &                   kk, kkw, kp, kstep, kw, p
       double precision   absakk, alpha, colmax, dtemp, r1, rowmax, t,
      &                   sfmin
-      complex(kind=16)   d11, d21, d22, z
+      complex(kind=8)    d11, d21, d22, z
       logical            lsame
       integer            izamax
       double precision   dlamch
@@ -25829,12 +25829,12 @@
       logical            capply
       integer            n, lda, ldaf, info
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), work( * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), work( * )
       double precision   c ( * ), rwork( * )
       integer            kase, i, j
       double precision   ainvnm, anorm, tmp
       logical            up, upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   cabs1
@@ -25847,12 +25847,12 @@
       character          uplo
       integer            n, lda, ldaf, info
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), work( * ), x( * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), work( * ), x( * )
       double precision   rwork( * )
       integer            kase, i, j
       double precision   ainvnm, anorm, tmp
       logical            up, upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision cabs1
@@ -25872,7 +25872,7 @@
       logical            colequ, ignore_cwise
       double precision   rthresh, dz_ub
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   y( ldy, * ), res( * ), dy( * ), y_tail( * )
       double precision   c( * ), ayb( * ), rcond, berr_out( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -25884,7 +25884,7 @@
      &                   dzratmax, dx_x, dz_z, final_dx_x, final_dz_z,
      &                   eps, hugeval, incr_thresh
       logical            incr_prec, upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            unstable_state, working_state, conv_state,
      &                   noprog_state, base_residual, extra_residual,
      &                   extra_y
@@ -25921,12 +25921,12 @@
       character(len=1)   uplo
       integer            n, info, lda, ldaf
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * )
       double precision   work( * )
       integer            ncols, i, j, k, kp
       double precision   amax, umax, rpvgrw, tmp
       logical            upper, lsame
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   cabs1
       end function zla_herpvgrw
 
@@ -25935,22 +25935,22 @@
      &                   ihiz, z, ldz, info )
       integer            ihi, ihiz, ilo, iloz, info, ldh, ldz, n
       logical            wantt, wantz
-      complex(kind=16)   h( ldh, * ), w( * ), z( ldz, * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    h( ldh, * ), w( * ), z( ldz, * )
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d0, 0.0d0 ),
      &                   one = ( 1.0d0, 0.0d0 ) )
       double precision   rzero, rone, half
       parameter          ( rzero = 0.0d0, rone = 1.0d0, half = 0.5d0 )
       double precision   dat1
       parameter          ( dat1 = 3.0d0 / 4.0d0 )
-      complex(kind=16)   cdum, h11, h11s, h22, sc, sum, t, t1, temp, u,
+      complex(kind=8)    cdum, h11, h11s, h22, sc, sum, t, t1, temp, u,
      &                   v2, x, y
       double precision   aa, ab, ba, bb, h10, h21, rtemp, s, safmax,
      &                   safmin, smlnum, sx, t2, tst, ulp
       integer            i, i1, i2, its, itmax, j, jhi, jlo, k, l, m,
      &                   nh, nz
-      complex(kind=16)   v( 2 )
-      complex(kind=16)   zladiv
+      complex(kind=8)    v( 2 )
+      complex(kind=8)    zladiv
       double precision   dlamch
       double precision   cabs1
       end subroutine zlahqr
@@ -25958,43 +25958,43 @@
       !! zlahr2.f
       subroutine zlahr2( n, k, nb, a, lda, tau, t, ldt, y, ldy )
       integer            k, lda, ldt, ldy, n, nb
-      complex(kind=16)  a( lda, * ), t( ldt, nb ), tau( nb ),
+      complex(kind=8)   a( lda, * ), t( ldt, nb ), tau( nb ),
      &                   y( ldy, nb )
-      complex(kind=16)  zero, one
+      complex(kind=8)   zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                     one = ( 1.0d+0, 0.0d+0 ) )
       integer            i
-      complex(kind=16)  ei
+      complex(kind=8)   ei
       end subroutine zlahr2
 
       !! zlaic1.f
       subroutine zlaic1( job, j, x, sest, w, gamma, sestpr, s, c )
       integer            j, job
       double precision   sest, sestpr
-      complex(kind=16)   c, gamma, s
-      complex(kind=16)   w( j ), x( j )
+      complex(kind=8)    c, gamma, s
+      complex(kind=8)    w( j ), x( j )
       double precision   zero, one, two
       parameter          ( zero = 0.0d0, one = 1.0d0, two = 2.0d0 )
       double precision   half, four
       parameter          ( half = 0.5d0, four = 4.0d0 )
       double precision   absalp, absest, absgam, b, eps, norma, s1, s2,
      &                   scl, t, test, tmp, zeta1, zeta2
-      complex(kind=16)   alpha, cosine, sine
+      complex(kind=8)    alpha, cosine, sine
       double precision   dlamch
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zlaic1
 
       !! zla_lin_berr.f
       subroutine zla_lin_berr ( n, nz, nrhs, res, ayb, berr )
       integer            n, nz, nrhs
       double precision   ayb( n, nrhs ), berr( nrhs )
-      complex(kind=16)   res( n, nrhs )
+      complex(kind=8)    res( n, nrhs )
       double precision   tmp
       integer            i, j
-      complex(kind=16)   cdum
+      complex(kind=8)    cdum
       double precision   dlamch
       double precision   safe1
-      complex(kind=16)   cabs1
+      complex(kind=8)    cabs1
       end subroutine zla_lin_berr
 
       !! zlals0.f
@@ -26008,7 +26008,7 @@
       double precision   difl( * ), difr( ldgnum, * ),
      &                   givnum( ldgnum, * ), poles( ldgnum, * ),
      &                   rwork( * ), z( * )
-      complex(kind=16)   b( ldb, * ), bx( ldbx, * )
+      complex(kind=8)    b( ldb, * ), bx( ldbx, * )
       double precision   one, zero, negone
       parameter          ( one = 1.0d0, zero = 0.0d0, negone = -1.0d0 )
       integer            i, j, jcol, jrow, m, n, nlp1
@@ -26028,7 +26028,7 @@
       double precision   c( * ), difl( ldu, * ), difr( ldu, * ),
      &                   givnum( ldu, * ), poles( ldu, * ), rwork( * ),
      &                   s( * ), u( ldu, * ), vt( ldu, * ), z( ldu, * )
-      complex(kind=16)   b( ldb, * ), bx( ldbx, * )
+      complex(kind=8)    b( ldb, * ), bx( ldbx, * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
       integer            i, i1, ic, im1, inode, j, jcol, jimag, jreal,
@@ -26044,10 +26044,10 @@
       double precision   rcond
       integer            iwork( * )
       double precision   d( * ), e( * ), rwork( * )
-      complex(kind=16)   b( ldb, * ), work( * )
+      complex(kind=8)    b( ldb, * ), work( * )
       double precision   zero, one, two
       parameter          ( zero = 0.0d0, one = 1.0d0, two = 2.0d0 )
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( czero = ( 0.0d0, 0.0d0 ) )
       integer            bx, bxst, c, difl, difr, givcol, givnum,
      &                   givptr, i, icmpq1, icmpq2, irwb, irwib, irwrb,
@@ -26066,7 +26066,7 @@
       character          norm
       integer            kl, ku, ldab, n
       double precision   work( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j, k, l
@@ -26079,7 +26079,7 @@
       character          norm
       integer            lda, m, n
       double precision   work( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j
@@ -26091,7 +26091,7 @@
       double precision function zlangt( norm, n, dl, d, du )
       character          norm
       integer            n
-      complex(kind=16)   d( * ), dl( * ), du( * )
+      complex(kind=8)    d( * ), dl( * ), du( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i
@@ -26105,7 +26105,7 @@
       character          norm, uplo
       integer            k, ldab, n
       double precision   work( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j, l
@@ -26118,7 +26118,7 @@
       character          norm, uplo
       integer            lda, n
       double precision   work( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j
@@ -26131,7 +26131,7 @@
       character          norm, transr, uplo
       integer            n
       double precision   work( 0: * )
-      complex(kind=16)   a( 0: * )
+      complex(kind=8)    a( 0: * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j, ifm, ilu, noe, n1, k, l, lda
@@ -26144,7 +26144,7 @@
       character          norm, uplo
       integer            n
       double precision   work( * )
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j, k
@@ -26157,7 +26157,7 @@
       character          norm
       integer            lda, n
       double precision   work( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j
@@ -26170,7 +26170,7 @@
       character          norm
       integer            n
       double precision   d( * )
-      complex(kind=16)   e( * )
+      complex(kind=8)    e( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i
@@ -26184,7 +26184,7 @@
       character          norm, uplo
       integer            k, ldab, n
       double precision   work( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j, l
@@ -26197,7 +26197,7 @@
       character          norm, uplo
       integer            n
       double precision   work( * )
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j, k
@@ -26210,7 +26210,7 @@
       character          norm, uplo
       integer            lda, n
       double precision   work( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, j
@@ -26224,7 +26224,7 @@
       character          diag, norm, uplo
       integer            k, ldab, n
       double precision   work( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            udiag
@@ -26238,7 +26238,7 @@
       character          diag, norm, uplo
       integer            n
       double precision   work( * )
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            udiag
@@ -26253,7 +26253,7 @@
       character          diag, norm, uplo
       integer            lda, m, n
       double precision   work( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            udiag
@@ -26266,14 +26266,14 @@
       subroutine zlapll( n, x, incx, y, incy, ssmin )
       integer            incx, incy, n
       double precision   ssmin
-      complex(kind=16)   x( * ), y( * )
+      complex(kind=8)    x( * ), y( * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   ssmax
-      complex(kind=16)   a11, a12, a22, c, tau
-      complex(kind=16)   zdotc
+      complex(kind=8)    a11, a12, a22, c, tau
+      complex(kind=8)    zdotc
       end subroutine zlapll
 
       !! zlapmr.f
@@ -26281,9 +26281,9 @@
       logical            forwrd
       integer            ldx, m, n
       integer            k( * )
-      complex(kind=16)   x( ldx, * )
+      complex(kind=8)    x( ldx, * )
       integer            i, in, j, jj
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       end subroutine zlapmr
 
       !! zlapmt.f
@@ -26291,9 +26291,9 @@
       logical            forwrd
       integer            ldx, m, n
       integer            k( * )
-      complex(kind=16)   x( ldx, * )
+      complex(kind=8)    x( ldx, * )
       integer            i, ii, in, j
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       end subroutine zlapmt
 
       !! zla_porcond_c.f
@@ -26303,13 +26303,13 @@
       character          uplo
       logical            capply
       integer            n, lda, ldaf, info
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), work( * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), work( * )
       double precision   c( * ), rwork( * )
       integer            kase
       double precision   ainvnm, anorm, tmp
       integer            i, j
       logical            up, upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision cabs1
@@ -26321,12 +26321,12 @@
      &                                         rwork )
       character          uplo
       integer            n, lda, ldaf, info
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), work( * ), x( * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), work( * ), x( * )
       double precision   rwork( * )
       integer            kase, i, j
       double precision   ainvnm, anorm, tmp
       logical            up, upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision cabs1
@@ -26345,7 +26345,7 @@
       character          uplo
       logical            colequ, ignore_cwise
       double precision   rthresh, dz_ub
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   y( ldy, * ), res( * ), dy( * ), y_tail( * )
       double precision   c( * ), ayb( * ), rcond, berr_out( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -26357,7 +26357,7 @@
      &                   dzratmax, dx_x, dz_z, final_dx_x, final_dz_z,
      &                   eps, hugeval, incr_thresh
       logical            incr_prec
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            unstable_state, working_state, conv_state,
      &                   noprog_state, base_residual, extra_residual,
      &                   extra_y
@@ -26393,12 +26393,12 @@
      &                                        ldaf, work )
       character(len=1)   uplo
       integer            ncols, lda, ldaf
-      complex(kind=16)   a( lda, * ), af( ldaf, * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * )
       double precision   work( * )
       integer            i, j
       double precision   amax, umax, rpvgrw
       logical            upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       logical            lsame
       double precision   cabs1
       end function zla_porpvgrw
@@ -26410,7 +26410,7 @@
       integer            kl, ku, ldab, m, n
       double precision   amax, colcnd, rowcnd
       double precision   c( * ), r( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, thresh
       parameter          ( one = 1.0d+0, thresh = 0.1d+0 )
       integer            i, j
@@ -26425,7 +26425,7 @@
       integer            lda, m, n
       double precision   amax, colcnd, rowcnd
       double precision   c( * ), r( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, thresh
       parameter          ( one = 1.0d+0, thresh = 0.1d+0 )
       integer            i, j
@@ -26439,7 +26439,7 @@
       integer            kd, ldab, n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, thresh
       parameter          ( one = 1.0d+0, thresh = 0.1d+0 )
       integer            i, j
@@ -26454,7 +26454,7 @@
       integer            lda, n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, thresh
       parameter          ( one = 1.0d+0, thresh = 0.1d+0 )
       integer            i, j
@@ -26469,7 +26469,7 @@
       integer            n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   one, thresh
       parameter          ( one = 1.0d+0, thresh = 0.1d+0 )
       integer            i, j, jc
@@ -26484,14 +26484,14 @@
       integer            lda, m, n, offset
       integer            jpvt( * )
       double precision   vn1( * ), vn2( * )
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
       double precision   zero, one
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( zero = 0.0d+0, one = 1.0d+0,
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       integer            i, itemp, j, mn, offpi, pvt
       double precision   temp, temp2, tol3z
-      complex(kind=16)   aii
+      complex(kind=8)    aii
       integer            idamax
       double precision   dlamch, dznrm2
       end subroutine zlaqp2
@@ -26502,15 +26502,15 @@
       integer            kb, lda, ldf, m, n, nb, offset
       integer            jpvt( * )
       double precision   vn1( * ), vn2( * )
-      complex(kind=16)   a( lda, * ), auxv( * ), f( ldf, * ), tau( * )
+      complex(kind=8)    a( lda, * ), auxv( * ), f( ldf, * ), tau( * )
       double precision   zero, one
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( zero = 0.0d+0, one = 1.0d+0,
      &                   czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       integer            itemp, j, k, lastrk, lsticc, pvt, rk
       double precision   temp, temp2, tol3z
-      complex(kind=16)   akk
+      complex(kind=8)    akk
       integer            idamax
       double precision   dlamch, dznrm2
       end subroutine zlaqps
@@ -26520,7 +26520,7 @@
      &                   ihiz, z, ldz, work, lwork, info )
       integer            ihi, ihiz, ilo, iloz, info, ldh, ldz, lwork, n
       logical            wantt, wantz
-      complex(kind=16)   h( ldh, * ), w( * ), work( * ), z( ldz, * )
+      complex(kind=8)    h( ldh, * ), w( * ), work( * ), z( ldz, * )
       integer            ntiny
       parameter          ( ntiny = 11 )
       integer            kexnw
@@ -26529,12 +26529,12 @@
       parameter          ( kexsh = 6 )
       double precision   wilk1
       parameter          ( wilk1 = 0.75d0 )
-      complex(kind=16)   zero, one
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d0, 0.0d0 ),
      &                   one = ( 1.0d0, 0.0d0 ) )
       double precision   two
       parameter          ( two = 2.0d0 )
-      complex(kind=16)   aa, bb, cc, cdum, dd, det, rtdisc, swap, tr2
+      complex(kind=8)    aa, bb, cc, cdum, dd, det, rtdisc, swap, tr2
       double precision   s
       integer            i, inf, it, itmax, k, kacc22, kbot, kdu, ks,
      &                   kt, ktop, ku, kv, kwh, kwtop, kwv, ld, ls,
@@ -26543,20 +26543,20 @@
       logical            sorted
       character          jbcmpz*2
       integer            ilaenv
-      complex(kind=16)   zdum( 1, 1 )
+      complex(kind=8)    zdum( 1, 1 )
       double precision   cabs1
       end subroutine zlaqr0
 
       !! zlaqr1.f
       subroutine zlaqr1( n, h, ldh, s1, s2, v )
-      complex(kind=16)   s1, s2
+      complex(kind=8)    s1, s2
       integer            ldh, n
-      complex(kind=16)   h( ldh, * ), v( * )
-      complex(kind=16)   zero
+      complex(kind=8)    h( ldh, * ), v( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d0, 0.0d0 ) )
       double precision   rzero
       parameter          ( rzero = 0.0d0 )
-      complex(kind=16)   cdum, h21s, h31s
+      complex(kind=8)    cdum, h21s, h31s
       double precision   s
       double precision   cabs1
       end subroutine zlaqr1
@@ -26568,14 +26568,14 @@
       integer            ihiz, iloz, kbot, ktop, ldh, ldt, ldv, ldwv,
      &                   ldz, lwork, n, nd, nh, ns, nv, nw
       logical            wantt, wantz
-      complex(kind=16)   h( ldh, * ), sh( * ), t( ldt, * ), v( ldv, * ),
+      complex(kind=8)    h( ldh, * ), sh( * ), t( ldt, * ), v( ldv, * ),
      &                   work( * ), wv( ldwv, * ), z( ldz, * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d0, 0.0d0 ),
      &                   one = ( 1.0d0, 0.0d0 ) )
       double precision   rzero, rone
       parameter          ( rzero = 0.0d0, rone = 1.0d0 )
-      complex(kind=16)   beta, cdum, s, tau
+      complex(kind=8)    beta, cdum, s, tau
       double precision   foo, safmax, safmin, smlnum, ulp
       integer            i, ifst, ilst, info, infqr, j, jw, kcol, kln,
      &                   knt, krow, kwtop, ltop, lwk1, lwk2, lwkopt
@@ -26590,14 +26590,14 @@
       integer            ihiz, iloz, kbot, ktop, ldh, ldt, ldv, ldwv,
      &                   ldz, lwork, n, nd, nh, ns, nv, nw
       logical            wantt, wantz
-      complex(kind=16)   h( ldh, * ), sh( * ), t( ldt, * ), v( ldv, * ),
+      complex(kind=8)    h( ldh, * ), sh( * ), t( ldt, * ), v( ldv, * ),
      &                   work( * ), wv( ldwv, * ), z( ldz, * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d0, 0.0d0 ),
      &                   one = ( 1.0d0, 0.0d0 ) )
       double precision   rzero, rone
       parameter          ( rzero = 0.0d0, rone = 1.0d0 )
-      complex(kind=16)   beta, cdum, s, tau
+      complex(kind=8)    beta, cdum, s, tau
       double precision   foo, safmax, safmin, smlnum, ulp
       integer            i, ifst, ilst, info, infqr, j, jw, kcol, kln,
      &                   knt, krow, kwtop, ltop, lwk1, lwk2, lwk3,
@@ -26612,7 +26612,7 @@
      &                   ihiz, z, ldz, work, lwork, info )
       integer            ihi, ihiz, ilo, iloz, info, ldh, ldz, lwork, n
       logical            wantt, wantz
-      complex(kind=16)   h( ldh, * ), w( * ), work( * ), z( ldz, * )
+      complex(kind=8)    h( ldh, * ), w( * ), work( * ), z( ldz, * )
       integer            ntiny
       parameter          ( ntiny = 11 )
       integer            kexnw
@@ -26621,12 +26621,12 @@
       parameter          ( kexsh = 6 )
       double precision   wilk1
       parameter          ( wilk1 = 0.75d0 )
-      complex(kind=16)   zero, one
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d0, 0.0d0 ),
      &                   one = ( 1.0d0, 0.0d0 ) )
       double precision   two
       parameter          ( two = 2.0d0 )
-      complex(kind=16)   aa, bb, cc, cdum, dd, det, rtdisc, swap, tr2
+      complex(kind=8)    aa, bb, cc, cdum, dd, det, rtdisc, swap, tr2
       double precision   s
       integer            i, inf, it, itmax, k, kacc22, kbot, kdu, ks,
      &                   kt, ktop, ku, kv, kwh, kwtop, kwv, ld, ls,
@@ -26635,7 +26635,7 @@
       logical            sorted
       character          jbcmpz*2
       integer            ilaenv
-      complex(kind=16)   zdum( 1, 1 )
+      complex(kind=8)    zdum( 1, 1 )
       double precision   cabs1
       end subroutine zlaqr4
 
@@ -26646,14 +26646,14 @@
       integer            ihiz, iloz, kacc22, kbot, ktop, ldh, ldu, ldv,
      &                   ldwh, ldwv, ldz, n, nh, nshfts, nv
       logical            wantt, wantz
-      complex(kind=16)   h( ldh, * ), s( * ), u( ldu, * ), v( ldv, * ),
+      complex(kind=8)    h( ldh, * ), s( * ), u( ldu, * ), v( ldv, * ),
      &                   wh( ldwh, * ), wv( ldwv, * ), z( ldz, * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d0, 0.0d0 ),
      &                   one = ( 1.0d0, 0.0d0 ) )
       double precision   rzero, rone
       parameter          ( rzero = 0.0d0, rone = 1.0d0 )
-      complex(kind=16)   alpha, beta, cdum, refsum
+      complex(kind=8)    alpha, beta, cdum, refsum
       double precision   h11, h12, h21, h22, safmax, safmin, scl,
      &                   smlnum, tst1, tst2, ulp
       integer            i2, i4, incol, j, j2, j4, jbot, jcol, jlen,
@@ -26662,7 +26662,7 @@
      &                   ns, nu
       logical            accum, blk22, bmp22
       double precision   dlamch
-      complex(kind=16)   vt( 3 )
+      complex(kind=8)    vt( 3 )
       double precision   cabs1
       end subroutine zlaqr5
 
@@ -26672,7 +26672,7 @@
       integer            kd, ldab, n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, thresh
       parameter          ( one = 1.0d+0, thresh = 0.1d+0 )
       integer            i, j
@@ -26687,7 +26687,7 @@
       integer            n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   one, thresh
       parameter          ( one = 1.0d+0, thresh = 0.1d+0 )
       integer            i, j, jc
@@ -26702,7 +26702,7 @@
       integer            lda, n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, thresh
       parameter          ( one = 1.0d+0, thresh = 0.1d+0 )
       integer            i, j
@@ -26722,10 +26722,10 @@
       integer            isuppz( * )
       double precision   d( * ), l( * ), ld( * ), lld( * ),
      &                  work( * )
-      complex(kind=16) z( * )
+      complex(kind=8)  z( * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d0, 0.0d0 ) )
       logical            sawnan1, sawnan2
       integer            i, indlpl, indp, inds, indumn, neg1, neg2, r1,
@@ -26739,18 +26739,18 @@
       subroutine zlar2v( n, x, y, z, incx, c, s, incc )
       integer            incc, incx, n
       double precision   c( * )
-      complex(kind=16)   s( * ), x( * ), y( * ), z( * )
+      complex(kind=8)    s( * ), x( * ), y( * ), z( * )
       integer            i, ic, ix
       double precision   ci, sii, sir, t1i, t1r, t5, t6, xi, yi, zii,
      &                   zir
-      complex(kind=16)   si, t2, t3, t4, zi
+      complex(kind=8)    si, t2, t3, t4, zi
       end subroutine zlar2v
 
       !! zlarcm.f
       subroutine zlarcm( m, n, a, lda, b, ldb, c, ldc, rwork )
       integer            lda, ldb, ldc, m, n
       double precision   a( lda, * ), rwork( * )
-      complex(kind=16)   b( ldb, * ), c( ldc, * )
+      complex(kind=8)    b( ldb, * ), c( ldc, * )
       double precision   one, zero
       parameter          ( one = 1.0d0, zero = 0.0d0 )
       integer            i, j, l
@@ -26761,9 +26761,9 @@
      &                   t, ldt, c, ldc, work, ldwork )
       character          direct, side, storev, trans
       integer            k, ldc, ldt, ldv, ldwork, m, n
-      complex(kind=16)   c( ldc, * ), t( ldt, * ), v( ldv, * ),
+      complex(kind=8)    c( ldc, * ), t( ldt, * ), v( ldv, * ),
      &                   work( ldwork, * )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       character          transt
       integer            i, j
@@ -26774,9 +26774,9 @@
       subroutine zlarf( side, m, n, v, incv, tau, c, ldc, work )
       character          side
       integer            incv, ldc, m, n
-      complex(kind=16)   tau
-      complex(kind=16)   c( ldc, * ), v( * ), work( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    tau
+      complex(kind=8)    c( ldc, * ), v( * ), work( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            applyleft
@@ -26788,36 +26788,36 @@
       !! zlarfg.f
       subroutine zlarfg( n, alpha, x, incx, tau )
       integer            incx, n
-      complex(kind=16)   alpha, tau
-      complex(kind=16)   x( * )
+      complex(kind=8)    alpha, tau
+      complex(kind=8)    x( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            j, knt
       double precision   alphi, alphr, beta, rsafmn, safmin, xnorm
       double precision   dlamch, dlapy3, dznrm2
-      complex(kind=16)   zladiv
+      complex(kind=8)    zladiv
       end subroutine zlarfg
 
       !! zlarfgp.f
       subroutine zlarfgp( n, alpha, x, incx, tau )
       integer            incx, n
-      complex(kind=16)   alpha, tau
-      complex(kind=16)   x( * )
+      complex(kind=8)    alpha, tau
+      complex(kind=8)    x( * )
       double precision   two, one, zero
       parameter          ( two = 2.0d+0, one = 1.0d+0, zero = 0.0d+0 )
       integer            j, knt
       double precision   alphi, alphr, beta, bignum, smlnum, xnorm
-      complex(kind=16)   savealpha
+      complex(kind=8)    savealpha
       double precision   dlamch, dlapy3, dlapy2, dznrm2
-      complex(kind=16)   zladiv
+      complex(kind=8)    zladiv
       end subroutine zlarfgp
 
       !! zlarft.f
       subroutine zlarft( direct, storev, n, k, v, ldv, tau, t, ldt )
       character          direct, storev
       integer            k, ldt, ldv, n
-      complex(kind=16)   t( ldt, * ), tau( * ), v( ldv, * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    t( ldt, * ), tau( * ), v( ldv, * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, j, prevlastv, lastv
@@ -26828,13 +26828,13 @@
       subroutine zlarfx( side, m, n, v, tau, c, ldc, work )
       character          side
       integer            ldc, m, n
-      complex(kind=16)   tau
-      complex(kind=16)   c( ldc, * ), v( * ), work( * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    tau
+      complex(kind=8)    c( ldc, * ), v( * ), work( * )
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ) )
       integer            j
-      complex(kind=16)   sum, t1, t10, t2, t3, t4, t5, t6, t7, t8, t9,
+      complex(kind=8)    sum, t1, t10, t2, t3, t4, t5, t6, t7, t8, t9,
      &                   v1, v10, v2, v3, v4, v5, v6, v7, v8, v9
       logical            lsame
       end subroutine zlarfx
@@ -26843,15 +26843,15 @@
       subroutine zlargv( n, x, incx, y, incy, c, incc )
       integer            incc, incx, incy, n
       double precision   c( * )
-      complex(kind=16)   x( * ), y( * )
+      complex(kind=8)    x( * ), y( * )
       double precision   two, one, zero
       parameter          ( two = 2.0d+0, one = 1.0d+0, zero = 0.0d+0 )
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ) )
       integer            count, i, ic, ix, iy, j
       double precision   cs, d, di, dr, eps, f2, f2s, g2, g2s, safmin,
      &                   safmn2, safmx2, scale
-      complex(kind=16)   f, ff, fs, g, gs, r, sn
+      complex(kind=8)    f, ff, fs, g, gs, r, sn
       double precision   dlamch, dlapy2
       double precision   abs1, abssq
       end subroutine zlargv
@@ -26860,7 +26860,7 @@
       subroutine zlarnv( idist, iseed, n, x )
       integer            idist, n
       integer            iseed( 4 )
-      complex(kind=16)   x( * )
+      complex(kind=8)    x( * )
       double precision   zero, one, two
       parameter          ( zero = 0.0d+0, one = 1.0d+0, two = 2.0d+0 )
       integer            lv
@@ -26883,10 +26883,10 @@
      &                   isuppz( * ), iwork( * )
       double precision   d( * ), gers( * ), l( * ), w( * ), werr( * ),
      &                   wgap( * ), work( * )
-      complex(kind=16)  z( ldz, * )
+      complex(kind=8)   z( ldz, * )
       integer            maxitr
       parameter          ( maxitr = 10 )
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( czero = ( 0.0d0, 0.0d0 ) )
       double precision   zero, one, two, three, four, half
       parameter          ( zero = 0.0d0, one = 1.0d0,
@@ -26913,7 +26913,7 @@
       !! zlarscl2.f
       subroutine zlarscl2 ( m, n, d, x, ldx )
       integer            m, n, ldx
-      complex(kind=16)   x( ldx, * )
+      complex(kind=8)    x( ldx, * )
       double precision   d( * )
       integer            i, j
       end subroutine zlarscl2
@@ -26921,15 +26921,15 @@
       !! zlartg.f
       subroutine zlartg( f, g, cs, sn, r )
       double precision   cs
-      complex(kind=16)   f, g, r, sn
+      complex(kind=8)    f, g, r, sn
       double precision   two, one, zero
       parameter          ( two = 2.0d+0, one = 1.0d+0, zero = 0.0d+0 )
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ) )
       integer            count, i
       double precision   d, di, dr, eps, f2, f2s, g2, g2s, safmin,
      &                   safmn2, safmx2, scale
-      complex(kind=16)   ff, fs, gs
+      complex(kind=8)    ff, fs, gs
       double precision   dlamch, dlapy2
       logical            disnan
       double precision   abs1, abssq
@@ -26939,9 +26939,9 @@
       subroutine zlartv( n, x, incx, y, incy, c, s, incc )
       integer            incc, incx, incy, n
       double precision   c( * )
-      complex(kind=16)   s( * ), x( * ), y( * )
+      complex(kind=8)    s( * ), x( * ), y( * )
       integer            i, ic, ix, iy
-      complex(kind=16)   xi, yi
+      complex(kind=8)    xi, yi
       end subroutine zlartv
 
       !! zlarzb.f
@@ -26949,9 +26949,9 @@
      &                   ldv, t, ldt, c, ldc, work, ldwork )
       character          direct, side, storev, trans
       integer            k, l, ldc, ldt, ldv, ldwork, m, n
-      complex(kind=16)   c( ldc, * ), t( ldt, * ), v( ldv, * ),
+      complex(kind=8)    c( ldc, * ), t( ldt, * ), v( ldv, * ),
      &                   work( ldwork, * )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       character          transt
       integer            i, info, j
@@ -26962,9 +26962,9 @@
       subroutine zlarz( side, m, n, l, v, incv, tau, c, ldc, work )
       character          side
       integer            incv, l, ldc, m, n
-      complex(kind=16)   tau
-      complex(kind=16)   c( ldc, * ), v( * ), work( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    tau
+      complex(kind=8)    c( ldc, * ), v( * ), work( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            lsame
@@ -26974,8 +26974,8 @@
       subroutine zlarzt( direct, storev, n, k, v, ldv, tau, t, ldt )
       character          direct, storev
       integer            k, ldt, ldv, n
-      complex(kind=16)   t( ldt, * ), tau( * ), v( ldv, * )
-      complex(kind=16)   zero
+      complex(kind=8)    t( ldt, * ), tau( * ), v( ldv, * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, info, j
       logical            lsame
@@ -26985,7 +26985,7 @@
       subroutine zlascl2 ( m, n, d, x, ldx )
       integer            m, n, ldx
       double precision   d( * )
-      complex(kind=16)   x( ldx, * )
+      complex(kind=8)    x( ldx, * )
       integer            i, j
       end subroutine zlascl2
 
@@ -26994,7 +26994,7 @@
       character          type
       integer            info, kl, ku, lda, m, n
       double precision   cfrom, cto
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   zero, one
       parameter          ( zero = 0.0d0, one = 1.0d0 )
       logical            done
@@ -27008,8 +27008,8 @@
       subroutine zlaset( uplo, m, n, alpha, beta, a, lda )
       character          uplo
       integer            lda, m, n
-      complex(kind=16)   alpha, beta
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    alpha, beta
+      complex(kind=8)    a( lda, * )
       integer            i, j
       logical            lsame
       end subroutine zlaset
@@ -27019,12 +27019,12 @@
       character          direct, pivot, side
       integer            lda, m, n
       double precision   c( * ), s( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, info, j
       double precision   ctemp, stemp
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       logical            lsame
       end subroutine zlasr
 
@@ -27032,7 +27032,7 @@
       subroutine zlassq( n, x, incx, scale, sumsq )
       integer            incx, n
       double precision   scale, sumsq
-      complex(kind=16)   x( * )
+      complex(kind=8)    x( * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
       integer            ix
@@ -27044,9 +27044,9 @@
       subroutine zlaswp( n, a, lda, k1, k2, ipiv, incx )
       integer            incx, k1, k2, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       integer            i, i1, i2, inc, ip, ix, ix0, j, k, n32
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       end subroutine zlaswp
 
       !! zla_syamv.f
@@ -27055,14 +27055,14 @@
       double precision   alpha, beta
       integer            incx, incy, lda, n
       integer            uplo
-      complex(kind=16)   a( lda, * ), x( * )
+      complex(kind=8)    a( lda, * ), x( * )
       double precision   y( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            symb_zero
       double precision   temp, safe1
       integer            i, info, iy, j, jx, kx, ky
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   dlamch
       integer            ilauplo
       double precision   cabs1
@@ -27073,17 +27073,17 @@
       character          uplo
       integer            info, kb, lda, ldw, n, nb
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), w( ldw, * )
+      complex(kind=8)    a( lda, * ), w( ldw, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   eight, sevten
       parameter          ( eight = 8.0d+0, sevten = 17.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       integer            imax, j, jb, jj, jmax, jp, k, kk, kkw, kp,
      &                   kstep, kw
       double precision   absakk, alpha, colmax, rowmax
-      complex(kind=16)   d11, d21, d22, r1, t, z
+      complex(kind=8)    d11, d21, d22, r1, t, z
       logical            lsame
       integer            izamax
       double precision   cabs1
@@ -27095,19 +27095,19 @@
       character          uplo
       integer            info, kb, lda, ldw, n, nb
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), w( ldw, * )
+      complex(kind=8)    a( lda, * ), w( ldw, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   eight, sevten
       parameter          ( eight = 8.0d+0, sevten = 17.0d+0 )
-      complex(kind=16)   cone, czero
+      complex(kind=8)    cone, czero
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ),
      &                   czero = ( 0.0d+0, 0.0d+0 ) )
       logical            done
       integer            imax, itemp, j, jb, jj, jmax, jp1, jp2, k, kk,
      &                   kw, kkw, kp, kstep, p, ii
       double precision   absakk, alpha, colmax, rowmax, dtemp, sfmin
-      complex(kind=16)   d11, d12, d21, d22, r1, t, z
+      complex(kind=8)    d11, d12, d21, d22, r1, t, z
       logical            lsame
       integer            izamax
       double precision   dlamch
@@ -27122,13 +27122,13 @@
       logical            capply
       integer            n, lda, ldaf, info
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), work( * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), work( * )
       double precision   c( * ), rwork( * )
       integer            kase
       double precision   ainvnm, anorm, tmp
       integer            i, j
       logical            up, upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision cabs1
@@ -27141,13 +27141,13 @@
       character          uplo
       integer            n, lda, ldaf, info
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), work( * ), x( * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), work( * ), x( * )
       double precision   rwork( * )
       integer            kase
       double precision   ainvnm, anorm, tmp
       integer            i, j
       logical            up, upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   cabs1
@@ -27167,7 +27167,7 @@
       logical            colequ, ignore_cwise
       double precision   rthresh, dz_ub
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   y( ldy, * ), res( * ), dy( * ), y_tail( * )
       double precision   c( * ), ayb( * ), rcond, berr_out( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -27179,7 +27179,7 @@
      &                   dzratmax, dx_x, dz_z, final_dx_x, final_dz_z,
      &                   eps, hugeval, incr_thresh
       logical            incr_prec, upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            unstable_state, working_state, conv_state,
      &                   noprog_state, base_residual, extra_residual,
      &                   extra_y
@@ -27215,13 +27215,13 @@
      &                                        ldaf, ipiv, work )
       character(len=1)   uplo
       integer            n, info, lda, ldaf
-      complex(kind=16)   a( lda, * ), af( ldaf, * )
+      complex(kind=8)    a( lda, * ), af( ldaf, * )
       double precision   work( * )
       integer            ipiv( * )
       integer            ncols, i, j, k, kp
       double precision   amax, umax, rpvgrw, tmp
       logical            upper
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       logical            lsame
       double precision   cabs1
       end function zla_syrpvgrw
@@ -27231,7 +27231,7 @@
       character          uplo
       integer            info, lda, ldsa, n
       complex            sa( ldsa, * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       integer            i, j
       double precision   rmax
       logical            upper
@@ -27246,7 +27246,7 @@
       integer            info, kd, ldab, n
       double precision   scale
       double precision   cnorm( * )
-      complex(kind=16)   ab( ldab, * ), x( * )
+      complex(kind=8)    ab( ldab, * ), x( * )
       double precision   zero, half, one, two
       parameter          ( zero = 0.0d+0, half = 0.5d+0, one = 1.0d+0,
      &                   two = 2.0d+0 )
@@ -27254,11 +27254,11 @@
       integer            i, imax, j, jfirst, jinc, jlast, jlen, maind
       double precision   bignum, grow, rec, smlnum, tjj, tmax, tscal,
      &                   xbnd, xj, xmax
-      complex(kind=16)   csumj, tjjs, uscal, zdum
+      complex(kind=8)    csumj, tjjs, uscal, zdum
       logical            lsame
       integer            idamax, izamax
       double precision   dlamch, dzasum
-      complex(kind=16)   zdotc, zdotu, zladiv
+      complex(kind=8)    zdotc, zdotu, zladiv
       double precision   cabs1, cabs2
       end subroutine zlatbs
 
@@ -27268,20 +27268,20 @@
       integer            ijob, ldz, n
       double precision   rdscal, rdsum
       integer            ipiv( * ), jpiv( * )
-      complex(kind=16)   rhs( * ), z( ldz, * )
+      complex(kind=8)    rhs( * ), z( ldz, * )
       integer            maxdim
       parameter          ( maxdim = 2 )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       integer            i, info, j, k
       double precision   rtemp, scale, sminu, splus
-      complex(kind=16)   bm, bp, pmone, temp
+      complex(kind=8)    bm, bp, pmone, temp
       double precision   rwork( maxdim )
-      complex(kind=16)   work( 4*maxdim ), xm( maxdim ), xp( maxdim )
+      complex(kind=8)    work( 4*maxdim ), xm( maxdim ), xp( maxdim )
       double precision   dzasum
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zlatdf
 
       !! zlatps.f
@@ -27291,7 +27291,7 @@
       integer            info, n
       double precision   scale
       double precision   cnorm( * )
-      complex(kind=16)   ap( * ), x( * )
+      complex(kind=8)    ap( * ), x( * )
       double precision   zero, half, one, two
       parameter          ( zero = 0.0d+0, half = 0.5d+0, one = 1.0d+0,
      &                   two = 2.0d+0 )
@@ -27299,11 +27299,11 @@
       integer            i, imax, ip, j, jfirst, jinc, jlast, jlen
       double precision   bignum, grow, rec, smlnum, tjj, tmax, tscal,
      &                   xbnd, xj, xmax
-      complex(kind=16)   csumj, tjjs, uscal, zdum
+      complex(kind=8)    csumj, tjjs, uscal, zdum
       logical            lsame
       integer            idamax, izamax
       double precision   dlamch, dzasum
-      complex(kind=16)   zdotc, zdotu, zladiv
+      complex(kind=8)    zdotc, zdotu, zladiv
       double precision   cabs1, cabs2
       end subroutine zlatps
 
@@ -27312,15 +27312,15 @@
       character          uplo
       integer            lda, ldw, n, nb
       double precision   e( * )
-      complex(kind=16)   a( lda, * ), tau( * ), w( ldw, * )
-      complex(kind=16)   zero, one, half
+      complex(kind=8)    a( lda, * ), tau( * ), w( ldw, * )
+      complex(kind=8)    zero, one, half
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ),
      &                   half = ( 0.5d+0, 0.0d+0 ) )
       integer            i, iw
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zlatrd
 
       !! zlatrs.f
@@ -27330,7 +27330,7 @@
       integer            info, lda, n
       double precision   scale
       double precision   cnorm( * )
-      complex(kind=16)   a( lda, * ), x( * )
+      complex(kind=8)    a( lda, * ), x( * )
       double precision   zero, half, one, two
       parameter          ( zero = 0.0d+0, half = 0.5d+0, one = 1.0d+0,
      &                   two = 2.0d+0 )
@@ -27338,46 +27338,46 @@
       integer            i, imax, j, jfirst, jinc, jlast
       double precision   bignum, grow, rec, smlnum, tjj, tmax, tscal,
      &                   xbnd, xj, xmax
-      complex(kind=16)   csumj, tjjs, uscal, zdum
+      complex(kind=8)    csumj, tjjs, uscal, zdum
       logical            lsame
       integer            idamax, izamax
       double precision   dlamch, dzasum
-      complex(kind=16)   zdotc, zdotu, zladiv
+      complex(kind=8)    zdotc, zdotu, zladiv
       double precision   cabs1, cabs2
       end subroutine zlatrs
 
       !! zlatrz.f
       subroutine zlatrz( m, n, l, a, lda, tau, work )
       integer            l, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       end subroutine zlatrz
 
       !! zlauu2.f
       subroutine zlauu2( uplo, n, a, lda, info )
       character          uplo
       integer            info, lda, n
-      complex(kind=16)   a( lda, * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            i
       double precision   aii
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zlauu2
 
       !! zlauum.f
       subroutine zlauum( uplo, n, a, lda, info )
       character          uplo
       integer            info, lda, n
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one
       parameter          ( one = 1.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            i, ib, nb
@@ -27388,8 +27388,8 @@
       !! zla_wwaddw.f
       subroutine zla_wwaddw( n, x, y, w )
       integer            n
-      complex(kind=16)   x( * ), y( * ), w( * )
-      complex(kind=16)   s
+      complex(kind=8)    x( * ), y( * ), w( * )
+      complex(kind=8)    s
       integer            i
       end subroutine zla_wwaddw
 
@@ -27400,14 +27400,14 @@
       integer            info, kd, ldab, n
       double precision   anorm, rcond
       double precision   rwork( * )
-      complex(kind=16)   ab( ldab, * ), work( * )
+      complex(kind=8)    ab( ldab, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
       character          normin
       integer            ix, kase
       double precision   ainvnm, scale, scalel, scaleu, smlnum
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       integer            izamax
@@ -27421,7 +27421,7 @@
       integer            info, kd, ldab, n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       logical            upper
@@ -27436,13 +27436,13 @@
       character          uplo
       integer            info, kd, ldab, ldafb, ldb, ldx, n, nrhs
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -27451,7 +27451,7 @@
       logical            upper
       integer            count, i, j, k, kase, l, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -27462,7 +27462,7 @@
       subroutine zpbstf( uplo, n, kd, ab, ldab, info )
       character          uplo
       integer            info, kd, ldab, n
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
@@ -27475,7 +27475,7 @@
       subroutine zpbsv( uplo, n, kd, nrhs, ab, ldab, b, ldb, info )
       character          uplo
       integer            info, kd, ldab, ldb, n, nrhs
-      complex(kind=16)   ab( ldab, * ), b( ldb, * )
+      complex(kind=8)    ab( ldab, * ), b( ldb, * )
       logical            lsame
       end subroutine zpbsv
 
@@ -27487,7 +27487,7 @@
       integer            info, kd, ldab, ldafb, ldb, ldx, n, nrhs
       double precision   rcond
       double precision   berr( * ), ferr( * ), rwork( * ), s( * )
-      complex(kind=16)   ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
+      complex(kind=8)    ab( ldab, * ), afb( ldafb, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
@@ -27502,7 +27502,7 @@
       subroutine zpbtf2( uplo, n, kd, ab, ldab, info )
       character          uplo
       integer            info, kd, ldab, n
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
@@ -27515,15 +27515,15 @@
       subroutine zpbtrf( uplo, n, kd, ab, ldab, info )
       character          uplo
       integer            info, kd, ldab, n
-      complex(kind=16)   ab( ldab, * )
+      complex(kind=8)    ab( ldab, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       integer            nbmax, ldwork
       parameter          ( nbmax = 32, ldwork = nbmax+1 )
       integer            i, i2, i3, ib, ii, j, jj, nb
-      complex(kind=16)   work( ldwork, nbmax )
+      complex(kind=8)    work( ldwork, nbmax )
       logical            lsame
       integer            ilaenv
       end subroutine zpbtrf
@@ -27532,7 +27532,7 @@
       subroutine zpbtrs( uplo, n, kd, nrhs, ab, ldab, b, ldb, info )
       character          uplo
       integer            info, kd, ldab, ldb, n, nrhs
-      complex(kind=16)   ab( ldab, * ), b( ldb, * )
+      complex(kind=8)    ab( ldab, * ), b( ldb, * )
       logical            upper
       integer            j
       logical            lsame
@@ -27542,9 +27542,9 @@
       subroutine zpftrf( transr, uplo, n, a, info )
       character          transr, uplo
       integer            n, info
-      complex(kind=16)   a( 0: * )
+      complex(kind=8)    a( 0: * )
       double precision   one
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( one = 1.0d+0, cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lower, nisodd, normaltransr
       integer            n1, n2, k
@@ -27555,9 +27555,9 @@
       subroutine zpftri( transr, uplo, n, a, info )
       character          transr, uplo
       integer            info, n
-      complex(kind=16)   a( 0: * )
+      complex(kind=8)    a( 0: * )
       double precision   one
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( one = 1.d0, cone = ( 1.d0, 0.d0 ) )
       logical            lower, nisodd, normaltransr
       integer            n1, n2, k
@@ -27568,8 +27568,8 @@
       subroutine zpftrs( transr, uplo, n, nrhs, a, b, ldb, info )
       character          transr, uplo
       integer            info, ldb, n, nrhs
-      complex(kind=16)   a( 0: * ), b( ldb, * )
-      complex(kind=16)   cone
+      complex(kind=8)    a( 0: * ), b( ldb, * )
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lower, normaltransr
       logical            lsame
@@ -27582,14 +27582,14 @@
       integer            info, lda, n
       double precision   anorm, rcond
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
       character          normin
       integer            ix, kase
       double precision   ainvnm, scale, scalel, scaleu, smlnum
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       integer            izamax
@@ -27601,7 +27601,7 @@
       subroutine zpoequb( n, a, lda, s, scond, amax, info )
       integer            info, lda, n
       double precision   amax, scond
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   s( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
@@ -27615,7 +27615,7 @@
       integer            info, lda, n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       integer            i
@@ -27628,13 +27628,13 @@
       character          uplo
       integer            info, lda, ldaf, ldb, ldx, n, nrhs
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -27643,7 +27643,7 @@
       logical            upper
       integer            count, i, j, k, kase, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -27659,7 +27659,7 @@
       integer            info, lda, ldaf, ldb, ldx, n, nrhs, nparams,
      &                   n_err_bnds
       double precision   rcond
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   x( ldx, * ), work( * )
       double precision   rwork( * ), s( * ), params(*), berr( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -27702,7 +27702,7 @@
       subroutine zposv( uplo, n, nrhs, a, lda, b, ldb, info )
       character          uplo
       integer            info, lda, ldb, n, nrhs
-      complex(kind=16)   a( lda, * ), b( ldb, * )
+      complex(kind=8)    a( lda, * ), b( ldb, * )
       logical            lsame
       end subroutine zposv
 
@@ -27714,7 +27714,7 @@
       integer            info, lda, ldaf, ldb, ldx, n, nrhs
       double precision   rcond
       double precision   berr( * ), ferr( * ), rwork( * ), s( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
@@ -27734,7 +27734,7 @@
       integer            info, lda, ldaf, ldb, ldx, n, nrhs, nparams,
      &                   n_err_bnds
       double precision   rcond, rpvgrw
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       double precision   s( * ), params( * ), berr( * ), rwork( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -27760,26 +27760,26 @@
       subroutine zpotf2( uplo, n, a, lda, info )
       character          uplo
       integer            info, lda, n
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j
       double precision   ajj
       logical            lsame, disnan
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zpotf2
 
       !! zpotrf2.f
       recursive subroutine zpotrf2( uplo, n, a, lda, info )
       character          uplo
       integer            info, lda, n
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = (1.0d+0, 0.0d+0) )
       logical            upper
       integer            n1, n2, iinfo
@@ -27791,9 +27791,9 @@
       subroutine zpotrf( uplo, n, a, lda, info )
       character          uplo
       integer            info, lda, n
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   one
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( one = 1.0d+0, cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, jb, nb
@@ -27805,7 +27805,7 @@
       subroutine zpotri( uplo, n, a, lda, info )
       character          uplo
       integer            info, lda, n
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       logical            lsame
       end subroutine zpotri
 
@@ -27813,8 +27813,8 @@
       subroutine zpotrs( uplo, n, nrhs, a, lda, b, ldb, info )
       character          uplo
       integer            info, lda, ldb, n, nrhs
-      complex(kind=16)   a( lda, * ), b( ldb, * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), b( ldb, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       logical            lsame
@@ -27826,14 +27826,14 @@
       integer            info, n
       double precision   anorm, rcond
       double precision   rwork( * )
-      complex(kind=16)   ap( * ), work( * )
+      complex(kind=8)    ap( * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
       character          normin
       integer            ix, kase
       double precision   ainvnm, scale, scalel, scaleu, smlnum
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       integer            izamax
@@ -27847,7 +27847,7 @@
       integer            info, n
       double precision   amax, scond
       double precision   s( * )
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
@@ -27862,13 +27862,13 @@
       character          uplo
       integer            info, ldb, ldx, n, nrhs
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   afp( * ), ap( * ), b( ldb, * ), work( * ),
+      complex(kind=8)    afp( * ), ap( * ), b( ldb, * ), work( * ),
      &                   x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -27877,7 +27877,7 @@
       logical            upper
       integer            count, i, ik, j, k, kase, kk, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -27888,7 +27888,7 @@
       subroutine zppsv( uplo, n, nrhs, ap, b, ldb, info )
       character          uplo
       integer            info, ldb, n, nrhs
-      complex(kind=16)   ap( * ), b( ldb, * )
+      complex(kind=8)    ap( * ), b( ldb, * )
       logical            lsame
       end subroutine zppsv
 
@@ -27899,7 +27899,7 @@
       integer            info, ldb, ldx, n, nrhs
       double precision   rcond
       double precision   berr( * ), ferr( * ), rwork( * ), s( * )
-      complex(kind=16)   afp( * ), ap( * ), b( ldb, * ), work( * ),
+      complex(kind=8)    afp( * ), ap( * ), b( ldb, * ), work( * ),
      &                   x( ldx, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
@@ -27914,35 +27914,35 @@
       subroutine zpptrf( uplo, n, ap, info )
       character          uplo
       integer            info, n
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       logical            upper
       integer            j, jc, jj
       double precision   ajj
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zpptrf
 
       !! zpptri.f
       subroutine zpptri( uplo, n, ap, info )
       character          uplo
       integer            info, n
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   one
       parameter          ( one = 1.0d+0 )
       logical            upper
       integer            j, jc, jj, jjn
       double precision   ajj
       logical            lsame
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine zpptri
 
       !! zpptrs.f
       subroutine zpptrs( uplo, n, nrhs, ap, b, ldb, info )
       character          uplo
       integer            info, ldb, n, nrhs
-      complex(kind=16)   ap( * ), b( ldb, * )
+      complex(kind=8)    ap( * ), b( ldb, * )
       logical            upper
       integer            i
       logical            lsame
@@ -27953,14 +27953,14 @@
       double precision   tol
       integer            info, lda, n, rank
       character          uplo
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   work( 2*n )
       integer            piv( n )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
-      complex(kind=16)   ztemp
+      complex(kind=8)    ztemp
       double precision   ajj, dstop, dtemp
       integer            i, itemp, j, pvt
       logical            upper
@@ -27973,14 +27973,14 @@
       double precision   tol
       integer            info, lda, n, rank
       character          uplo
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   work( 2*n )
       integer            piv( n )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
-      complex(kind=16)   ztemp
+      complex(kind=8)    ztemp
       double precision   ajj, dstop, dtemp
       integer            i, itemp, j, jb, k, nb, pvt
       logical            upper
@@ -27994,7 +27994,7 @@
       integer            info, n
       double precision   anorm, rcond
       double precision   d( * ), rwork( * )
-      complex(kind=16)   e( * )
+      complex(kind=8)    e( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       integer            i, ix
@@ -28007,12 +28007,12 @@
       character          compz
       integer            info, ldz, n
       double precision   d( * ), e( * ), work( * )
-      complex(kind=16)   z( ldz, * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    z( ldz, * )
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lsame
-      complex(kind=16)   c( 1, 1 ), vt( 1, 1 )
+      complex(kind=8)    c( 1, 1 ), vt( 1, 1 )
       integer            i, icompz, nru
       end subroutine zpteqr
 
@@ -28023,7 +28023,7 @@
       integer            info, ldb, ldx, n, nrhs
       double precision   berr( * ), d( * ), df( * ), ferr( * ),
      &                   rwork( * )
-      complex(kind=16)   b( ldb, * ), e( * ), ef( * ), work( * ),
+      complex(kind=8)    b( ldb, * ), e( * ), ef( * ), work( * ),
      &                   x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
@@ -28038,7 +28038,7 @@
       logical            upper
       integer            count, i, ix, j, nz
       double precision   eps, lstres, s, safe1, safe2, safmin
-      complex(kind=16)   bi, cx, dx, ex, zdum
+      complex(kind=8)    bi, cx, dx, ex, zdum
       logical            lsame
       integer            idamax
       double precision   dlamch
@@ -28049,7 +28049,7 @@
       subroutine zptsv( n, nrhs, d, e, b, ldb, info )
       integer            info, ldb, n, nrhs
       double precision   d( * )
-      complex(kind=16)   b( ldb, * ), e( * )
+      complex(kind=8)    b( ldb, * ), e( * )
       end subroutine zptsv
 
       !! zptsvx.f
@@ -28060,7 +28060,7 @@
       double precision   rcond
       double precision   berr( * ), d( * ), df( * ), ferr( * ),
      &                   rwork( * )
-      complex(kind=16)   b( ldb, * ), e( * ), ef( * ), work( * ),
+      complex(kind=8)    b( ldb, * ), e( * ), ef( * ), work( * ),
      &                   x( ldx, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
@@ -28074,7 +28074,7 @@
       subroutine zpttrf( n, d, e, info )
       integer            info, n
       double precision   d( * )
-      complex(kind=16)   e( * )
+      complex(kind=8)    e( * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
       integer            i, i4
@@ -28086,7 +28086,7 @@
       character          uplo
       integer            info, ldb, n, nrhs
       double precision   d( * )
-      complex(kind=16)   b( ldb, * ), e( * )
+      complex(kind=8)    b( ldb, * ), e( * )
       logical            upper
       integer            iuplo, j, jb, nb
       integer            ilaenv
@@ -28096,7 +28096,7 @@
       subroutine zptts2( iuplo, n, nrhs, d, e, b, ldb )
       integer            iuplo, ldb, n, nrhs
       double precision   d( * )
-      complex(kind=16)   b( ldb, * ), e( * )
+      complex(kind=8)    b( ldb, * ), e( * )
       integer            i, j
       end subroutine zptts2
 
@@ -28104,10 +28104,10 @@
       subroutine zrot( n, cx, incx, cy, incy, c, s )
       integer            incx, incy, n
       double precision   c
-      complex(kind=16)   s
-      complex(kind=16)   cx( * ), cy( * )
+      complex(kind=8)    s
+      complex(kind=8)    cx( * ), cy( * )
       integer            i, ix, iy
-      complex(kind=16)   stemp
+      complex(kind=8)    stemp
       end subroutine zrot
 
       !! zspcon.f
@@ -28116,7 +28116,7 @@
       integer            info, n
       double precision   anorm, rcond
       integer            ipiv( * )
-      complex(kind=16)   ap( * ), work( * )
+      complex(kind=8)    ap( * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
@@ -28130,14 +28130,14 @@
       subroutine zspmv( uplo, n, alpha, ap, x, incx, beta, y, incy )
       character          uplo
       integer            incx, incy, n
-      complex(kind=16)   alpha, beta
-      complex(kind=16)   ap( * ), x( * ), y( * )
-      complex(kind=16)   one
+      complex(kind=8)    alpha, beta
+      complex(kind=8)    ap( * ), x( * ), y( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
-      complex(kind=16)   zero
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, info, ix, iy, j, jx, jy, k, kk, kx, ky
-      complex(kind=16)   temp1, temp2
+      complex(kind=8)    temp1, temp2
       logical            lsame
       end subroutine zspmv
 
@@ -28145,12 +28145,12 @@
       subroutine zspr( uplo, n, alpha, x, incx, ap )
       character          uplo
       integer            incx, n
-      complex(kind=16)   alpha
-      complex(kind=16)   ap( * ), x( * )
-      complex(kind=16)   zero
+      complex(kind=8)    alpha
+      complex(kind=8)    ap( * ), x( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, info, ix, j, jx, k, kk, kx
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       logical            lsame
       end subroutine zspr
 
@@ -28161,13 +28161,13 @@
       integer            info, ldb, ldx, n, nrhs
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   afp( * ), ap( * ), b( ldb, * ), work( * ),
+      complex(kind=8)    afp( * ), ap( * ), b( ldb, * ), work( * ),
      &                   x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -28176,7 +28176,7 @@
       logical            upper
       integer            count, i, ik, j, k, kase, kk, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -28188,7 +28188,7 @@
       character          uplo
       integer            info, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   ap( * ), b( ldb, * )
+      complex(kind=8)    ap( * ), b( ldb, * )
       logical            lsame
       end subroutine zspsv
 
@@ -28200,7 +28200,7 @@
       double precision   rcond
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   afp( * ), ap( * ), b( ldb, * ), work( * ),
+      complex(kind=8)    afp( * ), ap( * ), b( ldb, * ), work( * ),
      &                   x( ldx, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
@@ -28215,18 +28215,18 @@
       character          uplo
       integer            info, n
       integer            ipiv( * )
-      complex(kind=16)   ap( * )
+      complex(kind=8)    ap( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   eight, sevten
       parameter          ( eight = 8.0d+0, sevten = 17.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            i, imax, j, jmax, k, kc, kk, knc, kp, kpc,
      &                   kstep, kx, npp
       double precision   absakk, alpha, colmax, rowmax
-      complex(kind=16)   d11, d12, d21, d22, r1, t, wk, wkm1, wkp1, zdum
+      complex(kind=8)    d11, d12, d21, d22, r1, t, wk, wkm1, wkp1, zdum
       logical            lsame
       integer            izamax
       double precision   cabs1
@@ -28237,15 +28237,15 @@
       character          uplo
       integer            info, n
       integer            ipiv( * )
-      complex(kind=16)   ap( * ), work( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    ap( * ), work( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kc, kcnext, kp, kpc, kstep, kx, npp
-      complex(kind=16)   ak, akkp1, akp1, d, t, temp
+      complex(kind=8)    ak, akkp1, akp1, d, t, temp
       logical            lsame
-      complex(kind=16)   zdotu
+      complex(kind=8)    zdotu
       end subroutine zsptri
 
       !! zsptrs.f
@@ -28253,12 +28253,12 @@
       character          uplo
       integer            info, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   ap( * ), b( ldb, * )
-      complex(kind=16)   one
+      complex(kind=8)    ap( * ), b( ldb, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kc, kp
-      complex(kind=16)   ak, akm1, akm1k, bk, bkm1, denom
+      complex(kind=8)    ak, akm1, akm1k, bk, bkm1, denom
       logical            lsame
       end subroutine zsptrs
 
@@ -28269,7 +28269,7 @@
       integer            info, ldz, liwork, lrwork, lwork, n
       integer            iwork( * )
       double precision   d( * ), e( * ), rwork( * )
-      complex(kind=16)   work( * ), z( ldz, * )
+      complex(kind=8)    work( * ), z( ldz, * )
       double precision   zero, one, two
       parameter          ( zero = 0.0d0, one = 1.0d0, two = 2.0d0 )
       logical            lquery
@@ -28290,7 +28290,7 @@
       double precision abstol, vl, vu
       integer            isuppz( * ), iwork( * )
       double precision   d( * ), e( * ), w( * ), work( * )
-      complex(kind=16)   z( ldz, * )
+      complex(kind=8)    z( ldz, * )
       logical tryrac
       end subroutine zstegr
 
@@ -28301,8 +28301,8 @@
       integer            iblock( * ), ifail( * ), isplit( * ),
      &                   iwork( * )
       double precision   d( * ), e( * ), w( * ), work( * )
-      complex(kind=16)   z( ldz, * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    z( ldz, * )
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   zero, one, ten, odm3, odm1
@@ -28330,7 +28330,7 @@
       double precision vl, vu
       integer            isuppz( * ), iwork( * )
       double precision   d( * ), e( * ), w( * ), work( * )
-      complex(kind=16)   z( ldz, * )
+      complex(kind=8)    z( ldz, * )
       double precision   zero, one, four, minrgp
       parameter          ( zero = 0.0d0, one = 1.0d0,
      &                     four = 4.0d0,
@@ -28353,11 +28353,11 @@
       character          compz
       integer            info, ldz, n
       double precision   d( * ), e( * ), work( * )
-      complex(kind=16)   z( ldz, * )
+      complex(kind=8)    z( ldz, * )
       double precision   zero, one, two, three
       parameter          ( zero = 0.0d0, one = 1.0d0, two = 2.0d0,
      &                   three = 3.0d0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d0, 0.0d0 ),
      &                   cone = ( 1.0d0, 0.0d0 ) )
       integer            maxit
@@ -28378,7 +28378,7 @@
       integer            info, lda, n
       double precision   anorm, rcond
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            upper
@@ -28395,10 +28395,10 @@
       integer            info, lda, n
       double precision   anorm, rcond
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
-      complex(kind=16)      czero
+      complex(kind=8)       czero
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ) )
       logical            upper
       integer            i, kase
@@ -28412,13 +28412,13 @@
       character          uplo, way
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), e( * )
-      complex(kind=16)   zero
+      complex(kind=8)    a( lda, * ), e( * )
+      complex(kind=8)    zero
       parameter          ( zero = (0.0d+0,0.0d+0) )
       logical            lsame
       logical            upper, convert
       integer            i, ip, j
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       end subroutine zsyconv
 
       !! zsyequb.f
@@ -28426,7 +28426,7 @@
       integer            info, lda, n
       double precision   amax, scond
       character          uplo
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   s( * )
       double precision   one, zero
       parameter          ( one = 1.0d0, zero = 0.0d0 )
@@ -28436,7 +28436,7 @@
       double precision   avg, std, tol, c0, c1, c2, t, u, si, d, base,
      &                   smin, smax, smlnum, bignum, scale, sumsq
       logical            up
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       double precision   dlamch
       logical            lsame
       double precision   cabs1
@@ -28446,14 +28446,14 @@
       subroutine zsymv( uplo, n, alpha, a, lda, x, incx, beta, y, incy )
       character          uplo
       integer            incx, incy, lda, n
-      complex(kind=16)   alpha, beta
-      complex(kind=16)   a( lda, * ), x( * ), y( * )
-      complex(kind=16)   one
+      complex(kind=8)    alpha, beta
+      complex(kind=8)    a( lda, * ), x( * ), y( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
-      complex(kind=16)   zero
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, info, ix, iy, j, jx, jy, kx, ky
-      complex(kind=16)   temp1, temp2
+      complex(kind=8)    temp1, temp2
       logical            lsame
       end subroutine zsymv
 
@@ -28461,12 +28461,12 @@
       subroutine zsyr( uplo, n, alpha, x, incx, a, lda )
       character          uplo
       integer            incx, lda, n
-      complex(kind=16)   alpha
-      complex(kind=16)   a( lda, * ), x( * )
-      complex(kind=16)   zero
+      complex(kind=8)    alpha
+      complex(kind=8)    a( lda, * ), x( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, info, ix, j, jx, kx
-      complex(kind=16)   temp
+      complex(kind=8)    temp
       logical            lsame
       end subroutine zsyr
 
@@ -28477,13 +28477,13 @@
       integer            info, lda, ldaf, ldb, ldx, n, nrhs
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       integer            itmax
       parameter          ( itmax = 5 )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       double precision   two
       parameter          ( two = 2.0d+0 )
@@ -28492,7 +28492,7 @@
       logical            upper
       integer            count, i, j, k, kase, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -28509,7 +28509,7 @@
      &                   n_err_bnds
       double precision   rcond
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   x( ldx, * ), work( * )
       double precision   s( * ), params( * ), berr( * ), rwork( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -28554,7 +28554,7 @@
       character          uplo
       integer            info, lda, ldb, lwork, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
       logical            lquery
       integer            lwkopt
       logical            lsame
@@ -28566,7 +28566,7 @@
       character          uplo
       integer            info, lda, ldb, lwork, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * )
       logical            lquery
       integer            lwkopt
       logical            lsame
@@ -28581,7 +28581,7 @@
       double precision   rcond
       integer            ipiv( * )
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   work( * ), x( ldx, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
@@ -28603,7 +28603,7 @@
      &                   n_err_bnds
       double precision   rcond, rpvgrw
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), af( ldaf, * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), af( ldaf, * ), b( ldb, * ),
      &                   x( ldx, * ), work( * )
       double precision   s( * ), params( * ), berr( * ),
      &                   err_bnds_norm( nrhs, * ),
@@ -28629,10 +28629,10 @@
       subroutine zsyswapr( uplo, n, a, lda, i1, i2)
       character        uplo
       integer          i1, i2, lda, n
-      complex(kind=16) a( lda, n )
+      complex(kind=8)  a( lda, n )
       logical            upper
       integer            i
-      complex(kind=16)   tmp
+      complex(kind=8)    tmp
       logical            lsame
       end subroutine zsyswapr
 
@@ -28641,17 +28641,17 @@
       character          uplo
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   eight, sevten
       parameter          ( eight = 8.0d+0, sevten = 17.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            i, imax, j, jmax, k, kk, kp, kstep
       double precision   absakk, alpha, colmax, rowmax
-      complex(kind=16)   d11, d12, d21, d22, r1, t, wk, wkm1, wkp1, z
+      complex(kind=8)    d11, d12, d21, d22, r1, t, wk, wkm1, wkp1, z
       logical            disnan, lsame
       integer            izamax
       double precision   cabs1
@@ -28662,18 +28662,18 @@
       character          uplo
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * )
+      complex(kind=8)    a( lda, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       double precision   eight, sevten
       parameter          ( eight = 8.0d+0, sevten = 17.0d+0 )
-      complex(kind=16)   cone
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper, done
       integer            i, imax, j, jmax, itemp, k, kk, kp, kstep,
      &                   p, ii
       double precision   absakk, alpha, colmax, rowmax, dtemp, sfmin
-      complex(kind=16)   d11, d12, d21, d22, t, wk, wkm1, wkp1, z
+      complex(kind=8)    d11, d12, d21, d22, t, wk, wkm1, wkp1, z
       logical            lsame
       integer            izamax
       double precision   dlamch
@@ -28685,7 +28685,7 @@
       character          uplo
       integer            info, lda, lwork, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       logical            lquery, upper
       integer            iinfo, iws, j, k, kb, ldwork, lwkopt, nb, nbmin
       logical            lsame
@@ -28697,7 +28697,7 @@
       character          uplo
       integer            info, lda, lwork, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       logical            lquery, upper
       integer            iinfo, iws, j, k, kb, ldwork, lwkopt, nb, nbmin
       logical            lsame
@@ -28709,7 +28709,7 @@
       character          uplo
       integer            info, lda, lwork, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       logical            upper, lquery
       integer            minsize, nbmax
       logical            lsame
@@ -28721,17 +28721,17 @@
       character          uplo
       integer            info, lda, n, nb
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( n+nb+1,* )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * ), work( n+nb+1,* )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            upper
       integer            i, iinfo, ip, k, cut, nnb
       integer            count
       integer            j, u11, invd
-      complex(kind=16)   ak, akkp1, akp1, d, t
-      complex(kind=16)   u01_i_j, u01_ip1_j
-      complex(kind=16)   u11_i_j, u11_ip1_j
+      complex(kind=8)    ak, akkp1, akp1, d, t
+      complex(kind=8)    u01_i_j, u01_ip1_j
+      complex(kind=8)    u11_i_j, u11_ip1_j
       logical            lsame
       end subroutine zsytri2x
 
@@ -28740,15 +28740,15 @@
       character          uplo
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * ), work( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            upper
       integer            k, kp, kstep
-      complex(kind=16)   ak, akkp1, akp1, d, t, temp
+      complex(kind=8)    ak, akkp1, akp1, d, t, temp
       logical            lsame
-      complex(kind=16)   zdotu
+      complex(kind=8)    zdotu
       end subroutine zsytri
 
       !! zsytri_rook.f
@@ -28756,15 +28756,15 @@
       character          uplo
       integer            info, lda, n
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), work( * )
-      complex(kind=16)   cone, czero
+      complex(kind=8)    a( lda, * ), work( * )
+      complex(kind=8)    cone, czero
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ),
      &                   czero = ( 0.0d+0, 0.0d+0 ) )
       logical            upper
       integer            k, kp, kstep
-      complex(kind=16)   ak, akkp1, akp1, d, t, temp
+      complex(kind=8)    ak, akkp1, akp1, d, t, temp
       logical            lsame
-      complex(kind=16)   zdotu
+      complex(kind=8)    zdotu
       end subroutine zsytri_rook
 
       !! zsytrs2.f
@@ -28773,12 +28773,12 @@
       character          uplo
       integer            info, lda, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16) a( lda, * ), b( ldb, * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)  a( lda, * ), b( ldb, * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = (1.0d+0,0.0d+0) )
       logical            upper
       integer            i, iinfo, j, k, kp
-      complex(kind=16)   ak, akm1, akm1k, bk, bkm1, denom
+      complex(kind=8)    ak, akm1, akm1k, bk, bkm1, denom
       logical            lsame
       end subroutine zsytrs2
 
@@ -28787,12 +28787,12 @@
       character          uplo
       integer            info, lda, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), b( ldb, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kp
-      complex(kind=16)   ak, akm1, akm1k, bk, bkm1, denom
+      complex(kind=8)    ak, akm1, akm1k, bk, bkm1, denom
       logical            lsame
       end subroutine zsytrs
 
@@ -28802,12 +28802,12 @@
       character          uplo
       integer            info, lda, ldb, n, nrhs
       integer            ipiv( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * )
-      complex(kind=16)   cone
+      complex(kind=8)    a( lda, * ), b( ldb, * )
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
       integer            j, k, kp
-      complex(kind=16)   ak, akm1, akm1k, bk, bkm1, denom
+      complex(kind=8)    ak, akm1, akm1k, bk, bkm1, denom
       logical            lsame
       end subroutine zsytrs_rook
 
@@ -28818,14 +28818,14 @@
       integer            info, kd, ldab, n
       double precision   rcond
       double precision   rwork( * )
-      complex(kind=16)   ab( ldab, * ), work( * )
+      complex(kind=8)    ab( ldab, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            nounit, onenrm, upper
       character          normin
       integer            ix, kase, kase1
       double precision   ainvnm, anorm, scale, smlnum, xnorm
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       integer            izamax
@@ -28839,17 +28839,17 @@
       character          diag, trans, uplo
       integer            info, kd, ldab, ldb, ldx, n, nrhs
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   ab( ldab, * ), b( ldb, * ), work( * ),
+      complex(kind=8)    ab( ldab, * ), b( ldb, * ), work( * ),
      &                   x( ldx, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            notran, nounit, upper
       character          transn, transt
       integer            i, j, k, kase, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -28861,8 +28861,8 @@
      &                   ldb, info )
       character          diag, trans, uplo
       integer            info, kd, ldab, ldb, n, nrhs
-      complex(kind=16)   ab( ldab, * ), b( ldb, * )
-      complex(kind=16)   zero
+      complex(kind=8)    ab( ldab, * ), b( ldb, * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       logical            nounit, upper
       integer            j
@@ -28874,9 +28874,9 @@
      &                  b, ldb )
       character          transr, diag, side, trans, uplo
       integer            ldb, m, n
-      complex(kind=16)   alpha
-      complex(kind=16)   a( 0: * ), b( 0: ldb-1, 0: * )
-      complex(kind=16)   cone, czero
+      complex(kind=8)    alpha
+      complex(kind=8)    a( 0: * ), b( 0: ldb-1, 0: * )
+      complex(kind=8)    cone, czero
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ),
      &                   czero = ( 0.0d+0, 0.0d+0 ) )
       logical            lower, lside, misodd, nisodd, normaltransr,
@@ -28889,8 +28889,8 @@
       subroutine ztftri( transr, uplo, diag, n, a, info )
       character          transr, uplo, diag
       integer            info, n
-      complex(kind=16)   a( 0: * )
-      complex(kind=16)   cone
+      complex(kind=8)    a( 0: * )
+      complex(kind=8)    cone
       parameter          ( cone = ( 1.0d+0, 0.0d+0 ) )
       logical            lower, nisodd, normaltransr
       integer            n1, n2, k
@@ -28901,7 +28901,7 @@
       subroutine ztfttp( transr, uplo, n, arf, ap, info )
       character          transr, uplo
       integer            info, n
-      complex(kind=16)   ap( 0: * ), arf( 0: * )
+      complex(kind=8)    ap( 0: * ), arf( 0: * )
       logical            lower, nisodd, normaltransr
       integer            n1, n2, k, nt
       integer            i, j, ij
@@ -28913,7 +28913,7 @@
       subroutine ztfttr( transr, uplo, n, arf, a, lda, info )
       character          transr, uplo
       integer            info, n, lda
-      complex(kind=16)   a( 0: lda-1, 0: * ), arf( 0: * )
+      complex(kind=8)    a( 0: lda-1, 0: * ), arf( 0: * )
       logical            lower, nisodd, normaltransr
       integer            n1, n2, k, nt, nx2, np1x2
       integer            i, j, l, ij
@@ -28927,11 +28927,11 @@
       integer            info, ldp, lds, ldvl, ldvr, m, mm, n
       logical            select( * )
       double precision   rwork( * )
-      complex(kind=16)   p( ldp, * ), s( lds, * ), vl( ldvl, * ),
+      complex(kind=8)    p( ldp, * ), s( lds, * ), vl( ldvl, * ),
      &                   vr( ldvr, * ), work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            compl, compr, ilall, ilback, ilbbad, ilcomp,
@@ -28941,10 +28941,10 @@
       double precision   acoefa, acoeff, anorm, ascale, bcoefa, big,
      &                   bignum, bnorm, bscale, dmin, safmin, sbeta,
      &                   scale, small, temp, ulp, xmax
-      complex(kind=16)   bcoeff, ca, cb, d, salpha, sum, suma, sumb, x
+      complex(kind=8)    bcoeff, ca, cb, d, salpha, sum, suma, sumb, x
       logical            lsame
       double precision   dlamch
-      complex(kind=16)   zladiv
+      complex(kind=8)    zladiv
       double precision   abs1
       end subroutine ztgevc
 
@@ -28953,9 +28953,9 @@
      &                   ldz, j1, info )
       logical            wantq, wantz
       integer            info, j1, lda, ldb, ldq, ldz, n
-      complex(kind=16)   a( lda, * ), b( ldb, * ), q( ldq, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), q( ldq, * ),
      &                   z( ldz, * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       double precision   twenty
@@ -28968,8 +28968,8 @@
       integer            i, m
       double precision   cq, cz, eps, sa, sb, scale, smlnum, ss, sum,
      &                   thresh, ws
-      complex(kind=16)   cdum, f, g, sq, sz
-      complex(kind=16)   s( ldst, ldst ), t( ldst, ldst ), work( 8 )
+      complex(kind=8)    cdum, f, g, sq, sz
+      complex(kind=8)    s( ldst, ldst ), t( ldst, ldst ), work( 8 )
       double precision   dlamch
       end subroutine ztgex2
 
@@ -28978,7 +28978,7 @@
      &                   ldz, ifst, ilst, info )
       logical            wantq, wantz
       integer            ifst, ilst, info, lda, ldb, ldq, ldz, n
-      complex(kind=16)   a( lda, * ), b( ldb, * ), q( ldq, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), q( ldq, * ),
      &                   z( ldz, * )
       integer            here
       end subroutine ztgexc
@@ -28994,7 +28994,7 @@
       logical            select( * )
       integer            iwork( * )
       double precision   dif( * )
-      complex(kind=16)   a( lda, * ), alpha( * ), b( ldb, * ),
+      complex(kind=8)    a( lda, * ), alpha( * ), b( ldb, * ),
      &                   beta( * ), q( ldq, * ), work( * ), z( ldz, * )
       integer            idifjb
       parameter          ( idifjb = 3 )
@@ -29004,7 +29004,7 @@
       integer            i, ierr, ijb, k, kase, ks, liwmin, lwmin, mn2,
      &                   n1, n2
       double precision   dscale, dsum, rdscal, safmin
-      complex(kind=16)   temp1, temp2
+      complex(kind=8)    temp1, temp2
       integer            isave( 3 )
       double precision   dlamch
       end subroutine ztgsen
@@ -29018,20 +29018,20 @@
      &                   ncycle, p
       double precision   tola, tolb
       double precision   alpha( * ), beta( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), q( ldq, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), q( ldq, * ),
      &                   u( ldu, * ), v( ldv, * ), work( * )
       integer            maxit
       parameter          ( maxit = 40 )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            initq, initu, initv, upper, wantq, wantu, wantv
       integer            i, j, kcycle
       double precision   a1, a3, b1, b3, csq, csu, csv, error, gamma,
      &                   rwk, ssmin
-      complex(kind=16)   a2, b2, snq, snu, snv
+      complex(kind=8)    a2, b2, snq, snu, snv
       logical            lsame
       end subroutine ztgsja
 
@@ -29044,7 +29044,7 @@
       logical            select( * )
       integer            iwork( * )
       double precision   dif( * ), s( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), vl( ldvl, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), vl( ldvl, * ),
      &                   vr( ldvr, * ), work( * )
       double precision   zero, one
       integer            idifjb
@@ -29052,11 +29052,11 @@
       logical            lquery, somcon, wantbh, wantdf, wants
       integer            i, ierr, ifst, ilst, k, ks, lwmin, n1, n2
       double precision   bignum, cond, eps, lnrm, rnrm, scale, smlnum
-      complex(kind=16)   yhax, yhbx
-      complex(kind=16)   dummy( 1 ), dummy1( 1 )
+      complex(kind=8)    yhax, yhbx
+      complex(kind=8)    dummy( 1 ), dummy1( 1 )
       logical            lsame
       double precision   dlamch, dlapy2, dznrm2
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       end subroutine ztgsna
 
       !! ztgsy2.f
@@ -29066,7 +29066,7 @@
       character          trans
       integer            ijob, info, lda, ldb, ldc, ldd, lde, ldf, m, n
       double precision   rdscal, rdsum, scale
-      complex(kind=16)   a( lda, * ), b( ldb, * ), c( ldc, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), c( ldc, * ),
      &                   d( ldd, * ), e( lde, * ), f( ldf, * )
       double precision   zero, one
       integer            ldz
@@ -29074,9 +29074,9 @@
       logical            notran
       integer            i, ierr, j, k
       double precision   scaloc
-      complex(kind=16)   alpha
+      complex(kind=8)    alpha
       integer            ipiv( ldz ), jpiv( ldz )
-      complex(kind=16)   rhs( ldz ), z( ldz, ldz )
+      complex(kind=8)    rhs( ldz ), z( ldz, ldz )
       logical            lsame
       end subroutine ztgsy2
 
@@ -29089,12 +29089,12 @@
      &                   lwork, m, n
       double precision   dif, scale
       integer            iwork( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), c( ldc, * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), c( ldc, * ),
      &                   d( ldd, * ), e( lde, * ), f( ldf, * ),
      &                   work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   czero
+      complex(kind=8)    czero
       parameter          ( czero = (0.0d+0, 0.0d+0) )
       logical            lquery, notran
       integer            i, ie, ifunc, iround, is, isolve, j, je, js, k,
@@ -29111,14 +29111,14 @@
       integer            info, n
       double precision   rcond
       double precision   rwork( * )
-      complex(kind=16)   ap( * ), work( * )
+      complex(kind=8)    ap( * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            nounit, onenrm, upper
       character          normin
       integer            ix, kase, kase1
       double precision   ainvnm, anorm, scale, smlnum, xnorm
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       integer            izamax
@@ -29131,7 +29131,7 @@
      &                    a, lda, b, ldb, work, info )
       character side, trans
       integer   info, k, ldv, lda, ldb, m, n, l, nb, ldt
-      complex(kind=16) v( ldv, * ), a( lda, * ), b( ldb, * ),
+      complex(kind=8)  v( ldv, * ), a( lda, * ), b( ldb, * ),
      &          t( ldt, * ), work( * )
       logical            left, right, tran, notran
       integer            i, ib, mb, lb, kf, ldaq, ldvq
@@ -29141,18 +29141,18 @@
       !! ztpqrt2.f
       subroutine ztpqrt2( m, n, l, a, lda, b, ldb, t, ldt, info )
       integer   info, lda, ldb, ldt, n, m, l
-      complex(kind=16) a( lda, * ), b( ldb, * ), t( ldt, * )
-      complex(kind=16) one, zero
+      complex(kind=8)  a( lda, * ), b( ldb, * ), t( ldt, * )
+      complex(kind=8)  one, zero
       parameter( one = (1.0,0.0), zero = (0.0,0.0) )
       integer   i, j, p, mp, np
-      complex(kind=16) alpha
+      complex(kind=8)  alpha
       end subroutine ztpqrt2
 
       !! ztpqrt.f
       subroutine ztpqrt( m, n, l, nb, a, lda, b, ldb, t, ldt, work,
      &                   info )
       integer info, lda, ldb, ldt, n, m, l, nb
-      complex(kind=16) a( lda, * ), b( ldb, * ), t( ldt, * ), work( * )
+      complex(kind=8)  a( lda, * ), b( ldb, * ), t( ldt, * ), work( * )
       integer    i, ib, lb, mb, iinfo
       end subroutine ztpqrt
 
@@ -29161,9 +29161,9 @@
      &                   v, ldv, t, ldt, a, lda, b, ldb, work, ldwork )
       character direct, side, storev, trans
       integer   k, l, lda, ldb, ldt, ldv, ldwork, m, n
-      complex(kind=16) a( lda, * ), b( ldb, * ), t( ldt, * ),
+      complex(kind=8)  a( lda, * ), b( ldb, * ), t( ldt, * ),
      &          v( ldv, * ), work( ldwork, * )
-      complex(kind=16) one, zero
+      complex(kind=8)  one, zero
       parameter ( one = (1.0,0.0), zero = (0.0,0.0) )
       integer   i, j, mp, np, kp
       logical   left, forward, column, right, backward, row
@@ -29176,16 +29176,16 @@
       character          diag, trans, uplo
       integer            info, ldb, ldx, n, nrhs
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   ap( * ), b( ldb, * ), work( * ), x( ldx, * )
+      complex(kind=8)    ap( * ), b( ldb, * ), work( * ), x( ldx, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            notran, nounit, upper
       character          transn, transt
       integer            i, j, k, kase, kc, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -29196,13 +29196,13 @@
       subroutine ztptri( uplo, diag, n, ap, info )
       character          diag, uplo
       integer            info, n
-      complex(kind=16)   ap( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    ap( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            nounit, upper
       integer            j, jc, jclast, jj
-      complex(kind=16)   ajj
+      complex(kind=8)    ajj
       logical            lsame
       end subroutine ztptri
 
@@ -29210,8 +29210,8 @@
       subroutine ztptrs( uplo, trans, diag, n, nrhs, ap, b, ldb, info )
       character          diag, trans, uplo
       integer            info, ldb, n, nrhs
-      complex(kind=16)   ap( * ), b( ldb, * )
-      complex(kind=16)   zero
+      complex(kind=8)    ap( * ), b( ldb, * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       logical            nounit, upper
       integer            j, jc
@@ -29222,7 +29222,7 @@
       subroutine ztpttf( transr, uplo, n, ap, arf, info )
       character          transr, uplo
       integer            info, n
-      complex(kind=16)   ap( 0: * ), arf( 0: * )
+      complex(kind=8)    ap( 0: * ), arf( 0: * )
       logical            lower, nisodd, normaltransr
       integer            n1, n2, k, nt
       integer            i, j, ij
@@ -29234,7 +29234,7 @@
       subroutine ztpttr( uplo, n, ap, a, lda, info )
       character          uplo
       integer            info, n, lda
-      complex(kind=16)   a( lda, * ), ap( * )
+      complex(kind=8)    a( lda, * ), ap( * )
       logical            lower
       integer            i, j, k
       logical            lsame
@@ -29247,14 +29247,14 @@
       integer            info, lda, n
       double precision   rcond
       double precision   rwork( * )
-      complex(kind=16)   a( lda, * ), work( * )
+      complex(kind=8)    a( lda, * ), work( * )
       double precision   one, zero
       parameter          ( one = 1.0d+0, zero = 0.0d+0 )
       logical            nounit, onenrm, upper
       character          normin
       integer            ix, kase, kase1
       double precision   ainvnm, anorm, scale, smlnum, xnorm
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       integer            izamax
@@ -29269,17 +29269,17 @@
       integer            info, ldt, ldvl, ldvr, m, mm, n
       logical            select( * )
       double precision   rwork( * )
-      complex(kind=16)   t( ldt, * ), vl( ldvl, * ), vr( ldvr, * ),
+      complex(kind=8)    t( ldt, * ), vl( ldvl, * ), vr( ldvr, * ),
      &                   work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
-      complex(kind=16)   cmzero, cmone
+      complex(kind=8)    cmzero, cmone
       parameter          ( cmzero = ( 0.0d+0, 0.0d+0 ),
      &                   cmone = ( 1.0d+0, 0.0d+0 ) )
       logical            allv, bothv, leftv, over, rightv, somev
       integer            i, ii, is, j, k, ki
       double precision   ovfl, remax, scale, smin, smlnum, ulp, unfl
-      complex(kind=16)   cdum
+      complex(kind=8)    cdum
       logical            lsame
       integer            izamax
       double precision   dlamch, dzasum
@@ -29290,11 +29290,11 @@
       subroutine ztrexc( compq, n, t, ldt, q, ldq, ifst, ilst, info )
       character          compq
       integer            ifst, ilst, info, ldq, ldt, n
-      complex(kind=16)   q( ldq, * ), t( ldt, * )
+      complex(kind=8)    q( ldq, * ), t( ldt, * )
       logical            wantq
       integer            k, m1, m2, m3
       double precision   cs
-      complex(kind=16)   sn, t11, t22, temp
+      complex(kind=8)    sn, t11, t22, temp
       logical            lsame
       end subroutine ztrexc
 
@@ -29304,17 +29304,17 @@
       character          diag, trans, uplo
       integer            info, lda, ldb, ldx, n, nrhs
       double precision   berr( * ), ferr( * ), rwork( * )
-      complex(kind=16)   a( lda, * ), b( ldb, * ), work( * ),
+      complex(kind=8)    a( lda, * ), b( ldb, * ), work( * ),
      &                   x( ldx, * )
       double precision   zero
       parameter          ( zero = 0.0d+0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            notran, nounit, upper
       character          transn, transt
       integer            i, j, k, kase, nz
       double precision   eps, lstres, s, safe1, safe2, safmin, xk
-      complex(kind=16)   zdum
+      complex(kind=8)    zdum
       integer            isave( 3 )
       logical            lsame
       double precision   dlamch
@@ -29328,7 +29328,7 @@
       integer            info, ldq, ldt, lwork, m, n
       double precision   s, sep
       logical            select( * )
-      complex(kind=16)   q( ldq, * ), t( ldt, * ), w( * ), work( * )
+      complex(kind=8)    q( ldq, * ), t( ldt, * ), w( * ), work( * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d+0 )
       logical            lquery, wantbh, wantq, wants, wantsp
@@ -29348,7 +29348,7 @@
       integer            info, ldt, ldvl, ldvr, ldwork, m, mm, n
       logical            select( * )
       double precision   rwork( * ), s( * ), sep( * )
-      complex(kind=16)   t( ldt, * ), vl( ldvl, * ), vr( ldvr, * ),
+      complex(kind=8)    t( ldt, * ), vl( ldvl, * ), vr( ldvr, * ),
      &                   work( ldwork, * )
       double precision   zero, one
       parameter          ( zero = 0.0d+0, one = 1.0d0+0 )
@@ -29357,13 +29357,13 @@
       integer            i, ierr, ix, j, k, kase, ks
       double precision   bignum, eps, est, lnrm, rnrm, scale, smlnum,
      &                   xnorm
-      complex(kind=16)   cdum, prod
+      complex(kind=8)    cdum, prod
       integer            isave( 3 )
-      complex(kind=16)   dummy( 1 )
+      complex(kind=8)    dummy( 1 )
       logical            lsame
       integer            izamax
       double precision   dlamch, dznrm2
-      complex(kind=16)   zdotc
+      complex(kind=8)    zdotc
       double precision   cabs1
       end subroutine ztrsna
 
@@ -29373,30 +29373,30 @@
       character          trana, tranb
       integer            info, isgn, lda, ldb, ldc, m, n
       double precision   scale
-      complex(kind=16)   a( lda, * ), b( ldb, * ), c( ldc, * )
+      complex(kind=8)    a( lda, * ), b( ldb, * ), c( ldc, * )
       double precision   one
       parameter          ( one = 1.0d+0 )
       logical            notrna, notrnb
       integer            j, k, l
       double precision   bignum, da11, db, eps, scaloc, sgn, smin,
      &                   smlnum
-      complex(kind=16)   a11, suml, sumr, vec, x11
+      complex(kind=8)    a11, suml, sumr, vec, x11
       double precision   dum( 1 )
       logical            lsame
       double precision   dlamch, zlange
-      complex(kind=16)   zdotc, zdotu, zladiv
+      complex(kind=8)    zdotc, zdotu, zladiv
       end subroutine ztrsyl
 
       !! ztrti2.f
       subroutine ztrti2( uplo, diag, n, a, lda, info )
       character          diag, uplo
       integer            info, lda, n
-      complex(kind=16)   a( lda, * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            nounit, upper
       integer            j
-      complex(kind=16)   ajj
+      complex(kind=8)    ajj
       logical            lsame
       end subroutine ztrti2
 
@@ -29404,8 +29404,8 @@
       subroutine ztrtri( uplo, diag, n, a, lda, info )
       character          diag, uplo
       integer            info, lda, n
-      complex(kind=16)   a( lda, * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       logical            nounit, upper
@@ -29419,8 +29419,8 @@
      &                   info )
       character          diag, trans, uplo
       integer            info, lda, ldb, n, nrhs
-      complex(kind=16)   a( lda, * ), b( ldb, * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    a( lda, * ), b( ldb, * )
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ) )
       logical            nounit
@@ -29431,7 +29431,7 @@
       subroutine ztrttf( transr, uplo, n, a, lda, arf, info )
       character          transr, uplo
       integer            info, n, lda
-      complex(kind=16)   a( 0: lda-1, 0: * ), arf( 0: * )
+      complex(kind=8)    a( 0: lda-1, 0: * ), arf( 0: * )
       logical            lower, nisodd, normaltransr
       integer            i, ij, j, k, l, n1, n2, nt, nx2, np1x2
       logical            lsame
@@ -29441,7 +29441,7 @@
       subroutine ztrttp( uplo, n, a, lda, ap, info )
       character          uplo
       integer            info, n, lda
-      complex(kind=16)   a( lda, * ), ap( * )
+      complex(kind=8)    a( lda, * ), ap( * )
       logical            lower
       integer            i, j, k
       logical            lsame
@@ -29450,8 +29450,8 @@
       !! ztzrzf.f
       subroutine ztzrzf( m, n, a, lda, tau, work, lwork, info )
       integer            info, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            i, ib, iws, ki, kk, ldwork, lwkmin, lwkopt,
@@ -29464,9 +29464,9 @@
      &                    taup1, taup2, tauq1, work, lwork, info )
       integer            info, lwork, m, p, q, ldx11, ldx21
       double precision   phi(*), theta(*)
-      complex(kind=16)   taup1(*), taup2(*), tauq1(*), work(*),
+      complex(kind=8)    taup1(*), taup2(*), tauq1(*), work(*),
      &                   x11(ldx11,*), x21(ldx21,*)
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = (1.0d0,0.0d0) )
       double precision   c, s
       integer            childinfo, i, ilarf, iorbdb5, llarf, lorbdb5,
@@ -29480,9 +29480,9 @@
      &                    taup1, taup2, tauq1, work, lwork, info )
       integer            info, lwork, m, p, q, ldx11, ldx21
       double precision   phi(*), theta(*)
-      complex(kind=16)   taup1(*), taup2(*), tauq1(*), work(*),
+      complex(kind=8)    taup1(*), taup2(*), tauq1(*), work(*),
      &                   x11(ldx11,*), x21(ldx21,*)
-      complex(kind=16)   negone, one
+      complex(kind=8)    negone, one
       parameter          ( negone = (-1.0d0,0.0d0),
      &                     one = (1.0d0,0.0d0) )
       double precision   c, s
@@ -29497,9 +29497,9 @@
      &                    taup1, taup2, tauq1, work, lwork, info )
       integer            info, lwork, m, p, q, ldx11, ldx21
       double precision   phi(*), theta(*)
-      complex(kind=16)   taup1(*), taup2(*), tauq1(*), work(*),
+      complex(kind=8)    taup1(*), taup2(*), tauq1(*), work(*),
      &                   x11(ldx11,*), x21(ldx21,*)
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = (1.0d0,0.0d0) )
       double precision   c, s
       integer            childinfo, i, ilarf, iorbdb5, llarf, lorbdb5,
@@ -29514,9 +29514,9 @@
      &                    info )
       integer            info, lwork, m, p, q, ldx11, ldx21
       double precision   phi(*), theta(*)
-      complex(kind=16)   phantom(*), taup1(*), taup2(*), tauq1(*),
+      complex(kind=8)    phantom(*), taup1(*), taup2(*), tauq1(*),
      &                   work(*), x11(ldx11,*), x21(ldx21,*)
-      complex(kind=16)   negone, one, zero
+      complex(kind=8)    negone, one, zero
       parameter          ( negone = (-1.0d0,0.0d0), one = (1.0d0,0.0d0),
      &                     zero = (0.0d0,0.0d0) )
       double precision   c, s
@@ -29531,8 +29531,8 @@
      &                    ldq2, work, lwork, info )
       integer            incx1, incx2, info, ldq1, ldq2, lwork, m1, m2,
      &                   n
-      complex(kind=16)   q1(ldq1,*), q2(ldq2,*), work(*), x1(*), x2(*)
-      complex(kind=16)   one, zero
+      complex(kind=8)    q1(ldq1,*), q2(ldq2,*), work(*), x1(*), x2(*)
+      complex(kind=8)    one, zero
       parameter          ( one = (1.0d0,0.0d0), zero = (0.0d0,0.0d0) )
       integer            childinfo, i, j
       double precision   dznrm2
@@ -29543,11 +29543,11 @@
      &                    ldq2, work, lwork, info )
       integer            incx1, incx2, info, ldq1, ldq2, lwork, m1, m2,
      &                   n
-      complex(kind=16)   q1(ldq1,*), q2(ldq2,*), work(*), x1(*), x2(*)
+      complex(kind=8)    q1(ldq1,*), q2(ldq2,*), work(*), x1(*), x2(*)
       double precision   alphasq, realone, realzero
       parameter          ( alphasq = 0.01d0, realone = 1.0d0,
      &                     realzero = 0.0d0 )
-      complex(kind=16)   negone, one, zero
+      complex(kind=8)    negone, one, zero
       parameter          ( negone = (-1.0d0,0.0d0), one = (1.0d0,0.0d0),
      &                     zero = (0.0d0,0.0d0) )
       integer            i
@@ -29562,12 +29562,12 @@
       integer            info, ldx11, ldx12, ldx21, ldx22, lwork, m, p,
      &                   q
       double precision   phi( * ), theta( * )
-      complex(kind=16)   taup1( * ), taup2( * ), tauq1( * ), tauq2( * ),
+      complex(kind=8)    taup1( * ), taup2( * ), tauq1( * ), tauq2( * ),
      &                   work( * ), x11( ldx11, * ), x12( ldx12, * ),
      &                   x21( ldx21, * ), x22( ldx22, * )
       double precision   realone
       parameter          ( realone = 1.0d0 )
-      complex(kind=16)   one
+      complex(kind=8)    one
       parameter          ( one = (1.0d0,0.0d0) )
       logical            colmajor, lquery
       integer            i, lworkmin, lworkopt, pi1, qi1
@@ -29587,10 +29587,10 @@
       integer            lrwork, lrworkmin, lrworkopt
       double precision   rwork(*)
       double precision   theta(*)
-      complex(kind=16)   u1(ldu1,*), u2(ldu2,*), v1t(ldv1t,*), work(*),
+      complex(kind=8)    u1(ldu1,*), u2(ldu2,*), v1t(ldv1t,*), work(*),
      &                   x11(ldx11,*), x21(ldx21,*)
       integer            iwork(*)
-      complex(kind=16)   one, zero
+      complex(kind=8)    one, zero
       parameter          ( one = (1.0d0,0.0d0), zero = (0.0d0,0.0d0) )
       integer            childinfo, i, ib11d, ib11e, ib12d, ib12e,
      &                   ib21d, ib21e, ib22d, ib22e, ibbcsd, iorbdb,
@@ -29615,11 +29615,11 @@
       integer            iwork( * )
       double precision   theta( * )
       double precision   rwork( * )
-      complex(kind=16)   u1( ldu1, * ), u2( ldu2, * ), v1t( ldv1t, * ),
+      complex(kind=8)    u1( ldu1, * ), u2( ldu2, * ), v1t( ldv1t, * ),
      &                   v2t( ldv2t, * ), work( * ), x11( ldx11, * ),
      &                   x12( ldx12, * ), x21( ldx21, * ), x22( ldx22,
      &                   * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    one, zero
       parameter          ( one = (1.0d0,0.0d0),
      &                     zero = (0.0d0,0.0d0) )
       character          transt, signst
@@ -29641,8 +29641,8 @@
       !! zung2l.f
       subroutine zung2l( m, n, k, a, lda, tau, work, info )
       integer            info, k, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, ii, j, l
@@ -29651,8 +29651,8 @@
       !! zung2r.f
       subroutine zung2r( m, n, k, a, lda, tau, work, info )
       integer            info, k, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, j, l
@@ -29662,8 +29662,8 @@
       subroutine zungbr( vect, m, n, k, a, lda, tau, work, lwork, info )
       character          vect
       integer            info, k, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery, wantq
@@ -29675,8 +29675,8 @@
       !! zunghr.f
       subroutine zunghr( n, ilo, ihi, a, lda, tau, work, lwork, info )
       integer            ihi, ilo, info, lda, lwork, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery
@@ -29687,8 +29687,8 @@
       !! zungl2.f
       subroutine zungl2( m, n, k, a, lda, tau, work, info )
       integer            info, k, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, j, l
@@ -29697,8 +29697,8 @@
       !! zunglq.f
       subroutine zunglq( m, n, k, a, lda, tau, work, lwork, info )
       integer            info, k, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            i, ib, iinfo, iws, j, ki, kk, l, ldwork,
@@ -29709,8 +29709,8 @@
       !! zungql.f
       subroutine zungql( m, n, k, a, lda, tau, work, lwork, info )
       integer            info, k, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            i, ib, iinfo, iws, j, kk, l, ldwork, lwkopt,
@@ -29721,8 +29721,8 @@
       !! zungqr.f
       subroutine zungqr( m, n, k, a, lda, tau, work, lwork, info )
       integer            info, k, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            i, ib, iinfo, iws, j, ki, kk, l, ldwork,
@@ -29733,8 +29733,8 @@
       !! zungr2.f
       subroutine zungr2( m, n, k, a, lda, tau, work, info )
       integer            info, k, lda, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   one, zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    one, zero
       parameter          ( one = ( 1.0d+0, 0.0d+0 ),
      &                   zero = ( 0.0d+0, 0.0d+0 ) )
       integer            i, ii, j, l
@@ -29743,8 +29743,8 @@
       !! zungrq.f
       subroutine zungrq( m, n, k, a, lda, tau, work, lwork, info )
       integer            info, k, lda, lwork, m, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ) )
       logical            lquery
       integer            i, ib, ii, iinfo, iws, j, kk, l, ldwork,
@@ -29756,8 +29756,8 @@
       subroutine zungtr( uplo, n, a, lda, tau, work, lwork, info )
       character          uplo
       integer            info, lda, lwork, n
-      complex(kind=16)   a( lda, * ), tau( * ), work( * )
-      complex(kind=16)   zero, one
+      complex(kind=8)    a( lda, * ), tau( * ), work( * )
+      complex(kind=8)    zero, one
       parameter          ( zero = ( 0.0d+0, 0.0d+0 ),
      &                   one = ( 1.0d+0, 0.0d+0 ) )
       logical            lquery, upper
@@ -29771,8 +29771,8 @@
      &                   work, lwork, info )
       character          side, trans
       integer            m, n, n1, n2, ldq, ldc, lwork, info
-      complex(kind=16)   q( ldq, * ), c( ldc, * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    q( ldq, * ), c( ldc, * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            left, lquery, notran
       integer            i, ldwork, len, lwkopt, nb, nq, nw
@@ -29784,12 +29784,12 @@
      &                   work, info )
       character          side, trans
       integer            info, k, lda, ldc, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            left, notran
       integer            i, i1, i2, i3, mi, ni, nq
-      complex(kind=16)   aii, taui
+      complex(kind=8)    aii, taui
       logical            lsame
       end subroutine zunm2l
 
@@ -29798,12 +29798,12 @@
      &                   work, info )
       character          side, trans
       integer            info, k, lda, ldc, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            left, notran
       integer            i, i1, i2, i3, ic, jc, mi, ni, nq
-      complex(kind=16)   aii, taui
+      complex(kind=8)    aii, taui
       logical            lsame
       end subroutine zunm2r
 
@@ -29812,7 +29812,7 @@
      &                   ldc, work, lwork, info )
       character          side, trans, vect
       integer            info, k, lda, ldc, lwork, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       logical            applyq, left, lquery, notran
       character          transt
       integer            i1, i2, iinfo, lwkopt, mi, nb, ni, nq, nw
@@ -29825,7 +29825,7 @@
      &                   ldc, work, lwork, info )
       character          side, trans
       integer            ihi, ilo, info, lda, ldc, lwork, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       logical            left, lquery
       integer            i1, i2, iinfo, lwkopt, mi, nb, nh, ni, nq, nw
       logical            lsame
@@ -29837,12 +29837,12 @@
      &                   work, info )
       character          side, trans
       integer            info, k, lda, ldc, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            left, notran
       integer            i, i1, i2, i3, ic, jc, mi, ni, nq
-      complex(kind=16)   aii, taui
+      complex(kind=8)    aii, taui
       logical            lsame
       end subroutine zunml2
 
@@ -29851,7 +29851,7 @@
      &                   work, lwork, info )
       character          side, trans
       integer            info, k, lda, ldc, lwork, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       integer            nbmax, ldt, tsize
       parameter          ( nbmax = 64, ldt = nbmax+1,
      &                     tsize = ldt*nbmax )
@@ -29868,7 +29868,7 @@
      &                   work, lwork, info )
       character          side, trans
       integer            info, k, lda, ldc, lwork, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       integer            nbmax, ldt, tsize
       parameter          ( nbmax = 64, ldt = nbmax+1,
      &                     tsize = ldt*nbmax )
@@ -29884,7 +29884,7 @@
      &                   work, lwork, info )
       character          side, trans
       integer            info, k, lda, ldc, lwork, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       integer            nbmax, ldt, tsize
       parameter          ( nbmax = 64, ldt = nbmax+1,
      &                     tsize = ldt*nbmax )
@@ -29900,12 +29900,12 @@
      &                   work, info )
       character          side, trans
       integer            info, k, lda, ldc, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            left, notran
       integer            i, i1, i2, i3, mi, ni, nq
-      complex(kind=16)   aii, taui
+      complex(kind=8)    aii, taui
       logical            lsame
       end subroutine zunmr2
 
@@ -29914,10 +29914,10 @@
      &                   work, info )
       character          side, trans
       integer            info, k, l, lda, ldc, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       logical            left, notran
       integer            i, i1, i2, i3, ic, ja, jc, mi, ni, nq
-      complex(kind=16)   taui
+      complex(kind=8)    taui
       logical            lsame
       end subroutine zunmr3
 
@@ -29926,7 +29926,7 @@
      &                   work, lwork, info )
       character          side, trans
       integer            info, k, lda, ldc, lwork, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       integer            nbmax, ldt, tsize
       parameter          ( nbmax = 64, ldt = nbmax+1,
      &                     tsize = ldt*nbmax )
@@ -29943,7 +29943,7 @@
      &                   work, lwork, info )
       character          side, trans
       integer            info, k, l, lda, ldc, lwork, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       integer            nbmax, ldt, tsize
       parameter          ( nbmax = 64, ldt = nbmax+1,
      &                     tsize = ldt*nbmax )
@@ -29960,7 +29960,7 @@
      &                   work, lwork, info )
       character          side, trans, uplo
       integer            info, lda, ldc, lwork, m, n
-      complex(kind=16)   a( lda, * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    a( lda, * ), c( ldc, * ), tau( * ), work( * )
       logical            left, lquery, upper
       integer            i1, i2, iinfo, lwkopt, mi, nb, ni, nq, nw
       logical            lsame
@@ -29971,8 +29971,8 @@
       subroutine zupgtr( uplo, n, ap, tau, q, ldq, work, info )
       character          uplo
       integer            info, ldq, n
-      complex(kind=16)   ap( * ), q( ldq, * ), tau( * ), work( * )
-      complex(kind=16)   czero, cone
+      complex(kind=8)    ap( * ), q( ldq, * ), tau( * ), work( * )
+      complex(kind=8)    czero, cone
       parameter          ( czero = ( 0.0d+0, 0.0d+0 ),
      &                   cone = ( 1.0d+0, 0.0d+0 ) )
       logical            upper
@@ -29985,12 +29985,12 @@
      &                   info )
       character          side, trans, uplo
       integer            info, ldc, m, n
-      complex(kind=16)   ap( * ), c( ldc, * ), tau( * ), work( * )
-      complex(kind=16)   one
+      complex(kind=8)    ap( * ), c( ldc, * ), tau( * ), work( * )
+      complex(kind=8)    one
       parameter          ( one = ( 1.0d+0, 0.0d+0 ) )
       logical            forwrd, left, notran, upper
       integer            i, i1, i2, i3, ic, ii, jc, mi, ni, nq
-      complex(kind=16)   aii, taui
+      complex(kind=8)    aii, taui
       logical            lsame
       end subroutine zupmtr
 
