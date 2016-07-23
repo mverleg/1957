@@ -169,27 +169,30 @@ module my_utils
         integer :: k, m, unit
 
         open(newunit=unit, file=pth, status="replace")
-        do m = 1, size(data, 2)
-            do k = 1, (size(data, 1) - 1)
-                write(unit, '(es24.16e3,a)', advance='no') data(k, m), ','
+        do m = 1, size(data, 1)
+            do k = 1, (size(data, 2) - 1)
+                write(unit, '(es24.16e3,a)', advance='no') data(m, k), ','
             end do
-            write(unit, '(es24.16e3)', advance='yes') data(k, m)
+            write(unit, '(es24.16e3)', advance='yes') data(m, k)
         end do
         close(unit)
     end subroutine
 
     subroutine write_csv_i2(pth, data)
+        !!
+        !! Write an integer 2D matrix to a csv file
+        !!
         character(len=*), intent(in) :: pth
         integer, intent(in), dimension(:, :) :: data
         integer :: k, m, unit
 
         open(newunit=unit, file=pth, status="replace")
-        do m = 1, size(data, 2)
-            do k = 1, (size(data, 1) - 1)
+        do m = 1, size(data, 1)
+            do k = 1, (size(data, 2) - 1)
                 !! todo: is I0 the correct format?
-                write(unit, '(I0)', advance='no') data(k, m), ','
+                write(unit, '(I0)', advance='no') data(m, k), ','
             end do
-            write(unit, '(I0)', advance='yes') data(k, m)
+            write(unit, '(I0)', advance='yes') data(m, k)
         end do
         close(unit)
     end subroutine
