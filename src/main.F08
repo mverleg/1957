@@ -2,6 +2,7 @@
 program demo
     use my_utils, only: dp, do_setup, write_csv
     use mteop, only: cube, dcubef
+    use indx_spd_test, only: test_speed
 
     real(dp), dimension(10, 8) :: x
     integer, dimension(500) :: y
@@ -11,6 +12,8 @@ program demo
     x = 2  ! don't initialize in declaration, or 'save' is implied
 
     call do_setup()
+
+    call test_speed()
 
     forall (k = 1:size(z))
         z(k) = k

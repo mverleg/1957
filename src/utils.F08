@@ -4,7 +4,7 @@ module my_utils
 
     implicit none
     private
-    public dp, do_setup, write_csv
+    public dp, do_setup, write_csv, print_matrix
 
     integer, parameter:: dp=kind(0.d0)
 
