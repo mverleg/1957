@@ -151,11 +151,11 @@ module my_utils
         real(dp), intent(in), dimension(:, :) :: data
         integer :: k, m
 
-        do m = 1, size(data, 2)
-            do k = 1, (size(data, 1) - 1)
-                write(*, '(f12.6,a)', advance='no') data(k, m), ', '
+        do m = 1, size(data, 1)
+            do k = 1, (size(data, 2) - 1)
+                write(*, '(f12.6,a)', advance='no') data(m, k), ', '
             end do
-            write(*, '(f12.6)', advance='yes') data(k, m)
+            write(*, '(f12.6)', advance='yes') data(m, k)
         end do
     end subroutine
 
