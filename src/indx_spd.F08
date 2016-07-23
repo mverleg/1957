@@ -10,33 +10,40 @@ module indx_spd_test
     contains
 
     subroutine test_speed()
-        integer, parameter :: p = 10, q = 15
+        integer, parameter :: p = 1000, q = 1000, N = 500
+        integer :: r
         real(dp), dimension(p, q) :: M
-        real(dp), dimension(p) :: v
-        real(dp), dimension(q) :: w
+        real(dp), dimension(q) :: v
+        real(dp), dimension(p) :: w
         real(dp) :: tstart, tfinish
 
         call init_Mvw(M, v, w)
-        call print_matrix(M)
+        ! call print_matrix(M)
 
         call init_Mvw(M, v, w)
-        write(*, '(1x,a/)') 'mat_mult_outer'
+        write(*, '(1x,a)', advance='no') 'mat_mult_outer'
         call cpu_time(tstart)
-        call mat_mult_outer(M, v, w)
+        do r = 1, N
+            call mat_mult_outer(M, v, w)
+        end do
         call cpu_time(tfinish)
         write(*, '(1x,f10.6,a)') tfinish - tstart, 's'
 
         call init_Mvw(M, v, w)
-        write(*, '(1x,a/)') 'mat_mult_inner '
+        write(*, '(1x,a)', advance='no') 'mat_mult_inner'
         call cpu_time(tstart)
-        call mat_mult_inner(M, v, w)
+        do r = 1, N
+            call mat_mult_inner(M, v, w)
+        end do
         call cpu_time(tfinish)
         write(*, '(1x,f10.6,a)') tfinish - tstart, 's'
 
         call init_Mvw(M, v, w)
-        write(*, '(1x,a/)') 'blas dgemv    '
+        write(*, '(1x,a)', advance='no') 'blas dgemv    '
         call cpu_time(tstart)
-        call DGEMV('N', p, w, 1, M, p, v, 1, 0, w, 1)
+        do r = 1, N
+            call DGEMV('N', p, q, 1.d0, M, p, v, 1, 0.d0, w, 1)
+        end do
         call cpu_time(tfinish)
         write(*, '(1x,f10.6,a)') tfinish - tstart, 's'
     end subroutine
@@ -49,10 +56,10 @@ module indx_spd_test
         p = size(M, 1)
         q = size(M, 2)
         M = 0
-        do j = 1, p
-            do k = 1, q
+        do k = 1, q
+            do j = 1, p
                 if (j >= k) then
-                    M(k, j) = 1
+                    M(j, k) = 1
                 end if
             end do
         end do
@@ -68,9 +75,28 @@ module indx_spd_test
 
         p = size(M, 1)
         q = size(M, 2)
+        ! write(*, *) shape(M)
+        w = 0
+        do k = 1, q
+            do j = 1, p
+                w(j) = w(j) + M(j, k) * v(k)
+            end do
+        end do
+    end subroutine
+
+    subroutine mat_mult_outer(M, v, w)
+        real(dp), dimension(:, :), intent(in) :: M
+        real(dp), dimension(:), intent(in) :: v
+        real(dp), dimension(:), intent(out) :: w
+        integer :: j, k, p, q
+
+        p = size(M, 1)
+        q = size(M, 2)
+        ! write(*, *) shape(M)
+        w = 0
         do j = 1, p
             do k = 1, q
-                w(j) = M(j, k) * v(k)
+                w(j) = w(j) + M(j, k) * v(k)
             end do
         end do
     end subroutine
