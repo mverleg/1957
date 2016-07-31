@@ -9,7 +9,7 @@ general=['-fautomatic', '-funderscoring',
 	'-fno-protect-parens', '-fno-signed-zeros', '-fno-trapping-math',
 	# flags to use for strict checking:
 	'-fimplicit-none', '-fmodule-private', '-pedantic', # 'Werror
-	'-Wuse-without-only', '-Wimplicit-interface', '-Wimplicit-procedure']
+	'-Wimplicit-interface', '-Wimplicit-procedure'] #'-Wuse-without-only'
 FLAGS = dict(
 	minimal=['-g', '-fbacktrace'],
 	# flags to use in debug mode (-fcheck=all is for runtime):
