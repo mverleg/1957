@@ -3,7 +3,7 @@ program demo
     use my_utils, only: dp, do_setup, write_csv
     use mteop, only: cube, dcubef
     use indx_spd_test, only: test_speed
-    use my_debug, only: bound_checks, aliasing
+    use my_debug, only: bound_checks, aliasing, test_unformatted_length
 
     real(dp), dimension(10, 8) :: x
     integer, dimension(500) :: y
@@ -29,6 +29,8 @@ program demo
 
     call bound_checks()
     call aliasing()
+
+    call test_unformatted_length()
 
 end program
 

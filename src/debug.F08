@@ -4,7 +4,7 @@ module my_debug
     implicit none
 
     private
-    public bound_checks, aliasing
+    public bound_checks, aliasing, test_unformatted_length
 
     contains
 
@@ -77,6 +77,32 @@ module my_debug
         integer, dimension(n) :: D
         write(*, *) D(q)
     end subroutine type_corruption
+
+    subroutine test_unformatted_length()
+        !!
+        !! Conclusion: there is a runtime error when reading too much from unformatted record
+        !! and the rest is skipped when reading too little (jumps to next record).
+        !!
+        integer :: fileu
+        real(dp), dimension(5), save :: v = 42.0d0
+        real(dp), dimension(3), save :: ws = -9999.0d0
+        real(dp), dimension(10), save :: wl = -9999.0d0
+
+        open(newunit=fileu,file='/tmp/debug.fortran.unf',form='unformatted',action='write')
+        write(fileu) 1*v
+        write(fileu) 2*v
+        write(fileu) 3*v
+        close(fileu)
+
+        open(newunit=fileu,file='/tmp/debug.fortran.unf',form='unformatted',action='read')
+        read(fileu) ws
+        write(*, *) 'ws =', ws
+        read(fileu) ws
+        write(*, *) 'ws =', ws
+        read(fileu) wl
+        write(*, *) 'wl =', wl
+        close(fileu)
+    end subroutine test_unformatted_length
 
 end module my_debug
 
