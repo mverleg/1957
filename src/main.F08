@@ -5,6 +5,9 @@ program demo
     use indx_spd_test, only: test_speed
     use my_debug, only: bound_checks, aliasing, test_unformatted_length
 
+    integer :: number
+    character(len=32) :: inp, unit
+
     real(dp), dimension(10, 8) :: x
     integer, dimension(500) :: y
     integer, dimension(32) :: z
@@ -30,7 +33,19 @@ program demo
     call bound_checks()
     call aliasing()
 
-    call test_unformatted_length()
+    !! todo: on
+    ! call test_unformatted_length()
+
+    !! test read number + unit
+    inp = '10000 a.u.                                        ! [ntimstep/time_step_count] no. of time steps if followed by...'
+    read(inp, *, end=1000) number, unit
+    goto 1001
+    1000 continue
+    read(inp, *) number
+    unit = 'steps'
+    1001 continue
+    write(*, *) 'number =', number
+    write(*, *) 'unit =', unit
 
 end program
 
